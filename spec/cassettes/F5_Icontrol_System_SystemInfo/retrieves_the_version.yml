@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://admin:admin@10.198.4.135/iControl/iControlPortal.cgi
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:iControl:System/SystemInfo"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="urn:iControl"><env:Body><tns:get_version></tns:get_version></env:Body></env:Envelope>
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.3.4.1, ruby 2.1.0 (2013-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 08 Apr 2014 19:58:17 GMT
+      Soapaction:
+      - '"urn:iControl:System/SystemInfo"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '345'
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Apr 2014 19:56:37 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - BIGIPAuthCookie=017EA784717D2DC416AFD90FB58842083DE1BD23; path=/; Secure;
+      - BIGIPAuthUsernameCookie=admin; path=/; Secure;
+      Soapserver:
+      - EasySoap++/0.6
+      X-Frame-Options:
+      - SAMEORIGIN
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml; charset="UTF-8"
+    body:
+      encoding: UTF-8
+      string: "<E:Envelope\r\n\txmlns:E=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n\txmlns:A=\"http://schemas.xmlsoap.org/soap/encoding/\"\r\n\txmlns:s=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\txmlns:y=\"http://www.w3.org/2001/XMLSchema\"\r\n\txmlns:iControl=\"urn:iControl\"\r\n\tE:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n<E:Body>\r\n<m:get_versionResponse\r\n\txmlns:m=\"urn:iControl:System/SystemInfo\">\r\n<return\r\n\ts:type=\"y:string\">BIG-IP_v11.3.0</return>\r\n</m:get_versionResponse>\r\n</E:Body>\r\n</E:Envelope>\r\n"
+    http_version: 
+  recorded_at: Tue, 08 Apr 2014 19:58:17 GMT
+recorded_with: VCR 2.9.0

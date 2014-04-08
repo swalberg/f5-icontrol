@@ -1,0 +1,323 @@
+--- !ruby/object:Gem::Specification 
+name: f5-icontrol
+version: !ruby/object:Gem::Version 
+  hash: 219
+  prerelease: 
+  segments: 
+  - 11
+  - 4
+  - 1
+  - 0
+  version: 11.4.1.0
+platform: ruby
+authors: 
+- George Watkins
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2013-10-28 00:00:00 Z
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: httpclient
+  prerelease: false
+  requirement: &id001 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 119
+        segments: 
+        - 2
+        - 1
+        - 5
+        - 2
+        version: 2.1.5.2
+  type: :runtime
+  version_requirements: *id001
+description: Ruby library for F5 BIG-IP iControl API
+email: DevCentralTeam@f5.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- lib/f5-icontrol.rb
+- lib/wsdl/Classification.Application.wsdl
+- lib/wsdl/LocalLB.ProfileFastL4.wsdl
+- lib/wsdl/LocalLB.ProfileHttp.wsdl
+- lib/wsdl/LocalLB.NodeAddressV2.wsdl
+- lib/wsdl/LocalLB.ProfileResponseAdapt.wsdl
+- lib/wsdl/GlobalLB.DataCenter.wsdl
+- lib/wsdl/GlobalLB.Monitor.wsdl
+- lib/wsdl/LocalLB.ProfileAnalytics.wsdl
+- lib/wsdl/Security.ProfileIPIntelligence.wsdl
+- lib/wsdl/LocalLB.NAT.wsdl
+- lib/wsdl/Management.Partition.wsdl
+- lib/wsdl/Networking.ProfileGRE.wsdl
+- lib/wsdl/System.Session.wsdl
+- lib/wsdl/GlobalLB.PoolMember.wsdl
+- lib/wsdl/LTConfig.Field.wsdl
+- lib/wsdl/LocalLB.ProfileTCP.wsdl
+- lib/wsdl/Management.LDAPConfiguration.wsdl
+- lib/wsdl/LocalLB.DataGroupFile.wsdl
+- lib/wsdl/Management.OCSPConfiguration.wsdl
+- lib/wsdl/LocalLB.Class.wsdl
+- lib/wsdl/ASM.WebApplicationGroup.wsdl
+- lib/wsdl/Security.FirewallGlobalAdminIPRuleList.wsdl
+- lib/wsdl/Networking.RouteDomainV2.wsdl
+- lib/wsdl/LocalLB.ProfileSCTP.wsdl
+- lib/wsdl/LocalLB.ProfileXML.wsdl
+- lib/wsdl/Networking.Trunk.wsdl
+- lib/wsdl/PEM.ServiceChainEndpoint.wsdl
+- lib/wsdl/Security.ProfileDoS.wsdl
+- lib/wsdl/Management.TrafficGroup.wsdl
+- lib/wsdl/Networking.ARP.wsdl
+- lib/wsdl/iCall.PerpetualHandler.wsdl
+- lib/wsdl/LocalLB.ProfileDNSLogging.wsdl
+- lib/wsdl/Management.UserManagement.wsdl
+- lib/wsdl/Networking.iSessionDeduplication.wsdl
+- lib/wsdl/Management.TACACSConfiguration.wsdl
+- lib/wsdl/LocalLB.ProfileRequestAdapt.wsdl
+- lib/wsdl/Management.Globals.wsdl
+- lib/wsdl/Management.SFlowGlobals.wsdl
+- lib/wsdl/LocalLB.ProfileUserStatistic.wsdl
+- lib/wsdl/Management.Device.wsdl
+- lib/wsdl/Management.ChangeControl.wsdl
+- lib/wsdl/Networking.RouterAdvertisement.wsdl
+- lib/wsdl/Classification.SignatureVersion.wsdl
+- lib/wsdl/PEM.Subscriber.wsdl
+- lib/wsdl/System.Internal.wsdl
+- lib/wsdl/Log.DestinationRemoteSyslog.wsdl
+- lib/wsdl/Management.FeatureModule.wsdl
+- lib/wsdl/Management.Trust.wsdl
+- lib/wsdl/LocalLB.ProfileFastHttp.wsdl
+- lib/wsdl/iCall.TriggeredHandler.wsdl
+- lib/wsdl/GlobalLB.Rule.wsdl
+- lib/wsdl/LocalLB.ProfileClassification.wsdl
+- lib/wsdl/Networking.RouteTable.wsdl
+- lib/wsdl/WebAccelerator.Policies.wsdl
+- lib/wsdl/System.HAStatus.wsdl
+- lib/wsdl/LocalLB.iFileFile.wsdl
+- lib/wsdl/LocalLB.Pool.wsdl
+- lib/wsdl/Management.CLIScript.wsdl
+- lib/wsdl/GlobalLB.Pool.wsdl
+- lib/wsdl/System.Statistics.wsdl
+- lib/wsdl/GlobalLB.Server.wsdl
+- lib/wsdl/Networking.STPGlobals.wsdl
+- lib/wsdl/System.Failover.wsdl
+- lib/wsdl/GlobalLB.Globals.wsdl
+- lib/wsdl/LocalLB.ProfileServerSSL.wsdl
+- lib/wsdl/Log.DestinationSplunk.wsdl
+- lib/wsdl/GlobalLB.VirtualServerV2.wsdl
+- lib/wsdl/System.PerformanceSFlow.wsdl
+- lib/wsdl/Management.SNMPConfiguration.wsdl
+- lib/wsdl/Networking.SelfIPV2.wsdl
+- lib/wsdl/Security.DoSDevice.wsdl
+- lib/wsdl/Networking.PacketFilterGlobals.wsdl
+- lib/wsdl/Management.View.wsdl
+- lib/wsdl/GlobalLB.DNSSECZone.wsdl
+- lib/wsdl/LocalLB.ProfileClientSSL.wsdl
+- lib/wsdl/Networking.iSessionDatastor.wsdl
+- lib/wsdl/LocalLB.RateClass.wsdl
+- lib/wsdl/LocalLB.SNATTranslationAddressV2.wsdl
+- lib/wsdl/Management.SFlowReceiver.wsdl
+- lib/wsdl/Networking.iSessionAdvertisedRoute.wsdl
+- lib/wsdl/LocalLB.ProfileSIP.wsdl
+- lib/wsdl/ASM.LoggingProfile.wsdl
+- lib/wsdl/LocalLB.ProfilePersistence.wsdl
+- lib/wsdl/Networking.RouteTableV2.wsdl
+- lib/wsdl/Security.LogProfile.wsdl
+- lib/wsdl/System.ExternalMonitorFile.wsdl
+- lib/wsdl/Networking.PortMirror.wsdl
+- lib/wsdl/LocalLB.ProfileICAP.wsdl
+- lib/wsdl/Networking.iSessionLocalInterface.wsdl
+- lib/wsdl/Networking.SelfIP.wsdl
+- lib/wsdl/Networking.VLAN.wsdl
+- lib/wsdl/Networking.IPsecIkeDaemon.wsdl
+- lib/wsdl/Networking.AdminIP.wsdl
+- lib/wsdl/Management.TMOSModule.wsdl
+- lib/wsdl/Networking.ProfileIPIP.wsdl
+- lib/wsdl/Management.Named.wsdl
+- lib/wsdl/Management.CCLDAPConfiguration.wsdl
+- lib/wsdl/ASM.PolicyGroup.wsdl
+- lib/wsdl/Networking.iSessionRemoteInterfaceV2.wsdl
+- lib/wsdl/Log.DestinationArcSight.wsdl
+- lib/wsdl/ASM.ObjectParams.wsdl
+- lib/wsdl/Management.LicenseAdministration.wsdl
+- lib/wsdl/LocalLB.iFile.wsdl
+- lib/wsdl/Security.ProfileDNSSecurity.wsdl
+- lib/wsdl/Networking.RouteDomain.wsdl
+- lib/wsdl/Management.SFlowDataSource.wsdl
+- lib/wsdl/PEM.Policy.wsdl
+- lib/wsdl/Networking.LLDPGlobals.wsdl
+- lib/wsdl/LocalLB.LSNPool.wsdl
+- lib/wsdl/Management.DeviceGroup.wsdl
+- lib/wsdl/Management.RADIUSConfiguration.wsdl
+- lib/wsdl/ASM.PSMProfile.wsdl
+- lib/wsdl/System.ConfigSync.wsdl
+- lib/wsdl/LocalLB.SNATPoolMember.wsdl
+- lib/wsdl/LocalLB.SNATPool.wsdl
+- lib/wsdl/Networking.IPsecManualSecurityAssociation.wsdl
+- lib/wsdl/Networking.Interfaces.wsdl
+- lib/wsdl/System.VCMP.wsdl
+- lib/wsdl/LocalLB.ProfileFTP.wsdl
+- lib/wsdl/Management.Provision.wsdl
+- lib/wsdl/Management.ApplicationTemplate.wsdl
+- lib/wsdl/Networking.IPsecTrafficSelector.wsdl
+- lib/wsdl/Management.CRLDPServer.wsdl
+- lib/wsdl/Networking.ProfileFEC.wsdl
+- lib/wsdl/LocalLB.VirtualAddress.wsdl
+- lib/wsdl/Management.OCSPResponder.wsdl
+- lib/wsdl/Log.Filter.wsdl
+- lib/wsdl/Networking.PacketFilter.wsdl
+- lib/wsdl/LocalLB.ProfileDNS.wsdl
+- lib/wsdl/LocalLB.ProfileRADIUS.wsdl
+- lib/wsdl/GlobalLB.Region.wsdl
+- lib/wsdl/System.CertificateRevocationListFile.wsdl
+- lib/wsdl/LocalLB.SNAT.wsdl
+- lib/wsdl/Management.KeyCertificate.wsdl
+- lib/wsdl/GlobalLB.WideIP.wsdl
+- lib/wsdl/System.GeoIP.wsdl
+- lib/wsdl/PEM.InterceptionEndpoint.wsdl
+- lib/wsdl/LocalLB.ProfileAuth.wsdl
+- lib/wsdl/Management.Zone.wsdl
+- lib/wsdl/ASM.WebApplication.wsdl
+- lib/wsdl/WebAccelerator.ProxyMessage.wsdl
+- lib/wsdl/LocalLB.ProfileOneConnect.wsdl
+- lib/wsdl/Networking.BWControllerPolicy.wsdl
+- lib/wsdl/Log.Publisher.wsdl
+- lib/wsdl/Management.ZoneRunner.wsdl
+- lib/wsdl/Networking.IPsecPolicy.wsdl
+- lib/wsdl/Networking.iSessionRemoteInterface.wsdl
+- lib/wsdl/LocalLB.ProfileDiameterEndpoint.wsdl
+- lib/wsdl/ASM.SystemConfiguration.wsdl
+- lib/wsdl/Log.DestinationLocalSyslog.wsdl
+- lib/wsdl/Networking.ProfileWCCPGRE.wsdl
+- lib/wsdl/Networking.STPInstance.wsdl
+- lib/wsdl/Management.ResourceRecord.wsdl
+- lib/wsdl/LocalLB.ProfileSPM.wsdl
+- lib/wsdl/LocalLB.ProfileDiameter.wsdl
+- lib/wsdl/System.Cluster.wsdl
+- lib/wsdl/Networking.ProfileVXLAN.wsdl
+- lib/wsdl/LTConfig.Class.wsdl
+- lib/wsdl/GlobalLB.ProberPool.wsdl
+- lib/wsdl/LocalLB.Monitor.wsdl
+- lib/wsdl/Security.FirewallAddressList.wsdl
+- lib/wsdl/Classification.SignatureDefinition.wsdl
+- lib/wsdl/GlobalLB.Link.wsdl
+- lib/wsdl/Management.SMTPConfiguration.wsdl
+- lib/wsdl/LocalLB.ProfileWebAcceleration.wsdl
+- lib/wsdl/Classification.Category.wsdl
+- lib/wsdl/LocalLB.DNSCache.wsdl
+- lib/wsdl/LocalLB.VirtualAddressV2.wsdl
+- lib/wsdl/PEM.Listener.wsdl
+- lib/wsdl/PEM.ForwardingEndpoint.wsdl
+- lib/wsdl/Networking.VLANGroup.wsdl
+- lib/wsdl/Management.EventNotification.wsdl
+- lib/wsdl/Management.DBVariable.wsdl
+- lib/wsdl/iCall.PeriodicHandler.wsdl
+- lib/wsdl/LocalLB.ProfileIIOP.wsdl
+- lib/wsdl/Security.FirewallPolicy.wsdl
+- lib/wsdl/GlobalLB.VirtualServer.wsdl
+- lib/wsdl/LocalLB.PoolMember.wsdl
+- lib/wsdl/LocalLB.ProfileHttpCompression.wsdl
+- lib/wsdl/System.SystemInfo.wsdl
+- lib/wsdl/LocalLB.RAMCacheInformation.wsdl
+- lib/wsdl/System.Services.wsdl
+- lib/wsdl/Classification.SignatureUpdateSchedule.wsdl
+- lib/wsdl/Networking.STPInstanceV2.wsdl
+- lib/wsdl/iCall.Script.wsdl
+- lib/wsdl/Networking.Tunnel.wsdl
+- lib/wsdl/System.Inet.wsdl
+- lib/wsdl/LocalLB.DNSExpress.wsdl
+- lib/wsdl/LocalLB.ProfileSPDY.wsdl
+- lib/wsdl/Networking.iSessionPeerDiscovery.wsdl
+- lib/wsdl/Management.EM.wsdl
+- lib/wsdl/Management.CRLDPConfiguration.wsdl
+- lib/wsdl/ASM.Policy.wsdl
+- lib/wsdl/Management.EventSubscription.wsdl
+- lib/wsdl/Security.FirewallWeeklySchedule.wsdl
+- lib/wsdl/System.SoftwareManagement.wsdl
+- lib/wsdl/GlobalLB.Topology.wsdl
+- lib/wsdl/WebAccelerator.Applications.wsdl
+- lib/wsdl/LocalLB.NATV2.wsdl
+- lib/wsdl/LocalLB.ProfileRequestLogging.wsdl
+- lib/wsdl/Networking.IPsecIkePeer.wsdl
+- lib/wsdl/System.Connections.wsdl
+- lib/wsdl/System.Disk.wsdl
+- lib/wsdl/Log.DestinationRemoteHighSpeedLog.wsdl
+- lib/wsdl/Security.FirewallPortList.wsdl
+- lib/wsdl/LocalLB.ProfileUDP.wsdl
+- lib/wsdl/LocalLB.Rule.wsdl
+- lib/wsdl/LocalLB.SNATTranslationAddress.wsdl
+- lib/wsdl/Security.FirewallRuleList.wsdl
+- lib/wsdl/LocalLB.DNSGlobals.wsdl
+- lib/wsdl/LocalLB.NodeAddress.wsdl
+- lib/wsdl/GlobalLB.DNSSECKey.wsdl
+- lib/wsdl/System.HAGroup.wsdl
+- lib/wsdl/LocalLB.VirtualServer.wsdl
+- lib/wsdl/Management.RADIUSServer.wsdl
+- lib/wsdl/Networking.SelfIPPortLockdown.wsdl
+- lib/wsdl/PEM.FormatScript.wsdl
+- lib/wsdl/Management.ApplicationService.wsdl
+- lib/wsdl/Networking.iSessionAdvertisedRouteV2.wsdl
+- lib/wsdl/Management.ApplicationPresentationScript.wsdl
+- lib/wsdl/LocalLB.ProfileHttpClass.wsdl
+- lib/wsdl/Security.FirewallGlobalRuleList.wsdl
+- lib/wsdl/Management.CertLDAPConfiguration.wsdl
+- lib/wsdl/LocalLB.ProfileRTSP.wsdl
+- lib/wsdl/LocalLB.ProfileStream.wsdl
+- lib/wsdl/Management.Folder.wsdl
+- lib/wsdl/GlobalLB.Application.wsdl
+- examples/virtual-address-arp-switcher.rb
+- examples/get-version.rb
+- examples/install-bigip-image.rb
+- examples/create-http-virtual-and-pool.rb
+- examples/deploy-iapp.rb
+- examples/report-down-pools.rb
+- examples/ssl-certificate-report.rb
+- examples/create-maintenace-page-irule.rb
+- examples/remove-wideip-pool.rb
+- examples/asm-policy-import.rb
+- examples/ssl-key-and-csr-creator.rb
+- examples/f5-node-initiator.rb
+- LICENSE
+homepage: http://devcentral.f5.com
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 31
+      segments: 
+      - 1
+      - 8
+      version: "1.8"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.8.15
+signing_key: 
+specification_version: 3
+summary: Ruby library for F5 BIG-IP iControl API. Package contains version-specific WSDLs. iControl methods can be updated by copying the /usr/local/www/iControl/wsdl directory from a newer BIG-IP to the f5-icontrol package directory (usually /var/lib/gems/<Ruby version>/gems/f5-icontrol-<version>/lib/wsdl/). Visit <https://devcentral.f5.com/articles/getting-started-with-ruby-and-icontrol> to get started.
+test_files: []
+
