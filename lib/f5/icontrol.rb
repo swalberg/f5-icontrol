@@ -32,7 +32,8 @@ module F5
                      #logger: Logger.new(STDOUT),
                      #pretty_print_xml: true,
                      #log_level: :debug,
-                     namespace: "urn:iControl:#{api_namespace}"
+                     namespace: "urn:iControl:#{api_namespace}",
+                     convert_request_keys_to: :none
                     )
     end
   end

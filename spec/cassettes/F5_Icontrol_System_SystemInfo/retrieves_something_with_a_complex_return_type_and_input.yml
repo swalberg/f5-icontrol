@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://admin:admin@10.198.4.135/iControl/iControlPortal.cgi
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"urn:iControl:System/SystemInfo\"
+        xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ins0=\"urn:iControl\"><env:Body><tns:get_cpu_usage_extended_information><host_ids>10.198.4.135</host_ids></tns:get_cpu_usage_extended_information></env:Body></env:Envelope>"
+    headers:
+      Soapaction:
+      - "\"urn:iControl:System/SystemInfo\""
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '424'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 09 Apr 2014 17:37:21 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - BIGIPAuthCookie=017EA784717D2DC416AFD90FB58842083DE1BD23; path=/; Secure;
+      - BIGIPAuthUsernameCookie=admin; path=/; Secure;
+      Soapserver:
+      - EasySoap++/0.6
+      X-Frame-Options:
+      - SAMEORIGIN
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml; charset="UTF-8"
+    body:
+      encoding: UTF-8
+      string: "<E:Envelope\r\n\txmlns:E=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n\txmlns:A=\"http://schemas.xmlsoap.org/soap/encoding/\"\r\n\txmlns:s=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\txmlns:y=\"http://www.w3.org/2001/XMLSchema\"\r\n\txmlns:iControl=\"urn:iControl\"\r\n\tE:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n<E:Body>\r\n<m:get_cpu_usage_extended_informationResponse\r\n\txmlns:m=\"urn:iControl:System/SystemInfo\">\r\n<return\r\n\ts:type=\"iControl:System.CPUUsageExtendedInformation\">\r\n<hosts\r\n\ts:type=\"A:Array\"\r\n\tA:arrayType=\"iControl:System.CPUUsageExtended[0]\"></hosts>\r\n<time_stamp\r\n\ts:type=\"iControl:Common.TimeStamp\">\r\n<year\r\n\ts:type=\"y:long\">2014</year>\r\n<month\r\n\ts:type=\"y:long\">4</month>\r\n<day\r\n\ts:type=\"y:long\">9</day>\r\n<hour\r\n\ts:type=\"y:long\">17</hour>\r\n<minute\r\n\ts:type=\"y:long\">37</minute>\r\n<second\r\n\ts:type=\"y:long\">21</second>\r\n</time_stamp>\r\n</return>\r\n</m:get_cpu_usage_extended_informationResponse>\r\n</E:Body>\r\n</E:Envelope>\r\n"
+    http_version: 
+  recorded_at: Wed, 09 Apr 2014 17:38:50 GMT
+recorded_with: VCR 2.9.0

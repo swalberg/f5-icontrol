@@ -3,10 +3,17 @@ module F5
   class Icontrol
     class System
       class SystemInfo < F5::Icontrol
-        def method_missing(method, *args, &block)
+        def method_missing(method, args = nil, &block)
           if respond_to? method
             response_key = "#{method.to_s}_response".to_sym
-            client("System.SystemInfo").call(method).to_hash[response_key][:return]
+
+            response = client("System.SystemInfo").call(method) do
+              if args
+                message args
+              end
+            end
+
+            response.to_hash[response_key][:return]
           end
         end
 
