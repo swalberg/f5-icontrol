@@ -29,9 +29,9 @@ module F5
                      endpoint: "https://#{@hostname}#{endpoint}",
                      ssl_verify_mode: :none,
                      basic_auth: [@username, @password],
-                     log: true,
-                     logger: Logger.new(STDOUT),
-                     pretty_print_xml: true,
+                     #log: true,
+                     #logger: Logger.new(STDOUT),
+                     #pretty_print_xml: true,
                      #log_level: :debug,
                      namespace: "urn:iControl:#{api_namespace}",
                      convert_request_keys_to: :none
