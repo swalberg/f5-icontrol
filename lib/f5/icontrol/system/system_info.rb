@@ -3,16 +3,16 @@ module F5
   class Icontrol
     class System
       class SystemInfo < F5::Icontrol
-
-        def get_version
-          client("System.SystemInfo").call(:get_version).to_hash[:get_version_response][:return]
+        def method_missing(method, *args, &block)
+          if respond_to? method
+            response_key = "#{method.to_s}_response".to_sym
+            client("System.SystemInfo").call(method).to_hash[response_key][:return]
+          end
         end
 
-        def get_uptime
-          client("System.SystemInfo").call(:get_uptime).to_hash[:get_uptime_response][:return]
+        def respond_to?(method)
+          client("System.SystemInfo").operations.include? method
         end
-
-        private
 
       end
     end

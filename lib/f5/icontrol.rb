@@ -9,6 +9,7 @@ module F5
       @hostname = host
       @username = username
       @password = password
+      @client_cache = {}
     end
 
     private
@@ -22,16 +23,17 @@ module F5
     def client(api_group)
       api_namespace = api_group.gsub /\./, '/'
       endpoint = '/iControl/iControlPortal.cgi'
-      Savon.client(wsdl: "#{wsdl_path}#{api_group}.wsdl",
-                   endpoint: "https://#{@hostname}#{endpoint}",
-                   ssl_verify_mode: :none,
-                   basic_auth: [@username, @password],
-                   #log: true,
-                   #logger: Logger.new(STDOUT),
-                   #pretty_print_xml: true,
-                   #log_level: :debug,
-                   namespace: "urn:iControl:#{api_namespace}"
-                  )
+      @client_cache[api_group] ||=
+        Savon.client(wsdl: "#{wsdl_path}#{api_group}.wsdl",
+                     endpoint: "https://#{@hostname}#{endpoint}",
+                     ssl_verify_mode: :none,
+                     basic_auth: [@username, @password],
+                     #log: true,
+                     #logger: Logger.new(STDOUT),
+                     #pretty_print_xml: true,
+                     #log_level: :debug,
+                     namespace: "urn:iControl:#{api_namespace}"
+                    )
     end
   end
 end
