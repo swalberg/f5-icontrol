@@ -5,7 +5,11 @@ module F5
       class SystemInfo < F5::Icontrol
 
         def get_version
-          client("System.SystemInfo").call(:get_version).xpath('//m:get_versionResponse').inner_text.gsub /\n/, ""
+          client("System.SystemInfo").call(:get_version).to_hash[:get_version_response][:return]
+        end
+
+        def get_uptime
+          client("System.SystemInfo").call(:get_uptime).to_hash[:get_uptime_response][:return]
         end
 
         private
