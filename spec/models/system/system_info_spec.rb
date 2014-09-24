@@ -5,15 +5,15 @@ describe F5::Icontrol::System::SystemInfo, :vcr do
 
   describe "#respond_to?" do
     it "supports get_version" do
-      expect(subject.respond_to? :get_version).to be_true
+      expect(subject.respond_to? :get_version).to be_truthy
     end
 
     it "supports get_uptime" do
-      expect(subject.respond_to? :get_uptime).to be_true
+      expect(subject.respond_to? :get_uptime).to be_truthy
     end
 
     it "does not support buy cisco" do
-      expect(subject.respond_to? :buy_cisco).to be_false
+      expect(subject.respond_to? :buy_cisco).to be_falsey
     end
   end
 

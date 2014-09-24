@@ -5,11 +5,11 @@ describe F5::Icontrol::LocalLB::Pool, :vcr do
 
   describe "#respond_to?" do
     it "supports create_v2" do
-      expect(subject.respond_to? :create_v2).to be_true
+      expect(subject.respond_to? :create_v2).to be_truthy
     end
 
     it "does not support buy cisco" do
-      expect(subject.respond_to? :buy_cisco).to be_false
+      expect(subject.respond_to? :buy_cisco).to be_falsey
     end
   end
 
