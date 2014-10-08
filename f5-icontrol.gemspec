@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = F5::Icontrol::VERSION
   spec.authors       = ["Sean Walberg"]
   spec.email         = ["sean@ertw.com"]
-  spec.description   = "Description"
-  spec.summary       = "Summary"
-  spec.homepage      = ""
+  spec.description   = "A gem to manage F5 BigIP devices using the iControl API"
+  spec.summary= "A gem to manage F5 BigIP devices using the iControl API"
+  spec.homepage      = "https://github.com/swalberg/f5-icontrol"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
