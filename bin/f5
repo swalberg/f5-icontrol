@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'f5/cli/application'
+require 'f5/icontrol'
+
+F5::Cli::Application.start(ARGV)

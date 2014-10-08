@@ -33,6 +33,19 @@ Or install it yourself as:
 
 See examples subdir.
 
+## CLI
+
+There's a command line version that's still being roughed out. You'll need a `~/.f5.yml` file containing your login information:
+
+```
+host: foo.bar.com
+username: admin
+password: abc123
+```
+
+Then run `f5` and it'll provide help
+
+
 ## Contributing
 
 1. Fork it

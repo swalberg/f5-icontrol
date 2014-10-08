@@ -1,6 +1,7 @@
 require "f5/icontrol/version"
 require "f5/icontrol/system/system_info"
 require "f5/icontrol/local_lb/pool"
+require "f5/icontrol/local_lb/node_address_v2"
 require "openssl"
 require "savon"
 
