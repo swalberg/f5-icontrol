@@ -26,7 +26,7 @@ module F5
       api_namespace = api_group.gsub /\./, '/'
       endpoint = '/iControl/iControlPortal.cgi'
       @client_cache[api_group] ||=
-        Savon.client(wsdl: "#{wsdl_path}#{api_group}.wsdl",
+        Savon.client(wsdl: "#{wsdl_path}/#{api_group}.wsdl",
                      endpoint: "https://#{@hostname}#{endpoint}",
                      ssl_verify_mode: :none,
                      basic_auth: [@username, @password],
