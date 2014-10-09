@@ -13,7 +13,7 @@ I originally set out to improve the official one:
 * Support Ruby 2.0.0 and 2.1.0
 * Make the interface to the library more Ruby-esque
 
-But given the original one was pretty straightforward I decided to start over.
+But given the original one was pretty bare-bones, I started over.
 
 ## Installation
 
@@ -31,7 +31,24 @@ Or install it yourself as:
 
 ## Usage
 
-See examples subdir.
+First, configure the gem:
+
+```Ruby
+F5::Icontrol.configure do |f|
+  f.host = "hostname.of.bigip"
+  f.username = "username"
+  f.password = "password"
+end
+```
+
+Then use it:
+
+```Ruby
+api = F5::Icontrol::API.new
+response = api.LocalLB.Pool.get_list
+```
+
+See specs subdir for more examples, especially as it pertains to passing parameters.
 
 ## CLI
 

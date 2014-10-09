@@ -6,7 +6,7 @@ module F5
 
       desc "list", "Lists all the pools"
       def list
-        response = client.LocalLB.pool.get_list
+        response = client.LocalLB.Pool.get_list
 
         pools = Array(response[:item])
         if pools.empty?
@@ -40,8 +40,7 @@ module F5
         statuses = Array(response[:item][:item])
         puts "%20s %25s %25s" % ["Address", "Availability", "Enabled"]
         statuses.each_with_index do |s, idx|
-          #puts "%20s %25s %25s" % [ members[idx][:address], s[:availability_status].split(/_/).last, s[:enabled_status].split(/_/).last ]
-          puts "%20s %25s %25s" % [ members[idx][:address], s[:availability_status], s[:enabled_status] ]
+          puts "%20s %25s %25s" % [ members[idx][:address], s[:availability_status].split(/_/).last, s[:enabled_status].split(/_/).last ]
         end
       end
 
@@ -75,13 +74,13 @@ module F5
       private
 
       def pool_members(pool)
-        response = client.LocalLBlPool.get_member_v2(pool_names: { item: [ pool ] } )
+        response = client.LocalLB.Pool.get_member_v2(pool_names: { item: [ pool ] } )
         members = Array(response[:item][:item])
         members.map { |m| { address: m[:address], port: m[:port] } }
       end
 
       def client
-        @client || F5::Icontrol::Api.new
+        @client || F5::Icontrol::API.new
       end
 
     end
