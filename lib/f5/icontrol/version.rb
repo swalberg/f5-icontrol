@@ -1,5 +1,5 @@
 module F5
-  class Icontrol
+  module Icontrol
     VERSION = "0.1.0"
   end
 end

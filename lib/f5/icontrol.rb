@@ -1,40 +1,28 @@
 require "f5/icontrol/version"
-require "f5/icontrol/system/system_info"
-require "f5/icontrol/local_lb/pool"
-require "f5/icontrol/local_lb/node_address_v2"
+require "f5/icontrol/api"
 require "openssl"
 require "savon"
 
 module F5
-  class Icontrol
-    def initialize(host, username, password)
-      @hostname = host
-      @username = username
-      @password = password
-      @client_cache = {}
+  module Icontrol
+    class << self
+      attr_accessor :configuration
     end
 
-    private
-
-    def wsdl_path
-      File.dirname(__FILE__).gsub /(f5-icontrol[^\/]*\/lib)\/.*/, "\\1/wsdl/"
+    def self.configure
+      self.configuration ||= Configuration.new
+      yield configuration
     end
 
-    def client(api_group)
-      api_namespace = api_group.gsub /\./, '/'
-      endpoint = '/iControl/iControlPortal.cgi'
-      @client_cache[api_group] ||=
-        Savon.client(wsdl: "#{wsdl_path}#{api_group}.wsdl",
-                     endpoint: "https://#{@hostname}#{endpoint}",
-                     ssl_verify_mode: :none,
-                     basic_auth: [@username, @password],
-                     #log: true,
-                     #logger: Logger.new(STDOUT),
-                     #pretty_print_xml: true,
-                     #log_level: :debug,
-                     namespace: "urn:iControl:#{api_namespace}",
-                     convert_request_keys_to: :none
-                    )
+    class Configuration
+      attr_accessor :host, :username, :password
+
+      def initialize
+        @host = "set_me_in_configure_block"
+        @username = ""
+        @password = ""
+      end
     end
+
   end
 end

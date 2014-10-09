@@ -1,12 +1,13 @@
 require 'thor'
-require 'f5/cli/config'
 
 module F5
   module Cli
     class Pool < Thor
+
       desc "list", "Lists all the pools"
       def list
-        response = F5::Cli::api(F5::Icontrol::LocalLB::Pool).get_list
+        response = client.LocalLB.pool.get_list
+
         pools = Array(response[:item])
         if pools.empty?
           puts "No pools found"
@@ -18,7 +19,6 @@ module F5
       end
 
       desc "show POOL", "Shows a pool's status"
-
       def show(pool)
         members = pool_members(pool)
         if members.empty?
@@ -33,7 +33,7 @@ module F5
       desc "status POOL", "Shows the status of a pool"
       def status(pool)
         members = pool_members(pool)
-        response = F5::Cli::api(F5::Icontrol::LocalLB::Pool).get_member_object_status(
+        response = client.LocalLB.Pool.get_member_object_status(
           pool_names: { item: [ pool ] },
           members: { item: [ members ] }
         )
@@ -51,7 +51,7 @@ module F5
           members.include? m[:address]
         end
 
-        response = F5::Cli::api(F5::Icontrol::LocalLB::Pool).set_member_session_enabled_state(
+        response = client.LocalLB.Pool.set_member_session_enabled_state(
           pool_names: { item: [ pool ] },
           members: { item: [ set ] },
           session_states: {  item: [ set.map { "STATE_ENABLED" } ] }
@@ -65,7 +65,7 @@ module F5
           members.include? m[:address]
         end
 
-        response = F5::Cli::api(F5::Icontrol::LocalLB::Pool).set_member_session_enabled_state(
+        response = client.LocalLB.Pool.set_member_session_enabled_state(
           pool_names: { item: [ pool ] },
           members: { item: [ set ] },
           session_states: {  item: [ set.map { "STATE_DISABLED" } ] }
@@ -75,9 +75,13 @@ module F5
       private
 
       def pool_members(pool)
-        response = F5::Cli::api(F5::Icontrol::LocalLB::Pool).get_member_v2(pool_names: { item: [ pool ] } )
+        response = client.LocalLBlPool.get_member_v2(pool_names: { item: [ pool ] } )
         members = Array(response[:item][:item])
         members.map { |m| { address: m[:address], port: m[:port] } }
+      end
+
+      def client
+        @client || F5::Icontrol::Api.new
       end
 
     end
@@ -92,11 +96,6 @@ module F5
       desc "pool SUBCOMMAND ...ARGS", "manage pools"
       subcommand "pool", Pool
 
-    end
-
-
-    def self.api(klass)
-      klass.new(F5::Cli::Config.host, F5::Cli::Config.username, F5::Cli::Config.password)
     end
   end
 end

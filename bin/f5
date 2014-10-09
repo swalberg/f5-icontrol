@@ -3,4 +3,12 @@
 require 'f5/cli/application'
 require 'f5/icontrol'
 
+config ||= YAML.load_file("#{ENV['HOME']}/.f5.yml")
+
+F5::Icontrol.configure do |f5|
+  f5.host = config['host']
+  f5.username = config['username']
+  f5.password = config['password']
+end
+
 F5::Cli::Application.start(ARGV)
