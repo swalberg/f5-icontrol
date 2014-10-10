@@ -40,6 +40,10 @@ describe F5::Icontrol::API do
     it "calls the method" do
       subject.LocalLB.Pool.get_list
     end
+
+    it "returns the inner contents" do
+      expect(subject.LocalLB.Pool.get_list).to eq "foo"
+    end
   end
 
   describe 'a non existent method' do

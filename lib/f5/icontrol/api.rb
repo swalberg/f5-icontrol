@@ -12,8 +12,7 @@ module F5
       end
 
       def method_missing(method, args = nil, &block)
-        if terminal_node?
-          if supported_method?(method)
+        if terminal_node? && supported_method?(method)
             response_key = "#{method.to_s}_response".to_sym
 
             response = client.call(method) do
@@ -24,15 +23,10 @@ module F5
 
             response.to_hash[response_key][:return]
 
-          else
-            raise NameError, "#{@api_path} does not support #{method}"
-          end
+        elsif supported_path? append_path(method)
+          self.class.new append_path(method)
         else
-          if supported_path? append_path(method)
-            self.class.new append_path(method)
-          else
-            raise NameError, "#{append_path(method)} is not supported"
-          end
+          raise NameError, "#{method} is not supported by #{@api_path}"
         end
       end
 
