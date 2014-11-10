@@ -37,7 +37,9 @@ module F5
           pool_names: { item: [ pool ] },
           members: { item: [ members ] }
         )
-        statuses = Array(response[:item][:item])
+        statuses = response[:item][:item]
+        statuses = [ statuses ] if statuses.is_a? Hash
+
         puts "%20s %25s %25s" % ["Address", "Availability", "Enabled"]
         statuses.each_with_index do |s, idx|
           puts "%20s %25s %25s" % [ members[idx][:address], s[:availability_status].split(/_/).last, s[:enabled_status].split(/_/).last ]
@@ -56,9 +58,16 @@ module F5
           session_states: {  item: [ set.map { "STATE_ENABLED" } ] }
         )
 
+        response = client.LocalLB.Pool.set_member_monitor_state(
+          pool_names: { item: [ pool ] },
+          members: { item: [ set ] },
+          monitor_states: {  item: [ set.map { "STATE_ENABLED" } ] }
+        )
+
       end
 
       desc "disable POOL MEMBERS", "Disables the given members"
+      method_option :force, default: false, desc: "Forces the node offline (only active connections allowed)"
       def disable(pool, *members)
         set = pool_members(pool).select do |m|
           members.include? m[:address]
@@ -69,13 +78,24 @@ module F5
           members: { item: [ set ] },
           session_states: {  item: [ set.map { "STATE_DISABLED" } ] }
         )
+
+        if options[:force]
+          response = client.LocalLB.Pool.set_member_monitor_state(
+            pool_names: { item: [ pool ] },
+            members: { item: [ set ] },
+            monitor_states: {  item: [ set.map { "STATE_DISABLED" } ] }
+          )
+        end
       end
 
       private
 
       def pool_members(pool)
         response = client.LocalLB.Pool.get_member_v2(pool_names: { item: [ pool ] } )
-        members = Array(response[:item][:item])
+
+        members = response[:item][:item]
+        members = [ members ] if members.is_a? Hash
+
         members.map { |m| { address: m[:address], port: m[:port] } }
       end
 
