@@ -86,11 +86,6 @@ module F5
     end
 
     class Application < Thor
-      desc 'hello', 'says hi'
-
-      def hello(test)
-        puts "hello #{test}"
-      end
 
       desc "pool SUBCOMMAND ...ARGS", "manage pools"
       subcommand "pool", Pool
