@@ -1,5 +1,4 @@
 require 'thor'
-require 'awesome_print'
 
 module F5
   module Cli
