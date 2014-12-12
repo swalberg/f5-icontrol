@@ -1,4 +1,5 @@
 require 'thor'
+require 'awesome_print'
 
 module F5
   module Cli
@@ -40,10 +41,24 @@ module F5
         statuses = response[:item][:item]
         statuses = [ statuses ] if statuses.is_a? Hash
 
-        puts "%20s %25s %25s" % ["Address", "Availability", "Enabled"]
-        statuses.each_with_index do |s, idx|
-          puts "%20s %25s %25s" % [ members[idx][:address], s[:availability_status].split(/_/).last, s[:enabled_status].split(/_/).last ]
+        response = client.LocalLB.Pool.get_all_member_statistics(
+          pool_names: { item: [ pool ] }
+        )
+
+        stats = response[:item][:statistics][:item]
+        stats = [ stats ] if stats.is_a? Hash
+
+        connections = stats.map do |host|
+          stats = host[:statistics][:item]
+          c = stats.find { |stat| stat[:type] == "STATISTIC_SERVER_SIDE_CURRENT_CONNECTIONS" }
+          c[:value][:high].to_i * (2<<32) + c[:value][:low].to_i
         end
+
+        puts "%20s %25s %25s %25s" % ["Address", "Availability", "Enabled", "Current Connections"]
+        statuses.each_with_index do |s, idx|
+          puts "%20s %25s %25s %25s" % [ members[idx][:address], s[:availability_status].split(/_/).last, s[:enabled_status].split(/_/).last, connections[idx]]
+        end
+
       end
 
       desc "enable POOL MEMBERS", "Enables the given members"
