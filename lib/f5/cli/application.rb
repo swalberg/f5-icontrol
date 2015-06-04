@@ -2,7 +2,105 @@ require 'thor'
 
 module F5
   module Cli
-    class Pool < Thor
+    class Subcommand < Thor
+
+      private
+
+      def extract_items(response, opts = nil)
+        items = response[:item]
+        if items.is_a?(Hash) && items.has_key?(:item)
+          items = items[:item]
+        end
+        if opts == :as_array && items.is_a?(Hash)
+          [ items ]
+        else
+          items
+        end
+      end
+
+      def client
+        @client || F5::Icontrol::API.new
+      end
+    end
+
+    class Interface < Subcommand
+
+      desc "list", "Lists all the interfaces"
+      def list
+        response = client.Networking.Interfaces.get_list
+
+        interfaces = extract_items(response, :as_array)
+        if interfaces.empty?
+          puts "No interfaces found"
+        else
+          interfaces.each do |interface|
+            puts interface
+          end
+        end
+      end
+    end
+
+    class VLAN < Subcommand
+
+      desc "list", "Lists all the vlans"
+      def list
+        response = client.Networking.VLAN.get_list
+
+        vlans = extract_items(response, :as_array)
+        if vlans.empty?
+          puts "No VLANs found"
+        else
+          vlans.each do |vlan|
+            puts vlan
+          end
+        end
+      end
+
+      desc "show VLAN_NAME", "Show a particular vlan"
+      def show(name)
+        members = extract_items client.Networking.VLAN.get_member(vlans: { item: [ name ] } ), :as_array
+
+        vid = extract_items client.Networking.VLAN.get_vlan_id(vlans: { item: [ name ] } )
+
+        failsafe_state = extract_items client.Networking.VLAN.get_failsafe_state(vlans: { item: [ name ] } )
+
+        puts "VLAN id #{vid} and failsafe is #{failsafe_state}"
+        members.each do |member|
+          puts "Interface %s is a %s and tag state is %s" % [ member[:member_name], member[:member_type], member[:tag_state] ]
+        end
+      end
+
+      desc "create VLAN_ID VLAN_NAME member1type:member1name ", "Create a vlan with the name and ID, attached to the given members"
+      def create(vid, name, *members)
+        if members.empty?
+          puts "I need at least one member interface"
+          exit
+        end
+
+        memberdata = members.map do |m|
+          (mtype, mname) = m.split /:/
+          if mname.nil?
+            puts "Each member must be in the form of interface/trunk:id"
+            exit
+          end
+          { member_name: mname,
+            member_type: (mtype == 'trunk' ? 'MEMBER_TRUNK' : 'MEMBER_INTERFACE'),
+            tag_state: 'MEMBER_TAGGED' }
+        end
+
+        response = client.Networking.VLAN.create_v2(
+          vlans: { item: [ name ] },
+          vlan_ids: { item: [ vid ] },
+          members: {  item: [ item: memberdata ] },
+          failsafe_states: {  item: [ 'STATE_DISABLED' ] },
+          timeouts: { item: [ 100 ] } #???
+        )
+        puts response
+
+      end
+    end
+
+    class Pool < Subcommand
 
       desc "list", "Lists all the pools"
       def list
@@ -103,7 +201,6 @@ module F5
       end
 
       private
-
       def pool_members(pool)
         response = client.LocalLB.Pool.get_member_v2(pool_names: { item: [ pool ] } )
 
@@ -113,17 +210,17 @@ module F5
         members.map { |m| { address: m[:address], port: m[:port] } }
       end
 
-      def client
-        @client || F5::Icontrol::API.new
-      end
-
     end
 
     class Application < Thor
-
       desc "pool SUBCOMMAND ...ARGS", "manage pools"
       subcommand "pool", Pool
 
+      desc "interface SUBCOMMAND ...ARGS", "manage interfaces"
+      subcommand "interface", Interface
+
+      desc "vlan SUBCOMMAND ...ARGS", "manage vlans"
+      subcommand "vlan", VLAN
     end
   end
 end
