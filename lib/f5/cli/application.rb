@@ -19,8 +19,25 @@ module F5
       end
 
       def client
-        @client || F5::Icontrol::API.new
+        return @client if @client
+        config = YAML.load_file("#{ENV['HOME']}/.f5.yml")
+        if config.key?('username') && options[:lb] == 'default'
+          puts "Warning: credentials in .f5.yml should be put under a named load balancer."
+          configure_lb_as(config)
+        else
+          configure_lb_as config[options[:lb]]
+        end
+        F5::Icontrol::API.new
       end
+
+      def configure_lb_as(config)
+        F5::Icontrol.configure do |f5|
+          f5.host = config['host']
+          f5.username = config['username']
+          f5.password = config['password']
+        end
+      end
+
     end
 
     class Interface < Subcommand
@@ -213,6 +230,8 @@ module F5
     end
 
     class Application < Thor
+      class_option :lb, default: 'default'
+
       desc "pool SUBCOMMAND ...ARGS", "manage pools"
       subcommand "pool", Pool
 

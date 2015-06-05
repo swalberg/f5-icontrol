@@ -55,9 +55,14 @@ See specs subdir for more examples, especially as it pertains to passing paramet
 There's a command line version that's still being roughed out. You'll need a `~/.f5.yml` file containing your login information:
 
 ```
-host: foo.bar.com
-username: admin
-password: abc123
+default:
+  host: foo.bar.com
+  username: admin
+  password: abc123
+lb2:
+  host: 1.2.3.4
+  username: admin
+  password: abc123
 ```
 
 Then run `f5` and it'll provide help
