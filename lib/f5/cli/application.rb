@@ -8,6 +8,11 @@ module F5
 
       def extract_items(response, opts = nil)
         items = response[:item]
+
+        if items.nil?
+          return opts == :as_array ? [] : nil
+        end
+
         if items.is_a?(Hash) && items.has_key?(:item)
           items = items[:item]
         end
@@ -38,6 +43,56 @@ module F5
         end
       end
 
+      def itemize(option)
+        {
+          item: [ option ]
+        }
+      end
+
+    end
+
+    class SelfIP < Subcommand
+      desc "list", "Lists all the self IPs"
+      def list
+        response = client.Networking.SelfIPV2.get_list
+
+        selfips = extract_items(response, :as_array)
+        if selfips.empty?
+          puts "No selfips found"
+        else
+          selfips.each do |selfip|
+            puts selfip
+          end
+        end
+      end
+
+      desc "show NAME", "Shows information about a self IP"
+      def show(name)
+        address = extract_items client.Networking.SelfIPV2.get_address(self_ips: { item: [ name ] })
+        netmask = extract_items client.Networking.SelfIPV2.get_netmask(self_ips: { item: [ name ] })
+        vlan = extract_items client.Networking.SelfIPV2.get_vlan(self_ips: { item: [ name ] })
+        trafficgroup = extract_items client.Networking.SelfIPV2.get_traffic_group(self_ips: { item: [ name ] })
+        floating = extract_items client.Networking.SelfIPV2.get_floating_state(self_ips: { item: [ name ] })
+
+        puts "#{address}/#{netmask}"
+        puts vlan
+        puts "#{trafficgroup} #{floating == 'STATE_ENABLED' ? 'FLOATING' : 'NONFLOATING'}"
+      end
+
+      desc "create NAME IP/NETMASK VLAN", "Creates a self IP"
+      option :floating, type: :boolean, default: false
+      option :traffic_group, default: 'traffic-group-local-only'
+      def create(name, address, vlan)
+        (ip, netmask) = address.split(/\//)
+        result = client.Networking.SelfIPV2.create(
+          self_ips: itemize(name),
+          vlan_names: itemize(vlan),
+          addresses: itemize(ip),
+          netmasks: itemize(netmask),
+          traffic_groups: itemize(options[:traffic_group]),
+          floating_states: itemize(options[:floating] ? 'STATE_ENABLED' : 'STATE_DISABLED')
+        )
+      end
     end
 
     class Interface < Subcommand
@@ -237,6 +292,9 @@ module F5
 
       desc "interface SUBCOMMAND ...ARGS", "manage interfaces"
       subcommand "interface", Interface
+
+      desc "selfip SUBCOMMAND ...ARGS", "manage self IPs"
+      subcommand "selfip", SelfIP
 
       desc "vlan SUBCOMMAND ...ARGS", "manage vlans"
       subcommand "vlan", VLAN
