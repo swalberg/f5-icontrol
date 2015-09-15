@@ -48,6 +48,20 @@ api = F5::Icontrol::API.new
 response = api.LocalLB.Pool.get_list
 ```
 
+or You can configure per api client.
+
+```Ruby
+api = F5::Icontrol::API.new(
+  nil, # This first argument `nil` is required.
+  {
+    host: "hostname.of.bigip",
+    username: "username",
+    password: "password",
+  }
+)
+response = api.LocalLB.Pool.get_list
+```
+
 See specs subdir for more examples, especially as it pertains to passing parameters.
 
 ## CLI
