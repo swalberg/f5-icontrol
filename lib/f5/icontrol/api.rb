@@ -3,10 +3,11 @@ module F5
     class API
       attr_accessor :api_path
 
-      def initialize(api_path = nil)
-        @username="a"
-        @password="b"
-        @hostname="xxx"
+      def initialize(api_path = nil, params = {})
+        @params = params.dup
+        @username = params[:username]
+        @password = params[:password]
+        @hostname = params[:host] || params[:hostname]
         @client_cache = {}
         @api_path = api_path
       end
@@ -24,7 +25,7 @@ module F5
             response.to_hash[response_key][:return]
 
         elsif supported_path? append_path(method)
-          self.class.new append_path(method)
+          self.class.new append_path(method), @params
         else
           raise NameError, "#{method} is not supported by #{@api_path}"
         end
@@ -57,9 +58,9 @@ module F5
         endpoint = '/iControl/iControlPortal.cgi'
         @client_cache[@api_path] ||=
           Savon.client(wsdl: "#{wsdl_path}#{@api_path}.wsdl",
-                       endpoint: "https://#{F5::Icontrol.configuration.host}#{endpoint}",
+                       endpoint: "https://#{@hostname || F5::Icontrol.configuration.host}#{endpoint}",
                        ssl_verify_mode: :none,
-                       basic_auth: [F5::Icontrol.configuration.username, F5::Icontrol.configuration.password],
+                       basic_auth: [@username || F5::Icontrol.configuration.username, @password || F5::Icontrol.configuration.password],
                        #log: true,
                        #logger: Logger.new(STDOUT),
                        #pretty_print_xml: true,
