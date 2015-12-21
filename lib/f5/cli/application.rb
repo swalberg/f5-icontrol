@@ -51,6 +51,53 @@ module F5
 
     end
 
+    class Node < Subcommand
+      desc "list", "Lists all the nodes"
+      def list
+        response = client.LocalLB.NodeAddressV2.get_list
+
+        nodes = extract_items(response, :as_array)
+        if nodes.empty?
+          puts "No nodes found"
+        else
+          nodes.each do |node|
+            puts node
+          end
+        end
+      end
+
+      desc "show NAME", "Shows information about a node"
+      def show(node)
+        session_status = extract_items client.LocalLB.NodeAddressV2.get_object_status(nodes: { item: [ node ] })
+        stats = client.LocalLB.NodeAddressV2.get_statistics(nodes: { item: [ node ] })
+        outer_envelope = extract_items stats[:statistics]
+        stats = extract_items outer_envelope[:statistics]
+
+        total_connections = stats.find { |stat| stat[:type] == "STATISTIC_SERVER_SIDE_CURRENT_CONNECTIONS" }
+        total_connections = total_connections[:value][:low]
+
+        puts "#{node} #{session_status[:availability_status]} (#{session_status[:status_description]}) with #{total_connections} connections"
+      end
+
+      desc "disable NAME", "Disables a particular node"
+      def disable(node)
+        client.LocalLB.NodeAddressV2.set_monitor_state(
+          nodes: { item: [ node ] },
+          states: { item: [ "STATE_DISABLED" ] }
+        )
+      end
+
+      desc "enable NAME", "Enables a particular node"
+      def enable(node)
+        client.LocalLB.NodeAddressV2.set_monitor_state(
+          nodes: { item: [ node ] },
+          states: { item: [ "STATE_ENABLED" ] }
+        )
+      end
+
+
+    end
+
     class SelfIP < Subcommand
       desc "list", "Lists all the self IPs"
       def list
@@ -286,6 +333,9 @@ module F5
 
     class Application < Thor
       class_option :lb, default: 'default'
+
+      desc "node SUBCOMMAND ...ARGS", "manage nodes"
+      subcommand "node", Node
 
       desc "pool SUBCOMMAND ...ARGS", "manage pools"
       subcommand "pool", Pool
