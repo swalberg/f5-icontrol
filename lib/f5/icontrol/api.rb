@@ -3,7 +3,7 @@ module F5
     class API
       attr_accessor :api_path
 
-      def initialize(api_path = nil, params = {})
+      def initialize(api_path = nil, **params)
         @params = params.dup
         @username = params[:username]
         @password = params[:password]
