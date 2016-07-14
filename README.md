@@ -29,7 +29,10 @@ Or install it yourself as:
 
     $ gem install f5-icontrol
 
-## Usage
+## Usage (REST interface)
+
+
+## Usage (SOAP interface)
 
 First, configure the gem:
 
