@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/swalberg/f5-icontrol.svg?branch=master)](https://travis-ci.org/swalberg/f5-icontrol)
 
-This is the F5-control gem. If you have an F5, it can use the iControl SOAP interface to automate things
+This is the F5-icontrol gem. If you have an F5, it can use the iControl API to automate things
 
 This is not the official library. That one is [here](https://devcentral.f5.com/d/icontrol-ruby-library). This copy is without warranty. Heck, it probably doesn't even work.
 
@@ -13,7 +13,7 @@ I originally set out to improve the official one:
 * Support Ruby 2.0.0 and 2.1.0
 * Make the interface to the library more Ruby-esque
 
-But given the original one was pretty bare-bones, I started over.
+But given the original one was pretty bare-bones, I started over. 
 
 ## Installation
 
@@ -31,8 +31,56 @@ Or install it yourself as:
 
 ## Usage (REST interface)
 
+First configure an instance of the API to point to your F5
+
+```Ruby
+require 'f5/icontrol'
+
+f5 = F5::Icontrol::RAPI.new username: 'admin', password: 'admin', host: '10.1.1.1'
+```
+
+After that, the calls should line up directly to the [API Docs](https://devcentral.f5.com/wiki/iControlREST.APIRef.ashx). For collections, use the following methods:
+
+| HTTP Verb | Method         |
+|-----------|----------------|
+| GET       | get_collection |
+
+Note that `get_collection` is optional if you call `#each` or some `Enumberable` method. So `foo.get_collection.each` can be shortened to `foo.each`.
+
+For resources
+
+| HTTP Verb | Method         |
+|-----------|----------------|
+| GET       | load           |
+| PUT       | update         |
+| DELETE    | delete         |
+| POST      | create         |
+
+
+For example, to get all the pools:
+
+```Ruby
+pools = f5.mgmt.tm.ltm.pool.get_collection
+
+puts pools.map(&:name)
+
+# shorter method
+puts f5.mgmt.tm.ltm.pool.map(&:name)
+```
+
+It'll also understand subresources:
+
+```Ruby
+members = pools.members.load
+puts members.map(&:address)
+
+```
+
+
 
 ## Usage (SOAP interface)
+
+*Note* - SOAP will likely be deprecated prior to version 1.0 of this gem. The REST interface is more intuitive and dropping SOAP makes this gem so much lighter.
 
 First, configure the gem:
 

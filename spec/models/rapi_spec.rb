@@ -11,7 +11,6 @@ describe F5::Icontrol::RAPI do
   subject { F5::Icontrol::RAPI.new(username: username, password: password, host: host) }
 
   describe "asking for a collection" do
-
     context "collections" do
       it "gets the collection on the root node" do
         stub_request(:get, baseurl).
@@ -36,6 +35,15 @@ describe F5::Icontrol::RAPI do
         expect(bars).to be_an_instance_of(Array)
         expect(bars.first).to be_an_instance_of(F5::Icontrol::RAPI::Resource)
       end
+
+      it "converts underscores to dashes in the call" do
+        stub_request(:get, "#{baseurl}/foo-bar/").
+          to_return(body: pool_collection)
+
+        subject.foo_bar.get_collection
+
+        expect(WebMock).to have_requested(:get, "#{baseurl}/foo-bar/")
+      end
     end
 
     context "subcollections" do
@@ -52,6 +60,16 @@ describe F5::Icontrol::RAPI do
 
         expect(WebMock).to have_requested(:get, "#{baseurl}/mgmt/tm/ltm/pool/~Common~reallybasic/members?ver=11.5.1")
       end
+
+      it "understands `each` implicitly calls `get_collection`" do
+        stub_request(:get, "#{baseurl}/foo/bar/").
+          to_return(body: pool_collection)
+
+        bars = subject.foo.bar.each
+
+        expect(bars).to be_an_instance_of(Enumerator)
+      end
+
     end
   end
 
