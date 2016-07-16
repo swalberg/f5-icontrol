@@ -4,7 +4,9 @@ describe F5::Icontrol::RAPI do
   let(:host) { 'somehost' }
   let(:username) { 'me' }
   let(:password) { 'secret' }
-  let(:baseurl) { "https://#{username}:#{password}@#{host}" }
+  let(:base64) { Base64.encode64("#{username}:#{password}") }
+
+  let(:baseurl) { "https://#{host}" }
 
   before(:all) { VCR.turn_off! }
 

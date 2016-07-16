@@ -14,9 +14,12 @@ module F5
       end
 
       def get_collection
-        response = RestClient::Resource.new(url,
-                                            verify_ssl: OpenSSL::SSL::VERIFY_NONE
-                                           ).get
+        response = RestClient::Request.execute(method: :get,
+                                               url: url,
+                                               user: @args[:username],
+                                               password: @args[:password],
+                                               verify_ssl: OpenSSL::SSL::VERIFY_NONE
+                                           )
         objects = JSON.parse response.body
 
         objects['items'].map { |r| Resource.new r, @args }
@@ -33,7 +36,7 @@ module F5
       private
       def url
         method_chain = @method_chain.gsub /_/, '-'
-        "https://#{@args[:username]}:#{@args[:password]}@#{@args[:host]}/#{method_chain}"
+        "https://#{@args[:host]}/#{method_chain}"
       end
     end
   end
