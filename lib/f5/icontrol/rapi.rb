@@ -4,6 +4,8 @@ require 'json'
 module F5
   module Icontrol
     class RAPI
+      include Enumerable
+
       def initialize(method_chain = nil, **args)
         @method_chain = method_chain || ''
         @args = args
@@ -29,8 +31,8 @@ module F5
         F5::Icontrol::RAPI.new("#{@method_chain}#{method}/", @args)
       end
 
-      def each
-        get_collection.each
+      def each(&block)
+        get_collection.each &block
       end
 
       private

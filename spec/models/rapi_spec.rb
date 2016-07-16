@@ -46,6 +46,24 @@ describe F5::Icontrol::RAPI do
 
         expect(WebMock).to have_requested(:get, "#{baseurl}/foo-bar/")
       end
+
+      it "understands `each` implicitly calls `get_collection`" do
+        stub_request(:get, "#{baseurl}/foo/bar/").
+          to_return(body: pool_collection)
+
+        bars = subject.foo.bar.each
+
+        expect(bars).to be_an_instance_of(Enumerator)
+      end
+
+      it "handles a block passed to an enumerable method" do
+        stub_request(:get, "#{baseurl}/foo/bar/").
+          to_return(body: pool_collection)
+
+        pools = subject.foo.bar.map(&:name)
+
+        expect(pools).to eq %w{reallybasic reallybasic2}
+      end
     end
 
     context "subcollections" do
@@ -61,15 +79,6 @@ describe F5::Icontrol::RAPI do
         pool = pools.first.members.load
 
         expect(WebMock).to have_requested(:get, "#{baseurl}/mgmt/tm/ltm/pool/~Common~reallybasic/members?ver=11.5.1")
-      end
-
-      it "understands `each` implicitly calls `get_collection`" do
-        stub_request(:get, "#{baseurl}/foo/bar/").
-          to_return(body: pool_collection)
-
-        bars = subject.foo.bar.each
-
-        expect(bars).to be_an_instance_of(Enumerator)
       end
 
     end
