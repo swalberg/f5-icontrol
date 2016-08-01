@@ -76,7 +76,11 @@ puts members.map(&:address)
 
 ```
 
+Or, let's create a pool:
 
+```Ruby
+api.mgmt.tm.ltm.pool.create(name: 'seanstestrest')
+```
 
 ## Usage (SOAP interface)
 

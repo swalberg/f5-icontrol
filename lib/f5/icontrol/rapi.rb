@@ -17,7 +17,7 @@ module F5
 
       def get_collection
         response = RestClient::Request.execute(method: :get,
-                                               url: url,
+                                               url: "#{url}/",
                                                user: @args[:username],
                                                password: @args[:password],
                                                verify_ssl: OpenSSL::SSL::VERIFY_NONE
@@ -27,8 +27,21 @@ module F5
         objects['items'].map { |r| Resource.new r, @args }
       end
 
+      def create(options = {})
+        response = RestClient::Request.execute(method: :post,
+                                               url: url,
+                                               user: @args[:username],
+                                               password: @args[:password],
+                                               verify_ssl: OpenSSL::SSL::VERIFY_NONE,
+                                               payload: options.to_json,
+                                               headers: { "content-type" => "application/json" }
+                                              )
+        JSON.parse response.body
+      end
+
       def method_missing(method, *args, &block)
-        F5::Icontrol::RAPI.new("#{@method_chain}#{method}/", @args)
+        new_method_chain = @method_chain == '/' ? '': "#{@method_chain}/"
+        F5::Icontrol::RAPI.new("#{new_method_chain}#{method}", @args)
       end
 
       def each(&block)
@@ -38,6 +51,7 @@ module F5
       private
       def url
         method_chain = @method_chain.gsub /_/, '-'
+        method_chain.gsub! %r{^/}, ''
         "https://#{@args[:host]}/#{method_chain}"
       end
     end
