@@ -69,7 +69,7 @@ describe F5::Icontrol::RAPI do
         stub_request(:get, "#{baseurl}/mgmt/tm/ltm/pool/~Common~reallybasic/members?ver=11.5.1/").
           to_return(body: pool_collection)
 
-        pool = pools.first.members.load
+        pool = pools.first.members.get_collection
 
         expect(WebMock).to have_requested(:get, "#{baseurl}/mgmt/tm/ltm/pool/~Common~reallybasic/members?ver=11.5.1/")
       end

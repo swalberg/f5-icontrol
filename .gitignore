@@ -18,3 +18,5 @@ tmp
 *.swp
 .direnv
 .envrc
+
+test.rb

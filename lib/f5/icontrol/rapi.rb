@@ -11,8 +11,21 @@ module F5
         @args = args
       end
 
-      def load
-        get_collection
+      def load(resource = nil)
+        tail = resource.nil? ? '' : "/#{resource}"
+        response = RestClient::Request.execute(method: :get,
+                                               url: "#{url}#{tail}",
+                                               user: @args[:username],
+                                               password: @args[:password],
+                                               verify_ssl: OpenSSL::SSL::VERIFY_NONE
+                                           )
+        object = JSON.parse response.body
+
+        if object.has_key? 'items'
+          object['items'].map { |r| Resource.new r, @args }
+        else
+          Resource.new object, @args
+        end
       end
 
       def get_collection
