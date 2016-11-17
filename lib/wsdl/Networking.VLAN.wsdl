@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -21,6 +21,35 @@ All other trademarks mentioned in this document are the property of their respec
 		xmlns='http://www.w3.org/2001/XMLSchema'
 		xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
 		xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>
+		<xsd:simpleType name="Networking.MemberTagMode">
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="MEMBER_TAG_MODE_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>MEMBER_TAG_MODE_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MEMBER_TAG_MODE_NONE">
+					<xsd:annotation>
+						<xsd:documentation>MEMBER_TAG_MODE_NONE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MEMBER_TAG_MODE_SERVICE">
+					<xsd:annotation>
+						<xsd:documentation>MEMBER_TAG_MODE_SERVICE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MEMBER_TAG_MODE_CUSTOMER">
+					<xsd:annotation>
+						<xsd:documentation>MEMBER_TAG_MODE_CUSTOMER</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MEMBER_TAG_MODE_DOUBLE">
+					<xsd:annotation>
+						<xsd:documentation>MEMBER_TAG_MODE_DOUBLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+			</xsd:restriction>
+		</xsd:simpleType>
 		<xsd:simpleType name="Networking.LearningMode">
 			<xsd:restriction base="xsd:string">
 				<xsd:enumeration value="LEARNING_MODE_ENABLE_FORWARD">
@@ -130,6 +159,13 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:complexType name="Networking.MemberTagModeSequenceSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.MemberTagModeSequence[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
 		<xsd:complexType name="Common.ULongSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -148,6 +184,13 @@ All other trademarks mentioned in this document are the property of their respec
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.LearningMode[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Networking.MemberTagModeSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.MemberTagMode[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -463,6 +506,36 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.ULongSequence"/>
 </message>
 
+<message name="Networking.VLAN.set_customer_idRequest">
+	<part name="vlans" type="tns:Common.StringSequence"/>
+	<part name="customer_ids" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.VLAN.set_customer_idResponse">
+</message>
+
+<message name="Networking.VLAN.get_customer_idRequest">
+	<part name="vlans" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.VLAN.get_customer_idResponse">
+	<part name="return" type="tns:Common.StringSequence"/>
+</message>
+
+<message name="Networking.VLAN.set_member_tag_modeRequest">
+	<part name="vlans" type="tns:Common.StringSequence"/>
+	<part name="members" type="tns:Common.StringSequenceSequence"/>
+	<part name="tag_modes" type="tns:Networking.MemberTagModeSequenceSequence"/>
+</message>
+<message name="Networking.VLAN.set_member_tag_modeResponse">
+</message>
+
+<message name="Networking.VLAN.get_member_tag_modeRequest">
+	<part name="vlans" type="tns:Common.StringSequence"/>
+	<part name="members" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Networking.VLAN.get_member_tag_modeResponse">
+	<part name="return" type="tns:Networking.MemberTagModeSequenceSequence"/>
+</message>
+
 <message name="Networking.VLAN.get_source_check_stateRequest">
 	<part name="vlans" type="tns:Common.StringSequence"/>
 </message>
@@ -495,6 +568,20 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="vlans" type="tns:Common.StringSequence"/>
 </message>
 <message name="Networking.VLAN.get_failsafe_stateResponse">
+	<part name="return" type="tns:Common.EnabledStateSequence"/>
+</message>
+
+<message name="Networking.VLAN.set_dag_round_robin_stateRequest">
+	<part name="vlans" type="tns:Common.StringSequence"/>
+	<part name="states" type="tns:Common.EnabledStateSequence"/>
+</message>
+<message name="Networking.VLAN.set_dag_round_robin_stateResponse">
+</message>
+
+<message name="Networking.VLAN.get_dag_round_robin_stateRequest">
+	<part name="vlans" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.VLAN.get_dag_round_robin_stateResponse">
 	<part name="return" type="tns:Common.EnabledStateSequence"/>
 </message>
 
@@ -729,7 +816,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member">
 	<documentation>
  Gets the members of the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.get_memberRequest"/>
 		<output message="tns:Networking.VLAN.get_memberResponse"/>
@@ -737,7 +824,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_member">
 	<documentation>
  Adds the specified member interfaces/trunks to the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.add_memberRequest"/>
 		<output message="tns:Networking.VLAN.add_memberResponse"/>
@@ -745,7 +832,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_member">
 	<documentation>
  Removes the specified member interfaces/trunks from the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.remove_memberRequest"/>
 		<output message="tns:Networking.VLAN.remove_memberResponse"/>
@@ -753,7 +840,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_members">
 	<documentation>
  Removes all member interfaces/trunks from the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.remove_all_membersRequest"/>
 		<output message="tns:Networking.VLAN.remove_all_membersResponse"/>
@@ -761,7 +848,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_static_forwarding">
 	<documentation>
  Retrieves the static forwarding entries for the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.get_static_forwardingRequest"/>
 		<output message="tns:Networking.VLAN.get_static_forwardingResponse"/>
@@ -769,7 +856,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_static_forwarding">
 	<documentation>
  Adds the static forwarding entries for the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.add_static_forwardingRequest"/>
 		<output message="tns:Networking.VLAN.add_static_forwardingResponse"/>
@@ -777,7 +864,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_static_forwarding">
 	<documentation>
  Removes the static forwarding entries from the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.remove_static_forwardingRequest"/>
 		<output message="tns:Networking.VLAN.remove_static_forwardingResponse"/>
@@ -785,7 +872,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_static_forwardings">
 	<documentation>
  Removes all static forwarding entries from the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.remove_all_static_forwardingsRequest"/>
 		<output message="tns:Networking.VLAN.remove_all_static_forwardingsResponse"/>
@@ -811,7 +898,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_dynamic_forwarding">
 	<documentation>
  Retrieves the dynamic forwarding entries for the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.get_dynamic_forwardingRequest"/>
 		<output message="tns:Networking.VLAN.get_dynamic_forwardingResponse"/>
@@ -819,7 +906,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_dynamic_forwardings">
 	<documentation>
  Removes all dynamic forwarding entries from the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.remove_all_dynamic_forwardingsRequest"/>
 		<output message="tns:Networking.VLAN.remove_all_dynamic_forwardingsResponse"/>
@@ -827,7 +914,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_vlan_id">
 	<documentation>
  Sets the tag ids for the specified VLANs.
- 
+
  Note: In some releases (9.4.0+), this method is not supported;
  delete and re-create the VLAN instead. In versions 10.0.0+,
  this method is supported.
@@ -839,27 +926,70 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_vlan_id">
 	<documentation>
  Gets the ids for the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.get_vlan_idRequest"/>
 		<output message="tns:Networking.VLAN.get_vlan_idResponse"/>
 	</operation>
+	<operation name="set_customer_id">
+	<documentation>
+ Sets the customer tag ids for the specified VLANs for QinQ support.
+ The customer tag can be set to any valid number between 1-4094.
+ The customer tag field is set for QinQ vlans, and it represents the tag value
+ for the vlan members that are facing the customer network.
+
+        	</documentation>
+		<input message="tns:Networking.VLAN.set_customer_idRequest"/>
+		<output message="tns:Networking.VLAN.set_customer_idResponse"/>
+	</operation>
+	<operation name="get_customer_id">
+	<documentation>
+ Gets the customer ids for the specified VLANs with support for QinQ.
+
+        	</documentation>
+		<input message="tns:Networking.VLAN.get_customer_idRequest"/>
+		<output message="tns:Networking.VLAN.get_customer_idResponse"/>
+	</operation>
+	<operation name="set_member_tag_mode">
+	<documentation>
+ Sets the tag-mode for the vlan member in a QinQ vlan.
+ If the member is untagged, the tag-mode should be set to QINQ_TAG_MODE_NONE.
+ If the member is tagged, the tag-mode should be set as follows:
+  QINQ_TAG_MODE_CUSTOMER - when the member is facing the customer network.
+  QINQ_TAG_MODE_SERVICE  - when the member is facing the service provider network and
+                           the outbound packets are sent single tagged.
+  QINQ_TAG_MODE_DOUBLE   - when the member is facing the service provider network and
+                           the outbound packets are sent double tagged.
+
+
+        	</documentation>
+		<input message="tns:Networking.VLAN.set_member_tag_modeRequest"/>
+		<output message="tns:Networking.VLAN.set_member_tag_modeResponse"/>
+	</operation>
+	<operation name="get_member_tag_mode">
+	<documentation>
+ Gets the tag-mode for the vlan member in a QinQ vlan.
+
+        	</documentation>
+		<input message="tns:Networking.VLAN.get_member_tag_modeRequest"/>
+		<output message="tns:Networking.VLAN.get_member_tag_modeResponse"/>
+	</operation>
 	<operation name="get_source_check_state">
 	<documentation>
- Gets the source checking states for the specified VLANs. If enabled and auto lasthop is disabled, 
- check that the source of the first packet of a connection is correct (correct VLAN, router, node). 
+ Gets the source checking states for the specified VLANs. If enabled and auto lasthop is disabled,
+ check that the source of the first packet of a connection is correct (correct VLAN, router, node).
  This is equivalent to BSD's net.inet.sourcecheck sysctl variable.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.get_source_check_stateRequest"/>
 		<output message="tns:Networking.VLAN.get_source_check_stateResponse"/>
 	</operation>
 	<operation name="set_source_check_state">
 	<documentation>
- Sets the the source checking states for the specified VLANs. If enabled and auto lasthop is disabled, 
- check that the source of the first packet of a connection is correct (correct VLAN, router, node). 
+ Sets the the source checking states for the specified VLANs. If enabled and auto lasthop is disabled,
+ check that the source of the first packet of a connection is correct (correct VLAN, router, node).
  This is equivalent to BSD's net.inet.sourcecheck sysctl variable.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.set_source_check_stateRequest"/>
 		<output message="tns:Networking.VLAN.set_source_check_stateResponse"/>
@@ -888,10 +1018,29 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:Networking.VLAN.get_failsafe_stateRequest"/>
 		<output message="tns:Networking.VLAN.get_failsafe_stateResponse"/>
 	</operation>
+	<operation name="set_dag_round_robin_state">
+	<documentation>
+ Sets the state that, if enabled, forces a VLAN to disaggregrate
+ stateless traffic using a round-robin order instead of using a static hash.
+ The default state is disabled.
+
+        	</documentation>
+		<input message="tns:Networking.VLAN.set_dag_round_robin_stateRequest"/>
+		<output message="tns:Networking.VLAN.set_dag_round_robin_stateResponse"/>
+	</operation>
+	<operation name="get_dag_round_robin_state">
+	<documentation>
+ Gets the state that, if enabled, forces a VLAN to disaggregrate stateless traffic
+ using a round-robin order instead of using a static hash
+
+        	</documentation>
+		<input message="tns:Networking.VLAN.get_dag_round_robin_stateRequest"/>
+		<output message="tns:Networking.VLAN.get_dag_round_robin_stateResponse"/>
+	</operation>
 	<operation name="set_failsafe_state">
 	<documentation>
  Sets the failsafe states for the specified VLANs.
- 
+
         	</documentation>
 		<input message="tns:Networking.VLAN.set_failsafe_stateRequest"/>
 		<output message="tns:Networking.VLAN.set_failsafe_stateResponse"/>
@@ -1251,7 +1400,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member">
 	<documentation>
  Gets the members of the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1271,7 +1420,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_member">
 	<documentation>
  Adds the specified member interfaces/trunks to the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1291,7 +1440,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_member">
 	<documentation>
  Removes the specified member interfaces/trunks from the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1311,7 +1460,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_members">
 	<documentation>
  Removes all member interfaces/trunks from the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1331,7 +1480,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_static_forwarding">
 	<documentation>
  Retrieves the static forwarding entries for the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1351,7 +1500,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_static_forwarding">
 	<documentation>
  Adds the static forwarding entries for the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1371,7 +1520,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_static_forwarding">
 	<documentation>
  Removes the static forwarding entries from the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1391,7 +1540,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_static_forwardings">
 	<documentation>
  Removes all static forwarding entries from the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1453,7 +1602,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_dynamic_forwarding">
 	<documentation>
  Retrieves the dynamic forwarding entries for the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1473,7 +1622,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_dynamic_forwardings">
 	<documentation>
  Removes all dynamic forwarding entries from the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1493,7 +1642,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_vlan_id">
 	<documentation>
  Sets the tag ids for the specified VLANs.
- 
+
  Note: In some releases (9.4.0+), this method is not supported;
  delete and re-create the VLAN instead. In versions 10.0.0+,
  this method is supported.
@@ -1517,7 +1666,98 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_vlan_id">
 	<documentation>
  Gets the ids for the specified VLANs.
- 
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_customer_id">
+	<documentation>
+ Sets the customer tag ids for the specified VLANs for QinQ support.
+ The customer tag can be set to any valid number between 1-4094.
+ The customer tag field is set for QinQ vlans, and it represents the tag value
+ for the vlan members that are facing the customer network.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_customer_id">
+	<documentation>
+ Gets the customer ids for the specified VLANs with support for QinQ.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_member_tag_mode">
+	<documentation>
+ Sets the tag-mode for the vlan member in a QinQ vlan.
+ If the member is untagged, the tag-mode should be set to QINQ_TAG_MODE_NONE.
+ If the member is tagged, the tag-mode should be set as follows:
+  QINQ_TAG_MODE_CUSTOMER - when the member is facing the customer network.
+  QINQ_TAG_MODE_SERVICE  - when the member is facing the service provider network and
+                           the outbound packets are sent single tagged.
+  QINQ_TAG_MODE_DOUBLE   - when the member is facing the service provider network and
+                           the outbound packets are sent double tagged.
+
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_member_tag_mode">
+	<documentation>
+ Gets the tag-mode for the vlan member in a QinQ vlan.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1536,10 +1776,10 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="get_source_check_state">
 	<documentation>
- Gets the source checking states for the specified VLANs. If enabled and auto lasthop is disabled, 
- check that the source of the first packet of a connection is correct (correct VLAN, router, node). 
+ Gets the source checking states for the specified VLANs. If enabled and auto lasthop is disabled,
+ check that the source of the first packet of a connection is correct (correct VLAN, router, node).
  This is equivalent to BSD's net.inet.sourcecheck sysctl variable.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1558,10 +1798,10 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="set_source_check_state">
 	<documentation>
- Sets the the source checking states for the specified VLANs. If enabled and auto lasthop is disabled, 
- check that the source of the first packet of a connection is correct (correct VLAN, router, node). 
+ Sets the the source checking states for the specified VLANs. If enabled and auto lasthop is disabled,
+ check that the source of the first packet of a connection is correct (correct VLAN, router, node).
  This is equivalent to BSD's net.inet.sourcecheck sysctl variable.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>
@@ -1638,10 +1878,53 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
+	<operation name="set_dag_round_robin_state">
+	<documentation>
+ Sets the state that, if enabled, forces a VLAN to disaggregrate
+ stateless traffic using a round-robin order instead of using a static hash.
+ The default state is disabled.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_dag_round_robin_state">
+	<documentation>
+ Gets the state that, if enabled, forces a VLAN to disaggregrate stateless traffic
+ using a round-robin order instead of using a static hash
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/VLAN"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
 	<operation name="set_failsafe_state">
 	<documentation>
  Sets the failsafe states for the specified VLANs.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/VLAN"/>
 		<input>

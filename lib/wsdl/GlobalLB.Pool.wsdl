@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -4469,6 +4469,11 @@ All other trademarks mentioned in this document are the property of their respec
 						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_SEC_SECURE</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_CACHE_RESOLVER_RPZ_REWRITES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_RPZ_REWRITES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
 				<xsd:enumeration value="STATISTIC_DNS_REQUESTS_TO_CACHE">
 					<xsd:annotation>
 						<xsd:documentation>STATISTIC_DNS_REQUESTS_TO_CACHE</xsd:documentation>
@@ -4837,6 +4842,11 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="STATISTIC_DNS_OP_UPDATE">
 					<xsd:annotation>
 						<xsd:documentation>STATISTIC_DNS_OP_UPDATE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_OP_OTHER">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_OP_OTHER</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 				<xsd:enumeration value="STATISTIC_DNS_ZONE_IXFR">
@@ -6009,6 +6019,1836 @@ All other trademarks mentioned in this document are the property of their respec
 						<xsd:documentation>STATISTIC_PEM_SESSIONDB_FLOWS_MAX</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_LOGIN_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_LOGIN_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_UPLOAD_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_UPLOAD_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_DOWNLOAD_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_DOWNLOAD_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_ACTIVE_CALLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_ACTIVE_CALLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_TOTAL_CALLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_TOTAL_CALLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_FAILED_CALLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_FAILED_CALLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_START_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_START_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_START_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_START_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_STOP_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_STOP_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_STOP_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_STOP_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_ECHO_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_ECHO_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_ECHO_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_ECHO_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_OUTGOING_CALL_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_OUTGOING_CALL_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_OUTGOING_CALL_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_OUTGOING_CALL_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_CALL_CLEAR_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_CALL_CLEAR_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_CALL_DISCONNECT_NOTIFIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_CALL_DISCONNECT_NOTIFIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_SET_LINK_INFO">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_SET_LINK_INFO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_WAN_ERROR_NOTIFIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_WAN_ERROR_NOTIFIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_PASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_PASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_HTTP_REDIRECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_HTTP_REDIRECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_SERVICE_CHAINS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_SERVICE_CHAINS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_STEERING_ON_RESPONSE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_STEERING_ON_RESPONSE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_QOS_UPLINK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_QOS_UPLINK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_QOS_DOWNLINK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_QOS_DOWNLINK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_HTTP_HEADER_MODIFICATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_HTTP_HEADER_MODIFICATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_FLOW_REPORTING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_FLOW_REPORTING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_SESSION_REPORTING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_SESSION_REPORTING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CONCURRENT_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CONCURRENT_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_PROVISIONING_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_PROVISIONING_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_PROVISIONING_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_PROVISIONING_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_TERMINATIONS_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_TERMINATIONS_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_TERMINATIONS_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_TERMINATIONS_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_INITIALS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_INITIALS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_INITIALS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_INITIALS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_UPDATES_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_UPDATES_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_UPDATES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_UPDATES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_RAR_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_RAR_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_RAA_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_RAA_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_USAGE_MONITORING_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_USAGE_MONITORING_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_USAGE_MONITORING_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_USAGE_MONITORING_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_TERMINATIONS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_TERMINATIONS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_TERMINATIONS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_TERMINATIONS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CONCURRENT_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CONCURRENT_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_TOTAL_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_TOTAL_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_SESSIONS_CREATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_SESSIONS_CREATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_PROVISIONING_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_PROVISIONING_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_PROVISIONING_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_PROVISIONING_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_ERROR_MESSAGES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_ERROR_MESSAGES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_TERMINATIONS_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_TERMINATIONS_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_TERMINATIONS_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_TERMINATIONS_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_SESSIONS_TERMINATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_SESSIONS_TERMINATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_INITIALS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_INITIALS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_INITIALS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_INITIALS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_UPDATES_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_UPDATES_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_UPDATES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_UPDATES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_RAR_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_RAR_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_RAA_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_RAA_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_TERMINATIONS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_TERMINATIONS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_TERMINATIONS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_TERMINATIONS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_SESSION_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_SESSION_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_FLOW_START_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_FLOW_START_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_FLOW_INTERIM_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_FLOW_INTERIM_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_FLOW_STOP_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_FLOW_STOP_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_START">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_START</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_STOP">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_STOP</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_INTERIM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_INTERIM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_RETRANSMISSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_RETRANSMISSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_TOTAL_SUBSCRIBERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_TOTAL_SUBSCRIBERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_SUBSCRIBER_LIMIT_EXCEEDED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_SUBSCRIBER_LIMIT_EXCEEDED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_FAILED_PROVISIONING_ATTEMPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_FAILED_PROVISIONING_ATTEMPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_UNKNOWN_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_UNKNOWN_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_INACTIVE_SUBSCRIBERS_REMOVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_INACTIVE_SUBSCRIBERS_REMOVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_CONNECTIONS_ACCEPTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_CONNECTIONS_ACCEPTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_CONNECTIONS_CURRENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_CONNECTIONS_CURRENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_CONNECTIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_CONNECTIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_BLOCKED_COMMANDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_BLOCKED_COMMANDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_XFR_MESSAGES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_XFR_MESSAGES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_NOTIFIES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_NOTIFIES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_XFR_NOTIFIES_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_XFR_NOTIFIES_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_XFR_NOTIFIES_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_XFR_NOTIFIES_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_AXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_AXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_IXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_IXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_XFR_QUERIES_ACL_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_XFR_QUERIES_ACL_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_MISSING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_MISSING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_NOT_REQUIRED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_NOT_REQUIRED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_VERIFIED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_VERIFIED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_BAD_KEY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_BAD_KEY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_BAD_SIG">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_BAD_SIG</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_BAD_TIME">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_BAD_TIME</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_RR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_RR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_NODATA">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_NODATA</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_NXDOMAIN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_NXDOMAIN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_REFERRAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_REFERRAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_RESALT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_RESALT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIGNED_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIGNED_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_DNSKEY_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_DNSKEY_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3PARAM_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3PARAM_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_DS_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_DS_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_CRYPTO_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_CRYPTO_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_SUCCESS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_SUCCESS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_RRSET_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_RRSET_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_CONNECT_FLOW_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_CONNECT_FLOW_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_TO_WIRE_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_TO_WIRE_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_STARTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_STARTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_COMPLETED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_COMPLETED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_MSGS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_MSGS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_MASTER_MSGS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_MASTER_MSGS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_AXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_AXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_IXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_IXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_RESPONSE_AVERAGE_SIZE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_RESPONSE_AVERAGE_SIZE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_EXTERNAL_SERIAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_EXTERNAL_SERIAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_MASTER_SERIAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_MASTER_SERIAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_NOTIFIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_NOTIFIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_NOTIFY_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_NOTIFY_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_CACHE_RESOLVER_FORWARD_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_FORWARD_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_CACHE_RESOLVER_FORWARD_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_FORWARD_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_IRULES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_IRULES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_CONNECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_CONNECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_WEB_SOCKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_WEB_SOCKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_CLIENT_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_CLIENT_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_EXCESS_CLIENT_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_EXCESS_CLIENT_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_SERVER_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_SERVER_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_EXCESS_SERVER_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_EXCESS_SERVER_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_UNKNOWN_METHODS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_UNKNOWN_METHODS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_PIPELINES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_PIPELINES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_ECDH_RSA_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_ECDH_RSA_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_ECDHE_ECDSA_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_ECDHE_ECDSA_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_ECDH_ECDSA_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_ECDH_ECDSA_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_DHE_DSS_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_DHE_DSS_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_AES_GCM_BULK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_AES_GCM_BULK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_CURRENT_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_CURRENT_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_NUMBER_OF_MESSAGES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_NUMBER_OF_MESSAGES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_TOTAL_SIZE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_TOTAL_SIZE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_NUMBER_OF_MESSAGES_LAST_INTERVAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_NUMBER_OF_MESSAGES_LAST_INTERVAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_FWDP_DESTINATION_IP_BYPASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_FWDP_DESTINATION_IP_BYPASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_FWDP_SOURCE_IP_BYPASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_FWDP_SOURCE_IP_BYPASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_FWDP_HOSTNAME_BYPASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_FWDP_HOSTNAME_BYPASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_TOTAL_END_POINTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_TOTAL_END_POINTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_REQUESTS_GTM_REWRITES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_REQUESTS_GTM_REWRITES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_ACCEPTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_ACCEPTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_CURRENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_CURRENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_BLOCKED_COMMANDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_BLOCKED_COMMANDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_CONNECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_CONNECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_CURRENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_CURRENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_RENEGOTIATIONS_REJECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_RENEGOTIATIONS_REJECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FASTL4_LATE_BINDING_SUCCESSFUL_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FASTL4_LATE_BINDING_SUCCESSFUL_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FASTL4_LATE_BINDING_TIMED_OUT_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FASTL4_LATE_BINDING_TIMED_OUT_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_STATUS_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_STATUS_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_VALIDATION_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_VALIDATION_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_CERTIFICATE_STATUS_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_CERTIFICATE_STATUS_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_HTTP_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_HTTP_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_TIMEOUTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_TIMEOUTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_ACTIVE_PORT_BLOCKS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_ACTIVE_PORT_BLOCKS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_ACTIVE_CLIENTS_REACHED_LIMIT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_ACTIVE_CLIENTS_REACHED_LIMIT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_ACTIVE_ZOMBIE_PORT_BLOCKS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_ACTIVE_ZOMBIE_PORT_BLOCKS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_CLIENTS_REACHED_LIMIT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_CLIENTS_REACHED_LIMIT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATION_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATION_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_DEALLOCATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_DEALLOCATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_CREATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_CREATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_DELETED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_DELETED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCK_CONNECTIONS_KILLED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCK_CONNECTIONS_KILLED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_ALLOWED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_ALLOWED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_DROPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_DROPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_TRUNCATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_TRUNCATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_NXDOMAIN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_NXDOMAIN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_NOERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_NOERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_REFUSED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_REFUSED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_IN_RESUBMITTED_FOR_RETRY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_IN_RESUBMITTED_FOR_RETRY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_AND_NOT_DELIVERABLE_TO_ORIGINATOR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_AND_NOT_DELIVERABLE_TO_ORIGINATOR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_ROUTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_ROUTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_UNROUTABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_UNROUTABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_DROPPED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_DROPPED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_A_FULL_QUEUE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_A_FULL_QUEUE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_DROPPED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_DROPPED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_CLOSED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_CLOSED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_AN_INTERNAL_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_AN_INTERNAL_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_PERSIST_KEY_IN_USE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_PERSIST_KEY_IN_USE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BADMSGS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BADMSGS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_DROPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_DROPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_INVITE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_INVITE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_ACK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_ACK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_OPTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_OPTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BYE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BYE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CANCEL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CANCEL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REGISTER_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REGISTER_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_PUBLISH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_PUBLISH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOTIFY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOTIFY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SUBSCRIBE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SUBSCRIBE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MESSAGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MESSAGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_PRACK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_PRACK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_OTHER">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_OTHER</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_PROVISIONAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_PROVISIONAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SUCCESSFUL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SUCCESSFUL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REDIRECTION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REDIRECTION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CLIENT_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CLIENT_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVER_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVER_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_GLOBAL_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_GLOBAL_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MESSAGE_LIMIT_EXCEEDED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MESSAGE_LIMIT_EXCEEDED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_LOOP_DETECTION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_LOOP_DETECTION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MAX_FORWARDS_CHECK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MAX_FORWARDS_CHECK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BAD_REQUEST">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BAD_REQUEST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_FOUND">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_FOUND</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUEST_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUEST_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TRANSACTION_DOES_NOT_EXIST">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TRANSACTION_DOES_NOT_EXIST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_LOOP_DETECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_LOOP_DETECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TOO_MANY_HOPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TOO_MANY_HOPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_ACCEPTABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_ACCEPTABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNKNOWN_PARSE_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNKNOWN_PARSE_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CONTENT_LENGTH_MISMATCH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CONTENT_LENGTH_MISMATCH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_EXTRANEOUS_HEADER_FIELD">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_EXTRANEOUS_HEADER_FIELD</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_INVALID_CONTENT_LENGTH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_INVALID_CONTENT_LENGTH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQ_FIELD_OVERLARGE_VALUES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQ_FIELD_OVERLARGE_VALUES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_RESP_FIELD_OVERLARGE_VALUES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_RESP_FIELD_OVERLARGE_VALUES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNTERMINATED_QUOTED_STRING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNTERMINATED_QUOTED_STRING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MALFORMED_REQUEST_URI">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MALFORMED_REQUEST_URI</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNKNOWN_PROTOCOL_VERSION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNKNOWN_PROTOCOL_VERSION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CSEQ_METHOD_MISMATCH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CSEQ_METHOD_MISMATCH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_BYTES_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_BYTES_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_BYTES_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_BYTES_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_PACKETS_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_PACKETS_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_PACKETS_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_PACKETS_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_BYTES_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_BYTES_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_BYTES_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_BYTES_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_PACKETS_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_PACKETS_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_PACKETS_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_PACKETS_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_EVICTION_POLICY_EVICTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_EVICTION_POLICY_EVICTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CONNECTION_FLOW_MISS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CONNECTION_FLOW_MISS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_SYNCOOKIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_SYNCOOKIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_ACCEPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_ACCEPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_REJECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_REJECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_HW_SYNCOOKIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_HW_SYNCOOKIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_HW_ACCEPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_HW_ACCEPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_WL_HITS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_WL_HITS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_WL_ACCEPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_WL_ACCEPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_WL_REJECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_WL_REJECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FW_RULE_LAST_HIT_TIME">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FW_RULE_LAST_HIT_TIME</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_ASSOCIATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_ASSOCIATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_CLOSING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_CLOSING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_CONFIRMED_ADDRESSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_CONFIRMED_ADDRESSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_UNCONFIRMED_ADDRESSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_UNCONFIRMED_ADDRESSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_ACTIVE_PATHS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_ACTIVE_PATHS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_INACTIVE_PATHS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_INACTIVE_PATHS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_TLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_TLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_TLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_TLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_AGGREGATE_RENEGOTIATIONS_REJECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_AGGREGATE_RENEGOTIATIONS_REJECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_FTPS_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_FTPS_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_TFTP_READ_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_TFTP_READ_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_TFTP_WRITE_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_TFTP_WRITE_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_PASSTHRU_TRANSITIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_PASSTHRU_TRANSITIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_TFTP_DISCARDED_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_TFTP_DISCARDED_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_INSPECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_INSPECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_MALFORMED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_MALFORMED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_CACHE_LOOKUPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_CACHE_LOOKUPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_CACHE_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_CACHE_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_VCMP_RED_PACKETS_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_VCMP_RED_PACKETS_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_SESSION_MIRRORING_SUCCESS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_SESSION_MIRRORING_SUCCESS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_SESSION_MIRRORING_FAILURE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_SESSION_MIRRORING_FAILURE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_PEER_READY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_PEER_READY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_RECV">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_RECV</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_HS_SUCCESS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_HS_SUCCESS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_FAILURE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_FAILURE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_DTLS_TX_PUSHBACKS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_DTLS_TX_PUSHBACKS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_CAMELLIA_BULK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_CAMELLIA_BULK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_NAPTR_REQS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_NAPTR_REQS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_TRANSMITTED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_TRANSMITTED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_RECEIVED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_RECEIVED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_RPF">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_RPF</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_WRONG_INTERFACE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_WRONG_INTERFACE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_NO_ROUTE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_NO_ROUTE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_ROUTES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_ROUTES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_TRANSMITTED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_TRANSMITTED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_RECEIVED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_RECEIVED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_RPF">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_RPF</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_WRONG_INTERFACE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_WRONG_INTERFACE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_NO_ROUTE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_NO_ROUTE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_ROUTES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_ROUTES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_ACTIVE_HANDSHAKES_REJECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_ACTIVE_HANDSHAKES_REJECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CURRENT_ACTIVE_HANDSHAKES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CURRENT_ACTIVE_HANDSHAKES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_1K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_1K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_2K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_2K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_3K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_3K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_4K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_4K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_5K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_5K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_6K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_6K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_7K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_7K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_8K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_8K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_9K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_9K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_10K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_10K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_11K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_11K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_12K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_12K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_13K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_13K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_14K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_14K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_15K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_15K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_16K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_16K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_STANDBY_DROPPED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_STANDBY_DROPPED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE_413_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE_413_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME_416_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME_416_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE_480_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE_480_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_LOOP_DETECTED_482_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_LOOP_DETECTED_482_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TOO_MANY_HOPS_483_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TOO_MANY_HOPS_483_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE_484_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE_484_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE_488_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE_488_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR_500_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR_500_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_IMPLEMENTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_IMPLEMENTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_IMPLEMENTED_501_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_IMPLEMENTED_501_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE_503_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE_503_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED_505_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED_505_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BADMSGS_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BADMSGS_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_DROPS_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_DROPS_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_INFO">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_INFO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REFER">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REFER</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UPDATE_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UPDATE_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BAD_REQUEST_400_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BAD_REQUEST_400_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_FOUND_404_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_FOUND_404_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:simpleType name="Common.MetadataPersistence">
@@ -6990,6 +8830,12 @@ All other trademarks mentioned in this document are the property of their respec
    	<documentation>
  Gets the statuses of the specified pools.
 
+ Deprecated behavior: This method returns the best possible answer based on
+ the availability status. For example, if the A pool with the specified name
+ has an 'AVAILABILITY_STATUS_RED' status and the AAAA pool with the
+ specified name has an 'AVAILABILITY_STATUS_GREEN' status, then the full object
+ status of the AAAA pool will be returned as the status of the specified pool.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_object_statusRequest"/>
 		<output message="tns:GlobalLB.Pool.get_object_statusResponse"/>
@@ -6997,6 +8843,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_list">
 	<documentation>
  Gets a list of pools.
+
+ Deprecated behavior: This method returns a list of unique pool names. If
+ there is more than one pool with the same name (but of different types A,
+ AAAA, or CNAME), only one of these pools is reported.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_listRequest"/>
@@ -7014,6 +8864,11 @@ All other trademarks mentioned in this document are the property of their respec
  order but not the absolute numbers originally specified for
  ordering.
 
+ Deprecated behavior: This method will create an A and AAAA type pool
+ and add the members to the pool of the matching type type A or AAAA,
+ depending on if the member is backed by an IPv4 or IPv6 address,
+ respectively.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.createRequest"/>
 		<output message="tns:GlobalLB.Pool.createResponse"/>
@@ -7026,6 +8881,11 @@ All other trademarks mentioned in this document are the property of their respec
  system maintains the relative order but not the absolute numbers
  originally specified for ordering.
 
+ Deprecated behavior: This method will create an A and AAAA type pool
+ and add the members to the pool of the matching type type A or AAAA,
+ depending on if the member is backed by an IPv4 or IPv6 address,
+ respectively.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.create_v2Request"/>
 		<output message="tns:GlobalLB.Pool.create_v2Response"/>
@@ -7034,6 +8894,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Deletes the specified pools.
 
+ Deprecated behavior: This method will delete all pools with the specified
+ names that match types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.delete_poolRequest"/>
 		<output message="tns:GlobalLB.Pool.delete_poolResponse"/>
@@ -7041,6 +8904,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="delete_all_pools">
 	<documentation>
  Deletes all pools.
+
+ Deprecated behavior: This method will delete all pools matching types A,
+ AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.delete_all_poolsRequest"/>
@@ -7052,6 +8918,9 @@ All other trademarks mentioned in this document are the property of their respec
  Please use get_member_v2 in its stead.
 
  Gets a list of pool members.
+
+ Deprecated behavior: This method returns a list of members on the specified
+ pools of type A and AAAA.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_memberRequest"/>
@@ -7069,6 +8938,13 @@ All other trademarks mentioned in this document are the property of their respec
  order but not the absolute numbers originally specified for
  ordering.
 
+ Deprecated behavior: This method will add the members to the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.add_memberRequest"/>
 		<output message="tns:GlobalLB.Pool.add_memberResponse"/>
@@ -7080,6 +8956,13 @@ All other trademarks mentioned in this document are the property of their respec
 
  Removes members from the specified pools.
 
+ Deprecated behavior: This method will remove the members from the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_memberRequest"/>
 		<output message="tns:GlobalLB.Pool.remove_memberResponse"/>
@@ -7087,6 +8970,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_ttl">
 	<documentation>
  Sets the TTL values for the specified pools.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_ttlRequest"/>
@@ -7096,6 +8982,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the TTL values for the specified pools.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_ttlRequest"/>
 		<output message="tns:GlobalLB.Pool.get_ttlResponse"/>
@@ -7103,6 +8994,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_enabled_state">
 	<documentation>
  Sets the enabled state of the specified pools.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_enabled_stateRequest"/>
@@ -7112,6 +9006,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the enabled state of the specified pools.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_enabled_stateRequest"/>
 		<output message="tns:GlobalLB.Pool.get_enabled_stateResponse"/>
@@ -7119,6 +9018,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_verify_member_availability_state">
 	<documentation>
  Sets the states to indicate whether to check the availability of pool member availability before using them.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_verify_member_availability_stateRequest"/>
@@ -7128,6 +9030,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the states to indicate whether to check the availability of pool member availability before using them.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_verify_member_availability_stateRequest"/>
@@ -7137,6 +9043,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the states to indicate whether to use dynamic ratio to modify the behavior of QOS.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_dynamic_ratio_stateRequest"/>
 		<output message="tns:GlobalLB.Pool.set_dynamic_ratio_stateResponse"/>
@@ -7144,6 +9053,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_dynamic_ratio_state">
 	<documentation>
  Gets the states to indicate whether to use dynamic ratio to modify the behavior of QOS.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_dynamic_ratio_stateRequest"/>
@@ -7153,6 +9067,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the number of answers to return for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A or AAAA. Note that CNAME pools can only return
+ one answer (the default), so this value will not be set on any
+ specified CNAME pools.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_answers_to_returnRequest"/>
 		<output message="tns:GlobalLB.Pool.set_answers_to_returnResponse"/>
@@ -7160,6 +9079,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_answers_to_return">
 	<documentation>
  Gets the number of answers to return for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_answers_to_returnRequest"/>
@@ -7169,6 +9093,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the preferred load balancing methods for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_preferred_lb_methodRequest"/>
 		<output message="tns:GlobalLB.Pool.set_preferred_lb_methodResponse"/>
@@ -7176,6 +9103,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_preferred_lb_method">
 	<documentation>
  Gets the preferred load balancing methods for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_preferred_lb_methodRequest"/>
@@ -7185,6 +9117,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the alternate load balancing methods for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_alternate_lb_methodRequest"/>
 		<output message="tns:GlobalLB.Pool.set_alternate_lb_methodResponse"/>
@@ -7192,6 +9127,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_alternate_lb_method">
 	<documentation>
  Gets the alternate load balancing methods for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_alternate_lb_methodRequest"/>
@@ -7201,6 +9141,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the fallback load balancing methods for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_fallback_lb_methodRequest"/>
 		<output message="tns:GlobalLB.Pool.set_fallback_lb_methodResponse"/>
@@ -7208,6 +9151,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_fallback_lb_method">
 	<documentation>
  Gets the fallback load balancing methods for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_fallback_lb_methodRequest"/>
@@ -7218,6 +9166,9 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the states indicating whether to disable pool members when pool member status
  goes from Green to Red.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_manual_resume_stateRequest"/>
 		<output message="tns:GlobalLB.Pool.set_manual_resume_stateResponse"/>
@@ -7227,6 +9178,11 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the states indicating whether to disable pool members when pool member status
  goes from Green to Red.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_manual_resume_stateRequest"/>
 		<output message="tns:GlobalLB.Pool.get_manual_resume_stateResponse"/>
@@ -7234,6 +9190,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_rtt">
 	<documentation>
  Sets the relative weight for round-trip time when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_rttRequest"/>
@@ -7243,6 +9202,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for round-trip time when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_rttRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_rttResponse"/>
@@ -7250,6 +9214,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_hops">
 	<documentation>
  Sets the relative weight for hops when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_hopsRequest"/>
@@ -7259,6 +9226,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for hops when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_hopsRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_hopsResponse"/>
@@ -7266,6 +9238,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_topology">
 	<documentation>
  Sets the relative weight for topology when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_topologyRequest"/>
@@ -7275,6 +9250,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for topology when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_topologyRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_topologyResponse"/>
@@ -7282,6 +9262,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_hit_ratio">
 	<documentation>
  Sets the relative weight for ping packet completion rate when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_hit_ratioRequest"/>
@@ -7291,6 +9274,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for ping packet completion rate when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_hit_ratioRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_hit_ratioResponse"/>
@@ -7298,6 +9286,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_packet_rate">
 	<documentation>
  Sets the relative weight for packet rate when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_packet_rateRequest"/>
@@ -7307,6 +9298,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for packet rate when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_packet_rateRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_packet_rateResponse"/>
@@ -7314,6 +9310,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_vs_capacity">
 	<documentation>
  Sets the relative weight for virtual server capacity when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_vs_capacityRequest"/>
@@ -7323,13 +9322,21 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for virtual server capacity when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_vs_capacityRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_vs_capacityResponse"/>
 	</operation>
 	<operation name="set_qos_coefficient_bps">
 	<documentation>
- Sets the relative weight for bits per second when the load balancing mode is set to LB_METHOD_QOS.
+ Sets the relative weight for kilobits per second when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_bpsRequest"/>
@@ -7339,6 +9346,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for bits per second when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_bpsRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_bpsResponse"/>
@@ -7347,6 +9359,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the relative weight for link capacity when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_lcsRequest"/>
 		<output message="tns:GlobalLB.Pool.set_qos_coefficient_lcsResponse"/>
@@ -7354,6 +9369,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_qos_coefficient_lcs">
 	<documentation>
  Gets the relative weight for link capacity when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_lcsRequest"/>
@@ -7364,6 +9384,9 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the relative weight for connection rate when the load balancing mode is set to LB_METHOD_QOS.
  This function is deprecated and new applications should use vs_score.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_connection_rateRequest"/>
 		<output message="tns:GlobalLB.Pool.set_qos_coefficient_connection_rateResponse"/>
@@ -7373,6 +9396,11 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the relative weight for connection rate when the load balancing mode is set to LB_METHOD_QOS.
  This function is deprecated and new applications should use vs_score.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_connection_rateRequest"/>
 		<output message="tns:GlobalLB.Pool.get_qos_coefficient_connection_rateResponse"/>
@@ -7381,6 +9409,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the relative weight for virtual server (VS) score when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_qos_coefficient_vs_scoreRequest"/>
 		<output message="tns:GlobalLB.Pool.set_qos_coefficient_vs_scoreResponse"/>
@@ -7388,6 +9419,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_qos_coefficient_vs_score">
 	<documentation>
  Gets the relative weight for virtual server (VS) score when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_qos_coefficient_vs_scoreRequest"/>
@@ -7398,6 +9434,12 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the fallback/emergency failure IP for the specified pools.
  This method is deprecated; new designs should use set_fallback_ip{v4,v6}.
 
+ Deprecated behavior: If the specified ip address is IPv4, we will attempt
+ to set on a type A pool of the specified name. If the specified ip address
+ is IPv6, we will attempt to set this ip on the type AAAA pool of the
+ specified name. If the type of pool corresponding to the ip address does
+ not exist, it is an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_fallback_ipRequest"/>
 		<output message="tns:GlobalLB.Pool.set_fallback_ipResponse"/>
@@ -7406,7 +9448,13 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the fallback/emergency failure IP for the specified pools.
  This method is deprecated; new designs should use get_fallback_ip{v4,v6}.
- 
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. The field will be returned from a type A pool of the
+ specified name, unless that does not exist. In that case then the field from
+ the type AAAA pool is used and if that also does not exist, this method
+ produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_fallback_ipRequest"/>
 		<output message="tns:GlobalLB.Pool.get_fallback_ipResponse"/>
@@ -7415,6 +9463,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the fallback/emergency failure IPv4 address for the specified pools.
 
+ Deprecated behavior: This method will attempt to set each ip address on a
+ type A pool of the specified name. If the A type of pool does not exist,
+ it is an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_fallback_ipv4Request"/>
 		<output message="tns:GlobalLB.Pool.set_fallback_ipv4Response"/>
@@ -7422,7 +9474,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_fallback_ipv4">
 	<documentation>
  Gets the fallback/emergency failure IPv4 address for the specified pools.
- 
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name and of type A. If the given type A pool does not exist,
+ this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_fallback_ipv4Request"/>
 		<output message="tns:GlobalLB.Pool.get_fallback_ipv4Response"/>
@@ -7431,6 +9487,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the fallback/emergency failure IPv6 address for the specified pools.
 
+ Deprecated behavior: This method will attempt to set each ip address on a
+ type AAAA pool of the specified name. If the AAAA type of pool does not
+ exist, it is an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_fallback_ipv6Request"/>
 		<output message="tns:GlobalLB.Pool.set_fallback_ipv6Response"/>
@@ -7438,7 +9498,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_fallback_ipv6">
 	<documentation>
  Gets the fallback/emergency failure IPv6 address for the specified pools.
- 
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name and of type AAAA. If the given type AAAA pool does not
+ exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_fallback_ipv6Request"/>
 		<output message="tns:GlobalLB.Pool.get_fallback_ipv6Response"/>
@@ -7446,6 +9510,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_cname">
 	<documentation>
  Sets the CNAMEs for the specified pools.
+
+ Deprecated behavior: This method will create each specified pool as a
+ CNAME type, if it does not already exist. If it does already exist, it
+ will clear any existing members from each specified pool and add a
+ single static target cname member of the specified cname to the pool.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_cnameRequest"/>
@@ -7455,6 +9524,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the CNAMEs for the specified pools.
 
+ Deprecated behavior: This method will return the name of the static target
+ cname member on each of the specified cname pools. If the cname pool or
+ static target cname member does not exist, and an A or AAAA pool of the
+ specified name does exists, an empty string will be returned. If no pools
+ of the specified name and type A, AAAA, or CNAME exist, it is an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_cnameRequest"/>
 		<output message="tns:GlobalLB.Pool.get_cnameResponse"/>
@@ -7462,6 +9537,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_limit">
 	<documentation>
  Sets the limits for pool metrics.
+
+ Deprecated behavior: The specified limits will be set on all specified pools
+ matching types A or AAAA.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_limitRequest"/>
@@ -7471,6 +9549,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets all metrics limits for a sequence of pools.
 
+ Deprecated behavior: This method returns the limits from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ limits returned are obtained from either the A or AAAA pool, in that order.
+ If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_limitRequest"/>
 		<output message="tns:GlobalLB.Pool.get_limitResponse"/>
@@ -7479,8 +9562,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets/creates the monitor associations for the specified pools. This basically creates the monitor associations
  between a pool and a monitor rule. The 'none' monitor is no longer a valid monitor_template for a MonitorRule.
- Any monitor associations created using the keyword 'none' will be adjusted accordingly and the 'none' monitor 
+ Any monitor associations created using the keyword 'none' will be adjusted accordingly and the 'none' monitor
  removed.
+
+ Deprecated behavior: The specified monitors will be set on all specified pools
+ matching types A or AAAA.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_monitor_associationRequest"/>
@@ -7490,15 +9576,26 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the monitor associations for the specified pools, i.e. the monitor rules used by the pools.
 
+ Deprecated behavior: This method returns the monitors from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ monitor returned is obtained from either the A or AAAA pool, in that order.
+ If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_monitor_associationRequest"/>
 		<output message="tns:GlobalLB.Pool.get_monitor_associationResponse"/>
 	</operation>
 	<operation name="remove_monitor_association">
 	<documentation>
- Removes the monitor associations for the specified pools.  This basically deletes the monitor
+ Removes the monitor associations for the specified pools. This basically deletes the monitor
  associations between a pool and a monitor rule, i.e. the specified pools will no longer
  be monitored.
+
+ Deprecated behavior: This method returns the limits from a pool matching
+ the specified name. The limits will be returned from a type A pool of the
+ specified name, unless that does not exist. In that case then the limits from
+ the type AAAA pool are used and if that also does not exist, this method
+ produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_monitor_associationRequest"/>
@@ -7510,6 +9607,9 @@ All other trademarks mentioned in this document are the property of their respec
 
  This is an arbitrary field which can be used for any purpose.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_descriptionRequest"/>
 		<output message="tns:GlobalLB.Pool.set_descriptionResponse"/>
@@ -7517,6 +9617,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_description">
 	<documentation>
  Gets the descriptions for a set of pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_descriptionRequest"/>
@@ -7526,6 +9631,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Resets the statistics for the specified pools.
 
+ Deprecated behavior: This method will clear all statistics on each of the
+ pools of the specified name and matching the type A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.reset_statisticsRequest"/>
 		<output message="tns:GlobalLB.Pool.reset_statisticsResponse"/>
@@ -7533,6 +9641,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_all_statistics">
 	<documentation>
  Gets the statistics for all the pools.
+
+ Deprecated behavior: A given statistics entry returned from this method
+ represents a sum of each of the individual statistics on pools of the
+ specified same name and types A, AAAA, and CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_all_statisticsRequest"/>
@@ -7542,6 +9654,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the statistics for the specified pools.
 
+ Deprecated behavior: A given statistics entry returned from this method
+ represents a sum of each of the individual statistics on pools of the
+ specified same name and types A, AAAA, and CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_statisticsRequest"/>
 		<output message="tns:GlobalLB.Pool.get_statisticsResponse"/>
@@ -7549,6 +9665,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_v2">
 	<documentation>
  Gets the members of a set of pools.
+
+ Deprecated behavior: This method returns a list of members on the specified
+ pools of type A and AAAA.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_v2Request"/>
@@ -7562,6 +9681,13 @@ All other trademarks mentioned in this document are the property of their respec
  system maintains the relative order but not the absolute numbers
  originally specified for ordering.
 
+ Deprecated behavior: This method will add the members to the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.add_member_v2Request"/>
 		<output message="tns:GlobalLB.Pool.add_member_v2Response"/>
@@ -7569,6 +9695,13 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_member_v2">
 	<documentation>
  Removes members from the specified pools.
+
+ Deprecated behavior: This method will remove the members from the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_member_v2Request"/>
@@ -7578,6 +9711,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Removes all members from the specified pools.
 
+ Deprecated behavior: This method will remove all members from the
+ specified pool of the matching type type A or AAAA.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_all_membersRequest"/>
 		<output message="tns:GlobalLB.Pool.remove_all_membersResponse"/>
@@ -7585,6 +9721,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_object_status">
 	<documentation>
  Gets the statuses for the specified members of the specified pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_object_statusRequest"/>
@@ -7598,6 +9738,17 @@ All other trademarks mentioned in this document are the property of their respec
  system maintains the relative order but not the absolute numbers
  originally specified for ordering.
 
+ Deprecated behavior: This method splits the members for a given
+ pool into two lists, one of IPv4 address type members and one of
+ IPv6 address type members. The orders specified are set on the
+ given member but each of these two lists are reordered seperately,
+ starting with 0 and with no gaps. Therefore you could potentially
+ see two members on the same pool (name) with the same order, if
+ one member is backed by an IPv4 address and another member is
+ backed by an IPv6 address. This is because one is on the A type
+ pool of the given name and the other is on the AAAA type pool
+ of the same name.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_member_orderRequest"/>
 		<output message="tns:GlobalLB.Pool.set_member_orderResponse"/>
@@ -7605,6 +9756,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_order">
 	<documentation>
  Gets the orders for the specified members of the specified pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_orderRequest"/>
@@ -7615,6 +9770,10 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the metric limits for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_member_limitRequest"/>
 		<output message="tns:GlobalLB.Pool.set_member_limitResponse"/>
@@ -7623,6 +9782,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the metric limits for the specified members of the specified
  pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_limitRequest"/>
@@ -7633,6 +9796,10 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the enabled states for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_member_enabled_stateRequest"/>
 		<output message="tns:GlobalLB.Pool.set_member_enabled_stateResponse"/>
@@ -7642,6 +9809,10 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the enabled states for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_enabled_stateRequest"/>
 		<output message="tns:GlobalLB.Pool.get_member_enabled_stateResponse"/>
@@ -7650,6 +9821,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the ratios for the specified members of the specified pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_member_ratioRequest"/>
 		<output message="tns:GlobalLB.Pool.set_member_ratioResponse"/>
@@ -7657,6 +9832,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_ratio">
 	<documentation>
  Gets the ratios for the specified members of the specified pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_ratioRequest"/>
@@ -7667,6 +9846,10 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the virtual servers that the specified members of the
  specified pools depend on.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_dependencyRequest"/>
 		<output message="tns:GlobalLB.Pool.get_member_dependencyResponse"/>
@@ -7675,6 +9858,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Adds virtual servers that the specified members of the specified
  pools depend on.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.add_member_dependencyRequest"/>
@@ -7685,6 +9872,10 @@ All other trademarks mentioned in this document are the property of their respec
  Removes virtual servers that the specified members of the specified
  pools depend on.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_member_dependencyRequest"/>
 		<output message="tns:GlobalLB.Pool.remove_member_dependencyResponse"/>
@@ -7693,6 +9884,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Removes all virtual servers that the specified members of the
  specified pools depend on.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_all_member_dependenciesRequest"/>
@@ -7703,6 +9898,10 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the monitor rules for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_member_monitor_ruleRequest"/>
 		<output message="tns:GlobalLB.Pool.set_member_monitor_ruleResponse"/>
@@ -7712,6 +9911,10 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the monitor rules for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_monitor_ruleRequest"/>
 		<output message="tns:GlobalLB.Pool.get_member_monitor_ruleResponse"/>
@@ -7720,6 +9923,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the description of a set of pool members in a set of pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_member_descriptionRequest"/>
 		<output message="tns:GlobalLB.Pool.set_member_descriptionResponse"/>
@@ -7727,6 +9934,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_description">
 	<documentation>
  Gets the description of a set of pool members in a set of pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_descriptionRequest"/>
@@ -7737,6 +9948,10 @@ All other trademarks mentioned in this document are the property of their respec
  Resets the statistics for the specified of members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.reset_member_statisticsRequest"/>
 		<output message="tns:GlobalLB.Pool.reset_member_statisticsResponse"/>
@@ -7745,6 +9960,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the statistics for the specified members of the specified
  pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_member_statisticsRequest"/>
@@ -7762,6 +9981,11 @@ All other trademarks mentioned in this document are the property of their respec
  In addition to name/value pair, metadata also has a persistence
  attribute. See Common::MetadataPersistence for its definition.
 
+ Deprecated behavior: This method returns a list of unique metadata
+ objects. Therefore if there is more than one metadata of the same
+ name on the specified pool name (but of different type A, AAAA,
+ or CNAME), only one of these duplicate metadata objects is reported.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_metadataRequest"/>
 		<output message="tns:GlobalLB.Pool.get_metadataResponse"/>
@@ -7771,6 +9995,9 @@ All other trademarks mentioned in this document are the property of their respec
  Adds the metadata for the specified pools.
  For definition of the metadata, refer to the get_metadata method
  description.
+
+ Deprecated behavior: This method adds the specified metadata
+ on the specified pools matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.add_metadataRequest"/>
@@ -7782,6 +10009,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This method removes the specified metadata
+ from all specified pools matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_metadataRequest"/>
 		<output message="tns:GlobalLB.Pool.remove_metadataResponse"/>
@@ -7789,6 +10019,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_metadata">
 	<documentation>
  Removes all the metadata instances for the specified pools.
+
+ Deprecated behavior: This method removes all metadata from all specified
+ pools matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.remove_all_metadataRequest"/>
@@ -7800,6 +10033,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This field will be set on all specified pool
+ metadatas matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_metadata_valueRequest"/>
 		<output message="tns:GlobalLB.Pool.set_metadata_valueResponse"/>
@@ -7809,6 +10045,12 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the metadata values for the specified metadata.
  For definition of the metadata, refer to the get_metadata method
  description.
+
+ Deprecated behavior: This method returns the field from a pool
+ metadata matching the specified name. Since multiple pool metadatas
+ with this name may exist, the value returned is obtained from either
+ the A, AAAA, or CNAME pool metadata, in that order. If none of these
+ pool metadatas exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_metadata_valueRequest"/>
@@ -7820,6 +10062,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This field will be set on all specified pool
+ metadatas matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_metadata_descriptionRequest"/>
 		<output message="tns:GlobalLB.Pool.set_metadata_descriptionResponse"/>
@@ -7829,6 +10074,12 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the metadata descriptions for the specified metadata.
  For definition of the metadata, refer to the get_metadata method
  description.
+
+ Deprecated behavior: This method returns the field from a pool
+ metadata matching the specified name. Since multiple pool metadatas
+ with this name may exist, the value returned is obtained from either
+ the A, AAAA, or CNAME pool metadata, in that order. If none of these
+ pool metadatas exist, this method produces an error.
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_metadata_descriptionRequest"/>
@@ -7840,6 +10091,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This field will be set on all specified pool
+ metadatas matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.set_metadata_persistenceRequest"/>
 		<output message="tns:GlobalLB.Pool.set_metadata_persistenceResponse"/>
@@ -7850,6 +10104,12 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This method returns the field from a pool
+ metadata matching the specified name. Since multiple pool metadatas
+ with this name may exist, the value returned is obtained from either
+ the A, AAAA, or CNAME pool metadata, in that order. If none of these
+ pool metadatas exist, this method produces an error.
+
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_metadata_persistenceRequest"/>
 		<output message="tns:GlobalLB.Pool.get_metadata_persistenceResponse"/>
@@ -7857,7 +10117,6 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_version">
 	<documentation>
  Gets the version information for this interface.
-
 
         	</documentation>
 		<input message="tns:GlobalLB.Pool.get_versionRequest"/>
@@ -7872,6 +10131,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_object_status">
 	<documentation>
  Gets the statuses of the specified pools.
+
+ Deprecated behavior: This method returns the best possible answer based on
+ the availability status. For example, if the A pool with the specified name
+ has an 'AVAILABILITY_STATUS_RED' status and the AAAA pool with the
+ specified name has an 'AVAILABILITY_STATUS_GREEN' status, then the full object
+ status of the AAAA pool will be returned as the status of the specified pool.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -7892,6 +10157,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_list">
 	<documentation>
  Gets a list of pools.
+
+ Deprecated behavior: This method returns a list of unique pool names. If
+ there is more than one pool with the same name (but of different types A,
+ AAAA, or CNAME), only one of these pools is reported.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -7921,6 +10190,11 @@ All other trademarks mentioned in this document are the property of their respec
  order but not the absolute numbers originally specified for
  ordering.
 
+ Deprecated behavior: This method will create an A and AAAA type pool
+ and add the members to the pool of the matching type type A or AAAA,
+ depending on if the member is backed by an IPv4 or IPv6 address,
+ respectively.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -7945,6 +10219,11 @@ All other trademarks mentioned in this document are the property of their respec
  system maintains the relative order but not the absolute numbers
  originally specified for ordering.
 
+ Deprecated behavior: This method will create an A and AAAA type pool
+ and add the members to the pool of the matching type type A or AAAA,
+ depending on if the member is backed by an IPv4 or IPv6 address,
+ respectively.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -7965,6 +10244,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Deletes the specified pools.
 
+ Deprecated behavior: This method will delete all pools with the specified
+ names that match types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -7984,6 +10266,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="delete_all_pools">
 	<documentation>
  Deletes all pools.
+
+ Deprecated behavior: This method will delete all pools matching types A,
+ AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8007,6 +10292,9 @@ All other trademarks mentioned in this document are the property of their respec
  Please use get_member_v2 in its stead.
 
  Gets a list of pool members.
+
+ Deprecated behavior: This method returns a list of members on the specified
+ pools of type A and AAAA.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8036,6 +10324,13 @@ All other trademarks mentioned in this document are the property of their respec
  order but not the absolute numbers originally specified for
  ordering.
 
+ Deprecated behavior: This method will add the members to the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8059,6 +10354,13 @@ All other trademarks mentioned in this document are the property of their respec
 
  Removes members from the specified pools.
 
+ Deprecated behavior: This method will remove the members from the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8078,6 +10380,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_ttl">
 	<documentation>
  Sets the TTL values for the specified pools.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8099,6 +10404,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the TTL values for the specified pools.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8118,6 +10428,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_enabled_state">
 	<documentation>
  Sets the enabled state of the specified pools.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8139,6 +10452,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the enabled state of the specified pools.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8158,6 +10476,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_verify_member_availability_state">
 	<documentation>
  Sets the states to indicate whether to check the availability of pool member availability before using them.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8179,6 +10500,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the states to indicate whether to check the availability of pool member availability before using them.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8200,6 +10525,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the states to indicate whether to use dynamic ratio to modify the behavior of QOS.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8219,6 +10547,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_dynamic_ratio_state">
 	<documentation>
  Gets the states to indicate whether to use dynamic ratio to modify the behavior of QOS.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8240,6 +10573,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the number of answers to return for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A or AAAA. Note that CNAME pools can only return
+ one answer (the default), so this value will not be set on any
+ specified CNAME pools.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8259,6 +10597,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_answers_to_return">
 	<documentation>
  Gets the number of answers to return for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8280,6 +10623,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the preferred load balancing methods for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8299,6 +10645,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_preferred_lb_method">
 	<documentation>
  Gets the preferred load balancing methods for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8320,6 +10671,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the alternate load balancing methods for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8339,6 +10693,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_alternate_lb_method">
 	<documentation>
  Gets the alternate load balancing methods for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8360,6 +10719,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the fallback load balancing methods for the specified pools.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8379,6 +10741,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_fallback_lb_method">
 	<documentation>
  Gets the fallback load balancing methods for the specified pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8401,6 +10768,9 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the states indicating whether to disable pool members when pool member status
  goes from Green to Red.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8422,6 +10792,11 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the states indicating whether to disable pool members when pool member status
  goes from Green to Red.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8441,6 +10816,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_rtt">
 	<documentation>
  Sets the relative weight for round-trip time when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8462,6 +10840,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for round-trip time when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8481,6 +10864,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_hops">
 	<documentation>
  Sets the relative weight for hops when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8502,6 +10888,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for hops when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8521,6 +10912,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_topology">
 	<documentation>
  Sets the relative weight for topology when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8542,6 +10936,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for topology when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8561,6 +10960,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_hit_ratio">
 	<documentation>
  Sets the relative weight for ping packet completion rate when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8582,6 +10984,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for ping packet completion rate when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8601,6 +11008,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_packet_rate">
 	<documentation>
  Sets the relative weight for packet rate when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8622,6 +11032,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for packet rate when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8641,6 +11056,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_qos_coefficient_vs_capacity">
 	<documentation>
  Sets the relative weight for virtual server capacity when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8662,6 +11080,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for virtual server capacity when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8680,7 +11103,10 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="set_qos_coefficient_bps">
 	<documentation>
- Sets the relative weight for bits per second when the load balancing mode is set to LB_METHOD_QOS.
+ Sets the relative weight for kilobits per second when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8702,6 +11128,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the relative weight for bits per second when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8722,6 +11153,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the relative weight for link capacity when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8741,6 +11175,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_qos_coefficient_lcs">
 	<documentation>
  Gets the relative weight for link capacity when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8763,6 +11202,9 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the relative weight for connection rate when the load balancing mode is set to LB_METHOD_QOS.
  This function is deprecated and new applications should use vs_score.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8784,6 +11226,11 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the relative weight for connection rate when the load balancing mode is set to LB_METHOD_QOS.
  This function is deprecated and new applications should use vs_score.
 
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8804,6 +11251,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the relative weight for virtual server (VS) score when the load balancing mode is set to LB_METHOD_QOS.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8823,6 +11273,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_qos_coefficient_vs_score">
 	<documentation>
  Gets the relative weight for virtual server (VS) score when the load balancing mode is set to LB_METHOD_QOS.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8845,6 +11300,12 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the fallback/emergency failure IP for the specified pools.
  This method is deprecated; new designs should use set_fallback_ip{v4,v6}.
 
+ Deprecated behavior: If the specified ip address is IPv4, we will attempt
+ to set on a type A pool of the specified name. If the specified ip address
+ is IPv6, we will attempt to set this ip on the type AAAA pool of the
+ specified name. If the type of pool corresponding to the ip address does
+ not exist, it is an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8865,7 +11326,13 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the fallback/emergency failure IP for the specified pools.
  This method is deprecated; new designs should use get_fallback_ip{v4,v6}.
- 
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. The field will be returned from a type A pool of the
+ specified name, unless that does not exist. In that case then the field from
+ the type AAAA pool is used and if that also does not exist, this method
+ produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8886,6 +11353,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the fallback/emergency failure IPv4 address for the specified pools.
 
+ Deprecated behavior: This method will attempt to set each ip address on a
+ type A pool of the specified name. If the A type of pool does not exist,
+ it is an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8905,7 +11376,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_fallback_ipv4">
 	<documentation>
  Gets the fallback/emergency failure IPv4 address for the specified pools.
- 
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name and of type A. If the given type A pool does not exist,
+ this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8926,6 +11401,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the fallback/emergency failure IPv6 address for the specified pools.
 
+ Deprecated behavior: This method will attempt to set each ip address on a
+ type AAAA pool of the specified name. If the AAAA type of pool does not
+ exist, it is an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8945,7 +11424,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_fallback_ipv6">
 	<documentation>
  Gets the fallback/emergency failure IPv6 address for the specified pools.
- 
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name and of type AAAA. If the given type AAAA pool does not
+ exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -8965,6 +11448,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_cname">
 	<documentation>
  Sets the CNAMEs for the specified pools.
+
+ Deprecated behavior: This method will create each specified pool as a
+ CNAME type, if it does not already exist. If it does already exist, it
+ will clear any existing members from each specified pool and add a
+ single static target cname member of the specified cname to the pool.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -8986,6 +11474,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the CNAMEs for the specified pools.
 
+ Deprecated behavior: This method will return the name of the static target
+ cname member on each of the specified cname pools. If the cname pool or
+ static target cname member does not exist, and an A or AAAA pool of the
+ specified name does exists, an empty string will be returned. If no pools
+ of the specified name and type A, AAAA, or CNAME exist, it is an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9005,6 +11499,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_limit">
 	<documentation>
  Sets the limits for pool metrics.
+
+ Deprecated behavior: The specified limits will be set on all specified pools
+ matching types A or AAAA.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9026,6 +11523,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets all metrics limits for a sequence of pools.
 
+ Deprecated behavior: This method returns the limits from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ limits returned are obtained from either the A or AAAA pool, in that order.
+ If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9046,8 +11548,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets/creates the monitor associations for the specified pools. This basically creates the monitor associations
  between a pool and a monitor rule. The 'none' monitor is no longer a valid monitor_template for a MonitorRule.
- Any monitor associations created using the keyword 'none' will be adjusted accordingly and the 'none' monitor 
+ Any monitor associations created using the keyword 'none' will be adjusted accordingly and the 'none' monitor
  removed.
+
+ Deprecated behavior: The specified monitors will be set on all specified pools
+ matching types A or AAAA.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9069,6 +11574,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the monitor associations for the specified pools, i.e. the monitor rules used by the pools.
 
+ Deprecated behavior: This method returns the monitors from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ monitor returned is obtained from either the A or AAAA pool, in that order.
+ If none of these pools exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9087,9 +11597,15 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="remove_monitor_association">
 	<documentation>
- Removes the monitor associations for the specified pools.  This basically deletes the monitor
+ Removes the monitor associations for the specified pools. This basically deletes the monitor
  associations between a pool and a monitor rule, i.e. the specified pools will no longer
  be monitored.
+
+ Deprecated behavior: This method returns the limits from a pool matching
+ the specified name. The limits will be returned from a type A pool of the
+ specified name, unless that does not exist. In that case then the limits from
+ the type AAAA pool are used and if that also does not exist, this method
+ produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9113,6 +11629,9 @@ All other trademarks mentioned in this document are the property of their respec
 
  This is an arbitrary field which can be used for any purpose.
 
+ Deprecated behavior: This field will be set on all specified pools
+ matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9132,6 +11651,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_description">
 	<documentation>
  Gets the descriptions for a set of pools.
+
+ Deprecated behavior: This method returns the field from a pool matching
+ the specified name. Since multiple pools with this name may exist, the
+ value returned is obtained from either the A, AAAA, or CNAME pool, in
+ that order. If none of these pools exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9153,6 +11677,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Resets the statistics for the specified pools.
 
+ Deprecated behavior: This method will clear all statistics on each of the
+ pools of the specified name and matching the type A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9172,6 +11699,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_all_statistics">
 	<documentation>
  Gets the statistics for all the pools.
+
+ Deprecated behavior: A given statistics entry returned from this method
+ represents a sum of each of the individual statistics on pools of the
+ specified same name and types A, AAAA, and CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9193,6 +11724,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the statistics for the specified pools.
 
+ Deprecated behavior: A given statistics entry returned from this method
+ represents a sum of each of the individual statistics on pools of the
+ specified same name and types A, AAAA, and CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9212,6 +11747,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_v2">
 	<documentation>
  Gets the members of a set of pools.
+
+ Deprecated behavior: This method returns a list of members on the specified
+ pools of type A and AAAA.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9237,6 +11775,13 @@ All other trademarks mentioned in this document are the property of their respec
  system maintains the relative order but not the absolute numbers
  originally specified for ordering.
 
+ Deprecated behavior: This method will add the members to the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9256,6 +11801,13 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_member_v2">
 	<documentation>
  Removes members from the specified pools.
+
+ Deprecated behavior: This method will remove the members from the
+ specified pool of the matching type type A or AAAA, depending
+ on if the member is backed by an IPv4 or IPv6 address,
+ respectively. If a member is specified and the specified
+ pool of the corresponding type (A for IPv4 members and AAAA
+ for IPv6 members) does not exist, it is an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9277,6 +11829,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Removes all members from the specified pools.
 
+ Deprecated behavior: This method will remove all members from the
+ specified pool of the matching type type A or AAAA.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9296,6 +11851,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_object_status">
 	<documentation>
  Gets the statuses for the specified members of the specified pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9321,6 +11880,17 @@ All other trademarks mentioned in this document are the property of their respec
  system maintains the relative order but not the absolute numbers
  originally specified for ordering.
 
+ Deprecated behavior: This method splits the members for a given
+ pool into two lists, one of IPv4 address type members and one of
+ IPv6 address type members. The orders specified are set on the
+ given member but each of these two lists are reordered seperately,
+ starting with 0 and with no gaps. Therefore you could potentially
+ see two members on the same pool (name) with the same order, if
+ one member is backed by an IPv4 address and another member is
+ backed by an IPv6 address. This is because one is on the A type
+ pool of the given name and the other is on the AAAA type pool
+ of the same name.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9340,6 +11910,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_order">
 	<documentation>
  Gets the orders for the specified members of the specified pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9362,6 +11936,10 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the metric limits for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9382,6 +11960,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the metric limits for the specified members of the specified
  pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9404,6 +11986,10 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the enabled states for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9425,6 +12011,10 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the enabled states for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9445,6 +12035,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the ratios for the specified members of the specified pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9464,6 +12058,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_ratio">
 	<documentation>
  Gets the ratios for the specified members of the specified pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9486,6 +12084,10 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the virtual servers that the specified members of the
  specified pools depend on.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9506,6 +12108,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Adds virtual servers that the specified members of the specified
  pools depend on.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9528,6 +12134,10 @@ All other trademarks mentioned in this document are the property of their respec
  Removes virtual servers that the specified members of the specified
  pools depend on.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9548,6 +12158,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Removes all virtual servers that the specified members of the
  specified pools depend on.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9570,6 +12184,10 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the monitor rules for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9591,6 +12209,10 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the monitor rules for the specified members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9611,6 +12233,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the description of a set of pool members in a set of pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9630,6 +12256,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_member_description">
 	<documentation>
  Gets the description of a set of pool members in a set of pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9652,6 +12282,10 @@ All other trademarks mentioned in this document are the property of their respec
  Resets the statistics for the specified of members of the specified
  pools.
 
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9672,6 +12306,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the statistics for the specified members of the specified
  pools.
+
+ Deprecated behavior: There is no change in behavior since the type
+ of pool is implicit in the IP address type of the member (IPv4
+ members on type A pools and IPv6 members on type AAAA pools).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9701,6 +12339,11 @@ All other trademarks mentioned in this document are the property of their respec
  In addition to name/value pair, metadata also has a persistence
  attribute. See Common::MetadataPersistence for its definition.
 
+ Deprecated behavior: This method returns a list of unique metadata
+ objects. Therefore if there is more than one metadata of the same
+ name on the specified pool name (but of different type A, AAAA,
+ or CNAME), only one of these duplicate metadata objects is reported.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9722,6 +12365,9 @@ All other trademarks mentioned in this document are the property of their respec
  Adds the metadata for the specified pools.
  For definition of the metadata, refer to the get_metadata method
  description.
+
+ Deprecated behavior: This method adds the specified metadata
+ on the specified pools matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9745,6 +12391,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This method removes the specified metadata
+ from all specified pools matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9764,6 +12413,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_metadata">
 	<documentation>
  Removes all the metadata instances for the specified pools.
+
+ Deprecated behavior: This method removes all metadata from all specified
+ pools matching types A, AAAA, or CNAME.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9787,6 +12439,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This field will be set on all specified pool
+ metadatas matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9808,6 +12463,12 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the metadata values for the specified metadata.
  For definition of the metadata, refer to the get_metadata method
  description.
+
+ Deprecated behavior: This method returns the field from a pool
+ metadata matching the specified name. Since multiple pool metadatas
+ with this name may exist, the value returned is obtained from either
+ the A, AAAA, or CNAME pool metadata, in that order. If none of these
+ pool metadatas exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9831,6 +12492,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This field will be set on all specified pool
+ metadatas matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9852,6 +12516,12 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the metadata descriptions for the specified metadata.
  For definition of the metadata, refer to the get_metadata method
  description.
+
+ Deprecated behavior: This method returns the field from a pool
+ metadata matching the specified name. Since multiple pool metadatas
+ with this name may exist, the value returned is obtained from either
+ the A, AAAA, or CNAME pool metadata, in that order. If none of these
+ pool metadatas exist, this method produces an error.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9875,6 +12545,9 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This field will be set on all specified pool
+ metadatas matching types A, AAAA, or CNAME.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9897,6 +12570,12 @@ All other trademarks mentioned in this document are the property of their respec
  For definition of the metadata, refer to the get_metadata method
  description.
 
+ Deprecated behavior: This method returns the field from a pool
+ metadata matching the specified name. Since multiple pool metadatas
+ with this name may exist, the value returned is obtained from either
+ the A, AAAA, or CNAME pool metadata, in that order. If none of these
+ pool metadatas exist, this method produces an error.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
 		<input>
@@ -9916,7 +12595,6 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_version">
 	<documentation>
  Gets the version information for this interface.
-
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Pool"/>
@@ -9939,6 +12617,12 @@ All other trademarks mentioned in this document are the property of their respec
 
 <service name="GlobalLB.Pool">
 	<documentation>
+ *IMPORTANT*  Due to changing pool key definitions (pools are now identified by a name
+ and a query type), this entire interface is deprecated as of BIG-IP_v12.0.0. Please use the
+ GlobalLB::PoolV2 interface to work with pools; continuing to use the deprecated
+ GlobalLB::Pool interface against BIG-IP_v12.0.0 and later versions can result in unintended
+ configurations and behavior.
+
  The Pool interface enables you to work with pools and their attributes.
 
         	</documentation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -73,6 +73,13 @@ All other trademarks mentioned in this document are the property of their respec
 <message name="Security.FirewallPortList.createResponse">
 </message>
 
+<message name="Security.FirewallPortList.create_with_nested_port_listRequest">
+	<part name="lists" type="tns:Common.StringSequence"/>
+	<part name="nested_lists" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.FirewallPortList.create_with_nested_port_listResponse">
+</message>
+
 <message name="Security.FirewallPortList.delete_port_listRequest">
 	<part name="lists" type="tns:Common.StringSequence"/>
 </message>
@@ -141,6 +148,49 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.StringSequenceSequence"/>
 </message>
 
+<message name="Security.FirewallPortList.get_nested_port_listRequest">
+	<part name="lists" type="tns:Common.StringSequence"/>
+</message>
+<message name="Security.FirewallPortList.get_nested_port_listResponse">
+	<part name="return" type="tns:Common.StringSequenceSequence"/>
+</message>
+
+<message name="Security.FirewallPortList.add_nested_port_listRequest">
+	<part name="lists" type="tns:Common.StringSequence"/>
+	<part name="nested_lists" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.FirewallPortList.add_nested_port_listResponse">
+</message>
+
+<message name="Security.FirewallPortList.remove_nested_port_listRequest">
+	<part name="lists" type="tns:Common.StringSequence"/>
+	<part name="nested_lists" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.FirewallPortList.remove_nested_port_listResponse">
+</message>
+
+<message name="Security.FirewallPortList.remove_all_nested_port_listsRequest">
+	<part name="lists" type="tns:Common.StringSequence"/>
+</message>
+<message name="Security.FirewallPortList.remove_all_nested_port_listsResponse">
+</message>
+
+<message name="Security.FirewallPortList.set_nested_port_list_descriptionRequest">
+	<part name="lists" type="tns:Common.StringSequence"/>
+	<part name="nested_lists" type="tns:Common.StringSequenceSequence"/>
+	<part name="descriptions" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.FirewallPortList.set_nested_port_list_descriptionResponse">
+</message>
+
+<message name="Security.FirewallPortList.get_nested_port_list_descriptionRequest">
+	<part name="lists" type="tns:Common.StringSequence"/>
+	<part name="nested_lists" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.FirewallPortList.get_nested_port_list_descriptionResponse">
+	<part name="return" type="tns:Common.StringSequenceSequence"/>
+</message>
+
 <message name="Security.FirewallPortList.get_versionRequest">
 </message>
 <message name="Security.FirewallPortList.get_versionResponse">
@@ -165,6 +215,22 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:Security.FirewallPortList.createRequest"/>
 		<output message="tns:Security.FirewallPortList.createResponse"/>
+	</operation>
+	<operation name="create_with_nested_port_list">
+	<documentation>
+ Creates a firewall port list with nested port list.
+ Users can enter a port list as one of the list entry of another
+ port list. For example, users can have a port list plist-1 that
+ contains ports 1-5. Users can have another port list plist-2
+ that contains ports 10-20 and plist-1 as the child list. If the
+ port list plist-2 is used in an AFM rule as source or
+ destination port list, the ports inside the child lists will be
+ fully expanded so that the ports AFM rule will match for plist-2
+ are 1-5 and 10-20.
+
+        	</documentation>
+		<input message="tns:Security.FirewallPortList.create_with_nested_port_listRequest"/>
+		<output message="tns:Security.FirewallPortList.create_with_nested_port_listResponse"/>
 	</operation>
 	<operation name="delete_port_list">
 	<documentation>
@@ -250,6 +316,66 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:Security.FirewallPortList.get_port_descriptionRequest"/>
 		<output message="tns:Security.FirewallPortList.get_port_descriptionResponse"/>
 	</operation>
+	<operation name="get_nested_port_list">
+	<documentation>
+ Gets nested port lists for the specified firewall port lists.
+ Users can enter a port list as one of the list entry of another 
+ port list. For example, users can have a port list plist-1 that 
+ contains ports 1-5. Users can have another port list plist-2 
+ that contains ports 10-20 and plist-1 as the child list. If the 
+ port list plist-2 is used in an AFM rule as source or 
+ destination port list, the ports inside the child lists will be 
+ fully expanded so that the ports AFM rule will match for plist-2 
+ are 1-5 and 10-20.
+
+        	</documentation>
+		<input message="tns:Security.FirewallPortList.get_nested_port_listRequest"/>
+		<output message="tns:Security.FirewallPortList.get_nested_port_listResponse"/>
+	</operation>
+	<operation name="add_nested_port_list">
+	<documentation>
+ Adds a list of nested port lists for the specified firewall port 
+ lists.
+
+        	</documentation>
+		<input message="tns:Security.FirewallPortList.add_nested_port_listRequest"/>
+		<output message="tns:Security.FirewallPortList.add_nested_port_listResponse"/>
+	</operation>
+	<operation name="remove_nested_port_list">
+	<documentation>
+ Removes a list of nested port lists from the specified firewall 
+ port lists.
+
+        	</documentation>
+		<input message="tns:Security.FirewallPortList.remove_nested_port_listRequest"/>
+		<output message="tns:Security.FirewallPortList.remove_nested_port_listResponse"/>
+	</operation>
+	<operation name="remove_all_nested_port_lists">
+	<documentation>
+ Removes all nested port lists from the specified firewall port 
+ lists.
+
+        	</documentation>
+		<input message="tns:Security.FirewallPortList.remove_all_nested_port_listsRequest"/>
+		<output message="tns:Security.FirewallPortList.remove_all_nested_port_listsResponse"/>
+	</operation>
+	<operation name="set_nested_port_list_description">
+	<documentation>
+ Sets the descriptions for the specified nested port lists.
+ This is an arbitrary field which can be used for any purpose.
+
+        	</documentation>
+		<input message="tns:Security.FirewallPortList.set_nested_port_list_descriptionRequest"/>
+		<output message="tns:Security.FirewallPortList.set_nested_port_list_descriptionResponse"/>
+	</operation>
+	<operation name="get_nested_port_list_description">
+	<documentation>
+ Gets the descriptions for the specified nested port lists.
+
+        	</documentation>
+		<input message="tns:Security.FirewallPortList.get_nested_port_list_descriptionRequest"/>
+		<output message="tns:Security.FirewallPortList.get_nested_port_list_descriptionResponse"/>
+	</operation>
 	<operation name="get_version">
 	<documentation>
  Gets the version information for this interface.
@@ -287,6 +413,34 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="create">
 	<documentation>
  Creates a firewall port list.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="create_with_nested_port_list">
+	<documentation>
+ Creates a firewall port list with nested port list.
+ Users can enter a port list as one of the list entry of another
+ port list. For example, users can have a port list plist-1 that
+ contains ports 1-5. Users can have another port list plist-2
+ that contains ports 10-20 and plist-1 as the child list. If the
+ port list plist-2 is used in an AFM rule as source or
+ destination port list, the ports inside the child lists will be
+ fully expanded so that the ports AFM rule will match for plist-2
+ are 1-5 and 10-20.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
@@ -491,6 +645,138 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_port_description">
 	<documentation>
  Gets the descriptions for a set of firewall port list entries.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_nested_port_list">
+	<documentation>
+ Gets nested port lists for the specified firewall port lists.
+ Users can enter a port list as one of the list entry of another 
+ port list. For example, users can have a port list plist-1 that 
+ contains ports 1-5. Users can have another port list plist-2 
+ that contains ports 10-20 and plist-1 as the child list. If the 
+ port list plist-2 is used in an AFM rule as source or 
+ destination port list, the ports inside the child lists will be 
+ fully expanded so that the ports AFM rule will match for plist-2 
+ are 1-5 and 10-20.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="add_nested_port_list">
+	<documentation>
+ Adds a list of nested port lists for the specified firewall port 
+ lists.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="remove_nested_port_list">
+	<documentation>
+ Removes a list of nested port lists from the specified firewall 
+ port lists.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="remove_all_nested_port_lists">
+	<documentation>
+ Removes all nested port lists from the specified firewall port 
+ lists.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_nested_port_list_description">
+	<documentation>
+ Sets the descriptions for the specified nested port lists.
+ This is an arbitrary field which can be used for any purpose.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/FirewallPortList"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_nested_port_list_description">
+	<documentation>
+ Gets the descriptions for the specified nested port lists.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/FirewallPortList"/>

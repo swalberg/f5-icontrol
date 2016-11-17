@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -226,6 +226,20 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.StringSequence"/>
 </message>
 
+<message name="Networking.iSessionLocalInterface.set_internal_forwarding_stateRequest">
+	<part name="wocs" type="tns:Common.ULongSequence"/>
+	<part name="states" type="tns:Common.EnabledStateSequence"/>
+</message>
+<message name="Networking.iSessionLocalInterface.set_internal_forwarding_stateResponse">
+</message>
+
+<message name="Networking.iSessionLocalInterface.get_internal_forwarding_stateRequest">
+	<part name="wocs" type="tns:Common.ULongSequence"/>
+</message>
+<message name="Networking.iSessionLocalInterface.get_internal_forwarding_stateResponse">
+	<part name="return" type="tns:Common.EnabledStateSequence"/>
+</message>
+
 <message name="Networking.iSessionLocalInterface.set_tunnel_portRequest">
 	<part name="wocs" type="tns:Common.ULongSequence"/>
 	<part name="ports" type="tns:Common.PortSequence"/>
@@ -392,6 +406,25 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:Networking.iSessionLocalInterface.get_serversslRequest"/>
 		<output message="tns:Networking.iSessionLocalInterface.get_serversslResponse"/>
+	</operation>
+	<operation name="set_internal_forwarding_state">
+	<documentation>
+ Sets the internal forwarding state of the local endpoint.
+ The internal forwarding state of local endpoint and
+ the internal forwarding state of remote endpoint,
+ controls the forwarding of internal data traffic to remote endpoints.
+
+        	</documentation>
+		<input message="tns:Networking.iSessionLocalInterface.set_internal_forwarding_stateRequest"/>
+		<output message="tns:Networking.iSessionLocalInterface.set_internal_forwarding_stateResponse"/>
+	</operation>
+	<operation name="get_internal_forwarding_state">
+	<documentation>
+ Gets the internal forwarding state of the local endpoint.
+
+        	</documentation>
+		<input message="tns:Networking.iSessionLocalInterface.get_internal_forwarding_stateRequest"/>
+		<output message="tns:Networking.iSessionLocalInterface.get_internal_forwarding_stateResponse"/>
 	</operation>
 	<operation name="set_tunnel_port">
 	<documentation>
@@ -718,6 +751,49 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the server SSL profile used for encrypting traffic by the
  local endpoint.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/iSessionLocalInterface"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/iSessionLocalInterface"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/iSessionLocalInterface"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_internal_forwarding_state">
+	<documentation>
+ Sets the internal forwarding state of the local endpoint.
+ The internal forwarding state of local endpoint and
+ the internal forwarding state of remote endpoint,
+ controls the forwarding of internal data traffic to remote endpoints.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/iSessionLocalInterface"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/iSessionLocalInterface"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/iSessionLocalInterface"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_internal_forwarding_state">
+	<documentation>
+ Gets the internal forwarding state of the local endpoint.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/iSessionLocalInterface"/>

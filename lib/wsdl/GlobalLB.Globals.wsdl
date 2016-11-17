@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -38,6 +38,45 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="STATE_ENABLED">
 					<xsd:annotation>
 						<xsd:documentation>STATE_ENABLED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+			</xsd:restriction>
+		</xsd:simpleType>
+		<xsd:simpleType name="GlobalLB.DNSReturnCode">
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="RETURN_CODE_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>RETURN_CODE_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="RETURN_CODE_NO_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>RETURN_CODE_NO_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="RETURN_CODE_FORMAT_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>RETURN_CODE_FORMAT_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="RETURN_CODE_SERVER_FAILURE">
+					<xsd:annotation>
+						<xsd:documentation>RETURN_CODE_SERVER_FAILURE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="RETURN_CODE_NON_EXISTENT_DOMAIN">
+					<xsd:annotation>
+						<xsd:documentation>RETURN_CODE_NON_EXISTENT_DOMAIN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="RETURN_CODE_NOT_IMPLEMENTED">
+					<xsd:annotation>
+						<xsd:documentation>RETURN_CODE_NOT_IMPLEMENTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="RETURN_CODE_REFUSED">
+					<xsd:annotation>
+						<xsd:documentation>RETURN_CODE_REFUSED</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 			</xsd:restriction>
@@ -1048,6 +1087,42 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.EnabledState"/>
 </message>
 
+<message name="GlobalLB.Globals.set_failure_response_return_code_stateRequest">
+	<part name="state" type="tns:Common.EnabledState"/>
+</message>
+<message name="GlobalLB.Globals.set_failure_response_return_code_stateResponse">
+</message>
+
+<message name="GlobalLB.Globals.get_failure_response_return_code_stateRequest">
+</message>
+<message name="GlobalLB.Globals.get_failure_response_return_code_stateResponse">
+	<part name="return" type="tns:Common.EnabledState"/>
+</message>
+
+<message name="GlobalLB.Globals.set_failure_response_return_codeRequest">
+	<part name="return_code" type="tns:GlobalLB.DNSReturnCode"/>
+</message>
+<message name="GlobalLB.Globals.set_failure_response_return_codeResponse">
+</message>
+
+<message name="GlobalLB.Globals.get_failure_response_return_codeRequest">
+</message>
+<message name="GlobalLB.Globals.get_failure_response_return_codeResponse">
+	<part name="return" type="tns:GlobalLB.DNSReturnCode"/>
+</message>
+
+<message name="GlobalLB.Globals.set_failure_response_return_code_ttlRequest">
+	<part name="value" type="xsd:long"/>
+</message>
+<message name="GlobalLB.Globals.set_failure_response_return_code_ttlResponse">
+</message>
+
+<message name="GlobalLB.Globals.get_failure_response_return_code_ttlRequest">
+</message>
+<message name="GlobalLB.Globals.get_failure_response_return_code_ttlResponse">
+	<part name="return" type="xsd:long"/>
+</message>
+
 <message name="GlobalLB.Globals.get_versionRequest">
 </message>
 <message name="GlobalLB.Globals.get_versionResponse">
@@ -1282,7 +1357,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_domain_name_check_mode">
 	<documentation>
  Sets the mode for GTM to use when performing domain
- name checking. The default value is DOMAIN_NAME_CHECK_MODE_STRICT.
+ name checking. The default value is DOMAIN_NAME_CHECK_MODE_ALLOW_UNDERSCORE.
 
         	</documentation>
 		<input message="tns:GlobalLB.Globals.set_domain_name_check_modeRequest"/>
@@ -1927,8 +2002,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the link limit factor, which is used to set a target percentage for traffic. For example,
  if it is set to 90, the ratio cost based load-balancing will set a ratio with a maximum value 
- equal to 90% of the limit value for the link. Default is 95%.
-
+ equal to 900f the limit value for the link. Default is 95
 
         	</documentation>
 		<input message="tns:GlobalLB.Globals.set_link_limit_factorRequest"/>
@@ -1938,8 +2012,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the link limit factor, which is used to set a target percentage for traffic. For example,
  if it is set to 90, the ratio cost based load-balancing will set a ratio with a maximum value 
- equal to 90% of the limit value for the link. Default is 95%.
-
+ equal to 900f the limit value for the link. Default is 95
 
         	</documentation>
 		<input message="tns:GlobalLB.Globals.get_link_limit_factorRequest"/>
@@ -1950,8 +2023,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the over-limit link limit factor. If traffic on a link exceeds the limit, this factor will 
  be used instead of the link_limit_factor until the traffic is over limit for more than 
  max_link_over_limit_count times. Once the limit has been exceeded too many times, all traffic
- is shut off for the link. The default for over_limit_link_limit_factor is 90%.
-
+ is shut off for the link. The default for over_limit_link_limit_factor is 90
 
         	</documentation>
 		<input message="tns:GlobalLB.Globals.set_over_limit_link_limit_factorRequest"/>
@@ -1962,8 +2034,7 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the over-limit link limit factor. If traffic on a link exceeds the limit, this factor will 
  be used instead of the link_limit_factor until the traffic is over limit for more than 
  max_link_over_limit_count times. Once the limit has been exceeded too many times, all traffic
- is shut off for the link. The default for over_limit_link_limit_factor is 90%.
-
+ is shut off for the link. The default for over_limit_link_limit_factor is 90
 
         	</documentation>
 		<input message="tns:GlobalLB.Globals.get_over_limit_link_limit_factorRequest"/>
@@ -1972,8 +2043,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_link_prepaid_factor">
 	<documentation>
  Sets the link prepaid factor. Maximum percentage of traffic allocated to link which has a 
- traffic allotment which has been prepaid. Default is 95%.
-
+ traffic allotment which has been prepaid. Default is 95
 
         	</documentation>
 		<input message="tns:GlobalLB.Globals.set_link_prepaid_factorRequest"/>
@@ -1982,8 +2052,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_link_prepaid_factor">
 	<documentation>
  Gets the link prepaid factor. Maximum percentage of traffic allocated to link which has a 
- traffic allotment which has been prepaid. Default is 95%.
-
+ traffic allotment which has been prepaid. Default is 95
 
         	</documentation>
 		<input message="tns:GlobalLB.Globals.get_link_prepaid_factorRequest"/>
@@ -2424,6 +2493,61 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:GlobalLB.Globals.get_forward_status_stateRequest"/>
 		<output message="tns:GlobalLB.Globals.get_forward_status_stateResponse"/>
+	</operation>
+	<operation name="set_failure_response_return_code_state">
+	<documentation>
+ Sets the state indicating whether globally the system should return
+ the failure response return code to failed requests. With this option
+ enabled, the system responds faster to requests for which it does not
+ have a pool or pool member available. The default is disabled.
+
+        	</documentation>
+		<input message="tns:GlobalLB.Globals.set_failure_response_return_code_stateRequest"/>
+		<output message="tns:GlobalLB.Globals.set_failure_response_return_code_stateResponse"/>
+	</operation>
+	<operation name="get_failure_response_return_code_state">
+	<documentation>
+ Gets the state indicating whether globally the system should return the
+ failure response return code to failed requests.
+
+        	</documentation>
+		<input message="tns:GlobalLB.Globals.get_failure_response_return_code_stateRequest"/>
+		<output message="tns:GlobalLB.Globals.get_failure_response_return_code_stateResponse"/>
+	</operation>
+	<operation name="set_failure_response_return_code">
+	<documentation>
+ Sets the global failure response return code. The default value is
+ RETURN_CODE_NO_ERROR.
+
+        	</documentation>
+		<input message="tns:GlobalLB.Globals.set_failure_response_return_codeRequest"/>
+		<output message="tns:GlobalLB.Globals.set_failure_response_return_codeResponse"/>
+	</operation>
+	<operation name="get_failure_response_return_code">
+	<documentation>
+ Gets the global failure response return code.
+
+        	</documentation>
+		<input message="tns:GlobalLB.Globals.get_failure_response_return_codeRequest"/>
+		<output message="tns:GlobalLB.Globals.get_failure_response_return_codeResponse"/>
+	</operation>
+	<operation name="set_failure_response_return_code_ttl">
+	<documentation>
+ Sets the global failure response return code caching TTL value (in seconds).
+ The value indicates the time to maintain the negative answer by a downstream
+ DNS cache. The default value is 0.
+
+        	</documentation>
+		<input message="tns:GlobalLB.Globals.set_failure_response_return_code_ttlRequest"/>
+		<output message="tns:GlobalLB.Globals.set_failure_response_return_code_ttlResponse"/>
+	</operation>
+	<operation name="get_failure_response_return_code_ttl">
+	<documentation>
+ Gets the global failure response return code caching TTL value.
+
+        	</documentation>
+		<input message="tns:GlobalLB.Globals.get_failure_response_return_code_ttlRequest"/>
+		<output message="tns:GlobalLB.Globals.get_failure_response_return_code_ttlResponse"/>
 	</operation>
 	<operation name="get_version">
 	<documentation>
@@ -2953,7 +3077,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_domain_name_check_mode">
 	<documentation>
  Sets the mode for GTM to use when performing domain
- name checking. The default value is DOMAIN_NAME_CHECK_MODE_STRICT.
+ name checking. The default value is DOMAIN_NAME_CHECK_MODE_ALLOW_UNDERSCORE.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
@@ -4426,8 +4550,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the link limit factor, which is used to set a target percentage for traffic. For example,
  if it is set to 90, the ratio cost based load-balancing will set a ratio with a maximum value 
- equal to 90% of the limit value for the link. Default is 95%.
-
+ equal to 900f the limit value for the link. Default is 95
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
@@ -4449,8 +4572,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the link limit factor, which is used to set a target percentage for traffic. For example,
  if it is set to 90, the ratio cost based load-balancing will set a ratio with a maximum value 
- equal to 90% of the limit value for the link. Default is 95%.
-
+ equal to 900f the limit value for the link. Default is 95
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
@@ -4473,8 +4595,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the over-limit link limit factor. If traffic on a link exceeds the limit, this factor will 
  be used instead of the link_limit_factor until the traffic is over limit for more than 
  max_link_over_limit_count times. Once the limit has been exceeded too many times, all traffic
- is shut off for the link. The default for over_limit_link_limit_factor is 90%.
-
+ is shut off for the link. The default for over_limit_link_limit_factor is 90
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
@@ -4497,8 +4618,7 @@ All other trademarks mentioned in this document are the property of their respec
  Gets the over-limit link limit factor. If traffic on a link exceeds the limit, this factor will 
  be used instead of the link_limit_factor until the traffic is over limit for more than 
  max_link_over_limit_count times. Once the limit has been exceeded too many times, all traffic
- is shut off for the link. The default for over_limit_link_limit_factor is 90%.
-
+ is shut off for the link. The default for over_limit_link_limit_factor is 90
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
@@ -4519,8 +4639,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_link_prepaid_factor">
 	<documentation>
  Sets the link prepaid factor. Maximum percentage of traffic allocated to link which has a 
- traffic allotment which has been prepaid. Default is 95%.
-
+ traffic allotment which has been prepaid. Default is 95
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
@@ -4541,8 +4660,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_link_prepaid_factor">
 	<documentation>
  Gets the link prepaid factor. Maximum percentage of traffic allocated to link which has a 
- traffic allotment which has been prepaid. Default is 95%.
-
+ traffic allotment which has been prepaid. Default is 95
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
@@ -5459,6 +5577,133 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the state to indicate whether the GTM forwards the availability 
  status of objects to the subscribers.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_failure_response_return_code_state">
+	<documentation>
+ Sets the state indicating whether globally the system should return
+ the failure response return code to failed requests. With this option
+ enabled, the system responds faster to requests for which it does not
+ have a pool or pool member available. The default is disabled.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_failure_response_return_code_state">
+	<documentation>
+ Gets the state indicating whether globally the system should return the
+ failure response return code to failed requests.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_failure_response_return_code">
+	<documentation>
+ Sets the global failure response return code. The default value is
+ RETURN_CODE_NO_ERROR.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_failure_response_return_code">
+	<documentation>
+ Gets the global failure response return code.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_failure_response_return_code_ttl">
+	<documentation>
+ Sets the global failure response return code caching TTL value (in seconds).
+ The value indicates the time to maintain the negative answer by a downstream
+ DNS cache. The default value is 0.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:GlobalLB/Globals"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_failure_response_return_code_ttl">
+	<documentation>
+ Gets the global failure response return code caching TTL value.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:GlobalLB/Globals"/>

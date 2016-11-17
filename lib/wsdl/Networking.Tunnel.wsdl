@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -66,6 +66,19 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:complexType name="Networking.Tunnel.L2TunnelFDBEntryV2Sequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.Tunnel.L2TunnelFDBEntryV2[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Networking.Tunnel.L2TunnelFDBEntry">
+			<xsd:sequence>
+				<xsd:element name="mac_address" type="xsd:string"/>
+				<xsd:element name="endpoint" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
 		<xsd:simpleType name="Networking.Tunnel.TunnelDirection">
 			<xsd:restriction base="xsd:string">
 				<xsd:enumeration value="TUNNEL_DIRECTION_UNKNOWN">
@@ -90,12 +103,46 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:enumeration>
 			</xsd:restriction>
 		</xsd:simpleType>
+		<xsd:complexType name="Networking.Tunnel.L2TunnelFDBEntryV2SequenceSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.Tunnel.L2TunnelFDBEntryV2Sequence[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
 		<xsd:complexType name="Common.ULongSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='xsd:long[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Networking.Tunnel.TunnelProfileAttribute">
+			<xsd:sequence>
+				<xsd:element name="profile_type" type="tns:Networking.TunnelProfileType"/>
+				<xsd:element name="profile_name" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+		<xsd:complexType name="Networking.Tunnel.L2TunnelFDBEntrySequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.Tunnel.L2TunnelFDBEntry[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Networking.Tunnel.L2TunnelFDBEntrySequenceSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.Tunnel.L2TunnelFDBEntrySequence[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Networking.Tunnel.L2TunnelFDBEntryV2">
+			<xsd:sequence>
+				<xsd:element name="mac_address" type="xsd:string"/>
+				<xsd:element name="endpoint" type="xsd:string"/>
+				<xsd:element name="replicators" type="tns:Common.IPAddressSequence"/>
+			</xsd:sequence>
 		</xsd:complexType>
 		<xsd:complexType name="Common.IPAddressSequence">
 			<xsd:complexContent>
@@ -104,6 +151,70 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:simpleType name="Networking.TunnelProfileType">
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="TUNNEL_PROFILE_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_ETHERIP">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_ETHERIP</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_FEC">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_FEC</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_GRE">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_GRE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_IPIP">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_IPIP</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_PPP">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_PPP</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_TCPFORWARD">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_TCPFORWARD</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_VXLAN">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_VXLAN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_WCCPGRE">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_WCCPGRE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_V6RD">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_V6RD</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_IPSEC">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_IPSEC</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="TUNNEL_PROFILE_GENEVE">
+					<xsd:annotation>
+						<xsd:documentation>TUNNEL_PROFILE_GENEVE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+			</xsd:restriction>
+		</xsd:simpleType>
 		<xsd:complexType name="Common.AutoLasthopSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -115,6 +226,13 @@ All other trademarks mentioned in this document are the property of their respec
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.Tunnel.TunnelDirection[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Networking.Tunnel.TunnelProfileAttributeSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Networking.Tunnel.TunnelProfileAttribute[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -210,6 +328,13 @@ All other trademarks mentioned in this document are the property of their respec
 </message>
 <message name="Networking.Tunnel.get_profileResponse">
 	<part name="return" type="tns:Common.StringSequence"/>
+</message>
+
+<message name="Networking.Tunnel.get_profile_v2Request">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.get_profile_v2Response">
+	<part name="return" type="tns:Networking.Tunnel.TunnelProfileAttributeSequence"/>
 </message>
 
 <message name="Networking.Tunnel.set_mtuRequest">
@@ -345,6 +470,89 @@ All other trademarks mentioned in this document are the property of their respec
 <message name="Networking.Tunnel.create_with_keyResponse">
 </message>
 
+<message name="Networking.Tunnel.get_static_forwardingRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.get_static_forwardingResponse">
+	<part name="return" type="tns:Networking.Tunnel.L2TunnelFDBEntrySequenceSequence"/>
+</message>
+
+<message name="Networking.Tunnel.add_static_forwardingRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+	<part name="entries" type="tns:Networking.Tunnel.L2TunnelFDBEntrySequenceSequence"/>
+</message>
+<message name="Networking.Tunnel.add_static_forwardingResponse">
+</message>
+
+<message name="Networking.Tunnel.remove_static_forwardingRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+	<part name="entries" type="tns:Networking.Tunnel.L2TunnelFDBEntrySequenceSequence"/>
+</message>
+<message name="Networking.Tunnel.remove_static_forwardingResponse">
+</message>
+
+<message name="Networking.Tunnel.remove_all_static_forwardingsRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.remove_all_static_forwardingsResponse">
+</message>
+
+<message name="Networking.Tunnel.set_secondary_addressRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+	<part name="addresses" type="tns:Common.IPAddressSequence"/>
+</message>
+<message name="Networking.Tunnel.set_secondary_addressResponse">
+</message>
+
+<message name="Networking.Tunnel.get_secondary_addressRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.get_secondary_addressResponse">
+	<part name="return" type="tns:Common.IPAddressSequence"/>
+</message>
+
+<message name="Networking.Tunnel.set_traffic_groupRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+	<part name="traffic_groups" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.set_traffic_groupResponse">
+</message>
+
+<message name="Networking.Tunnel.get_traffic_groupRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.get_traffic_groupResponse">
+	<part name="return" type="tns:Common.StringSequence"/>
+</message>
+
+<message name="Networking.Tunnel.get_static_forwarding_v2Request">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.get_static_forwarding_v2Response">
+	<part name="return" type="tns:Networking.Tunnel.L2TunnelFDBEntryV2SequenceSequence"/>
+</message>
+
+<message name="Networking.Tunnel.add_static_forwarding_v2Request">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+	<part name="entries" type="tns:Networking.Tunnel.L2TunnelFDBEntryV2SequenceSequence"/>
+</message>
+<message name="Networking.Tunnel.add_static_forwarding_v2Response">
+</message>
+
+<message name="Networking.Tunnel.remove_static_forwarding_v2Request">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+	<part name="entries" type="tns:Networking.Tunnel.L2TunnelFDBEntryV2SequenceSequence"/>
+</message>
+<message name="Networking.Tunnel.remove_static_forwarding_v2Response">
+</message>
+
+<message name="Networking.Tunnel.get_if_indexRequest">
+	<part name="tunnels" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.Tunnel.get_if_indexResponse">
+	<part name="return" type="tns:Common.ULongSequence"/>
+</message>
+
 <message name="Networking.Tunnel.get_versionRequest">
 </message>
 <message name="Networking.Tunnel.get_versionResponse">
@@ -437,6 +645,11 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="set_profile">
 	<documentation>
+ *IMPORTANT* As of v12.1.0, once a tunnel is created, the profile of
+ the tunnel cannot be changed to a profile of a different type.
+ You must delete the tunnel and recreate with a new profile setting if
+ you wish to change the profile to one of a different profile type.
+
  Sets the profile specifying the tunneling protocol for the specified
  tunnels (e.g. IPIP, GRE, WCCP-GRE tunnel profiles).
 
@@ -446,12 +659,23 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="get_profile">
 	<documentation>
+
+ This method has been deprecated. Please use get_profile_v2 instead.
  Gets the profile specifying the tunneling protocol for the specified
  tunnels.
 
         	</documentation>
 		<input message="tns:Networking.Tunnel.get_profileRequest"/>
 		<output message="tns:Networking.Tunnel.get_profileResponse"/>
+	</operation>
+	<operation name="get_profile_v2">
+	<documentation>
+ Gets the lists of profiles and types
+ the specified tunnels are associated with.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.get_profile_v2Request"/>
+		<output message="tns:Networking.Tunnel.get_profile_v2Response"/>
 	</operation>
 	<operation name="set_mtu">
 	<documentation>
@@ -647,6 +871,116 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:Networking.Tunnel.create_with_keyRequest"/>
 		<output message="tns:Networking.Tunnel.create_with_keyResponse"/>
+	</operation>
+	<operation name="get_static_forwarding">
+	<documentation>
+ This method has been deprecated. Please use
+ get_static_forwarding_v2 instead.
+ Gets the static L2 tunnel FDB entries (see struct L2TunnelFDBEntry
+ for more details) for the specified tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.get_static_forwardingRequest"/>
+		<output message="tns:Networking.Tunnel.get_static_forwardingResponse"/>
+	</operation>
+	<operation name="add_static_forwarding">
+	<documentation>
+ This method has been deprecated. Please use
+ add_static_forwarding_v2 instead.
+ Adds the static L2 tunnel FDB entries for the specified tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.add_static_forwardingRequest"/>
+		<output message="tns:Networking.Tunnel.add_static_forwardingResponse"/>
+	</operation>
+	<operation name="remove_static_forwarding">
+	<documentation>
+ This method has been deprecated. Please use
+ remove_static_forwarding_v2 instead.
+ Removes the static L2 tunnel FDB entries from the specified tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.remove_static_forwardingRequest"/>
+		<output message="tns:Networking.Tunnel.remove_static_forwardingResponse"/>
+	</operation>
+	<operation name="remove_all_static_forwardings">
+	<documentation>
+ Removes all static L2 tunnel FDB entries from the specified tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.remove_all_static_forwardingsRequest"/>
+		<output message="tns:Networking.Tunnel.remove_all_static_forwardingsResponse"/>
+	</operation>
+	<operation name="set_secondary_address">
+	<documentation>
+ Sets the secondary addresses of the tunnels. A secondary address
+ is a secondary non-floating IP address when the local-address is
+ set to a floating address. Currently this setting is supported
+ by NVGRE tunnels only.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.set_secondary_addressRequest"/>
+		<output message="tns:Networking.Tunnel.set_secondary_addressResponse"/>
+	</operation>
+	<operation name="get_secondary_address">
+	<documentation>
+ Gets the secondary addresses of the tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.get_secondary_addressRequest"/>
+		<output message="tns:Networking.Tunnel.get_secondary_addressResponse"/>
+	</operation>
+	<operation name="set_traffic_group">
+	<documentation>
+ Sets the traffic groups of the tunnels. The traffic group determines
+ the ConfigSync behavior of the tunnel object.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.set_traffic_groupRequest"/>
+		<output message="tns:Networking.Tunnel.set_traffic_groupResponse"/>
+	</operation>
+	<operation name="get_traffic_group">
+	<documentation>
+ Gets the traffic groups of the tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.get_traffic_groupRequest"/>
+		<output message="tns:Networking.Tunnel.get_traffic_groupResponse"/>
+	</operation>
+	<operation name="get_static_forwarding_v2">
+	<documentation>
+ Gets the static L2 tunnel FDB entries (see struct
+ L2TunnelFDBEntryV2 for more details) for the specified tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.get_static_forwarding_v2Request"/>
+		<output message="tns:Networking.Tunnel.get_static_forwarding_v2Response"/>
+	</operation>
+	<operation name="add_static_forwarding_v2">
+	<documentation>
+ Adds the static L2 tunnel FDB entries for the specified tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.add_static_forwarding_v2Request"/>
+		<output message="tns:Networking.Tunnel.add_static_forwarding_v2Response"/>
+	</operation>
+	<operation name="remove_static_forwarding_v2">
+	<documentation>
+ Removes the static L2 tunnel FDB entries from the specified tunnels.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.remove_static_forwarding_v2Request"/>
+		<output message="tns:Networking.Tunnel.remove_static_forwarding_v2Response"/>
+	</operation>
+	<operation name="get_if_index">
+	<documentation>
+ Gets the IF indices for the specified tunnels. This is a
+ unique identifier assigned to all objects displayed in
+ the SNMP IF-MIB.
+
+        	</documentation>
+		<input message="tns:Networking.Tunnel.get_if_indexRequest"/>
+		<output message="tns:Networking.Tunnel.get_if_indexResponse"/>
 	</operation>
 	<operation name="get_version">
 	<documentation>
@@ -865,6 +1199,11 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="set_profile">
 	<documentation>
+ *IMPORTANT* As of v12.1.0, once a tunnel is created, the profile of
+ the tunnel cannot be changed to a profile of a different type.
+ You must delete the tunnel and recreate with a new profile setting if
+ you wish to change the profile to one of a different profile type.
+
  Sets the profile specifying the tunneling protocol for the specified
  tunnels (e.g. IPIP, GRE, WCCP-GRE tunnel profiles).
 
@@ -886,8 +1225,31 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="get_profile">
 	<documentation>
+
+ This method has been deprecated. Please use get_profile_v2 instead.
  Gets the profile specifying the tunneling protocol for the specified
  tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_profile_v2">
+	<documentation>
+ Gets the lists of profiles and types
+ the specified tunnels are associated with.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
@@ -1299,6 +1661,260 @@ All other trademarks mentioned in this document are the property of their respec
  because the existing tunnel create API does not allow key values
  to be specified during tunnel creation. (Either a transaction or 
  this method are good ways of satisfying this validation).
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_static_forwarding">
+	<documentation>
+ This method has been deprecated. Please use
+ get_static_forwarding_v2 instead.
+ Gets the static L2 tunnel FDB entries (see struct L2TunnelFDBEntry
+ for more details) for the specified tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="add_static_forwarding">
+	<documentation>
+ This method has been deprecated. Please use
+ add_static_forwarding_v2 instead.
+ Adds the static L2 tunnel FDB entries for the specified tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="remove_static_forwarding">
+	<documentation>
+ This method has been deprecated. Please use
+ remove_static_forwarding_v2 instead.
+ Removes the static L2 tunnel FDB entries from the specified tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="remove_all_static_forwardings">
+	<documentation>
+ Removes all static L2 tunnel FDB entries from the specified tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_secondary_address">
+	<documentation>
+ Sets the secondary addresses of the tunnels. A secondary address
+ is a secondary non-floating IP address when the local-address is
+ set to a floating address. Currently this setting is supported
+ by NVGRE tunnels only.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_secondary_address">
+	<documentation>
+ Gets the secondary addresses of the tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_traffic_group">
+	<documentation>
+ Sets the traffic groups of the tunnels. The traffic group determines
+ the ConfigSync behavior of the tunnel object.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_traffic_group">
+	<documentation>
+ Gets the traffic groups of the tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_static_forwarding_v2">
+	<documentation>
+ Gets the static L2 tunnel FDB entries (see struct
+ L2TunnelFDBEntryV2 for more details) for the specified tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="add_static_forwarding_v2">
+	<documentation>
+ Adds the static L2 tunnel FDB entries for the specified tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="remove_static_forwarding_v2">
+	<documentation>
+ Removes the static L2 tunnel FDB entries from the specified tunnels.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/Tunnel"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_if_index">
+	<documentation>
+ Gets the IF indices for the specified tunnels. This is a
+ unique identifier assigned to all objects displayed in
+ the SNMP IF-MIB.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/Tunnel"/>

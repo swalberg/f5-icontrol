@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -4267,6 +4267,11 @@ All other trademarks mentioned in this document are the property of their respec
 						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_SEC_SECURE</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_CACHE_RESOLVER_RPZ_REWRITES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_RPZ_REWRITES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
 				<xsd:enumeration value="STATISTIC_DNS_REQUESTS_TO_CACHE">
 					<xsd:annotation>
 						<xsd:documentation>STATISTIC_DNS_REQUESTS_TO_CACHE</xsd:documentation>
@@ -4635,6 +4640,11 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="STATISTIC_DNS_OP_UPDATE">
 					<xsd:annotation>
 						<xsd:documentation>STATISTIC_DNS_OP_UPDATE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_OP_OTHER">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_OP_OTHER</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 				<xsd:enumeration value="STATISTIC_DNS_ZONE_IXFR">
@@ -5805,6 +5815,1836 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="STATISTIC_PEM_SESSIONDB_FLOWS_MAX">
 					<xsd:annotation>
 						<xsd:documentation>STATISTIC_PEM_SESSIONDB_FLOWS_MAX</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_LOGIN_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_LOGIN_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_UPLOAD_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_UPLOAD_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_DOWNLOAD_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_DOWNLOAD_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_ACTIVE_CALLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_ACTIVE_CALLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_TOTAL_CALLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_TOTAL_CALLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_FAILED_CALLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_FAILED_CALLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_START_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_START_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_START_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_START_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_STOP_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_STOP_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_STOP_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_STOP_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_ECHO_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_ECHO_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_ECHO_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_ECHO_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_OUTGOING_CALL_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_OUTGOING_CALL_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_OUTGOING_CALL_REPLIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_OUTGOING_CALL_REPLIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_CALL_CLEAR_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_CALL_CLEAR_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_CALL_DISCONNECT_NOTIFIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_CALL_DISCONNECT_NOTIFIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_SET_LINK_INFO">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_SET_LINK_INFO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PPTP_WAN_ERROR_NOTIFIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PPTP_WAN_ERROR_NOTIFIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_PASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_PASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_HTTP_REDIRECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_HTTP_REDIRECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_SERVICE_CHAINS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_SERVICE_CHAINS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_STEERING_ON_RESPONSE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_STEERING_ON_RESPONSE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_QOS_UPLINK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_QOS_UPLINK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_QOS_DOWNLINK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_QOS_DOWNLINK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_HTTP_HEADER_MODIFICATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_HTTP_HEADER_MODIFICATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_FLOW_REPORTING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_FLOW_REPORTING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_SESSION_REPORTING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_SESSION_REPORTING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_ACTION_POLICY_REEVALUATION_RATE_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CONCURRENT_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CONCURRENT_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_NON_PROVISIONED_SESSIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_PROVISIONING_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_PROVISIONING_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_PROVISIONING_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_PROVISIONING_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_TERMINATIONS_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_TERMINATIONS_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_TERMINATIONS_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_TERMINATIONS_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_INITIALS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_INITIALS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_INITIALS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_INITIALS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_UPDATES_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_UPDATES_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_UPDATES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_UPDATES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_RAR_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_RAR_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_RAA_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_RAA_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_USAGE_MONITORING_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_USAGE_MONITORING_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_USAGE_MONITORING_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_USAGE_MONITORING_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCR_TERMINATIONS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCR_TERMINATIONS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GX_CCA_TERMINATIONS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GX_CCA_TERMINATIONS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CONCURRENT_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CONCURRENT_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_TOTAL_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_TOTAL_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_SESSIONS_CREATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_SESSIONS_CREATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_NON_PROVISIONED_SESSIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_PROVISIONING_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_PROVISIONING_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_PROVISIONING_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_PROVISIONING_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_ERROR_MESSAGES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_ERROR_MESSAGES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_TERMINATIONS_INITIATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_TERMINATIONS_INITIATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_TERMINATIONS_INITIATED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_TERMINATIONS_INITIATED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_SESSIONS_TERMINATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_SESSIONS_TERMINATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_INITIALS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_INITIALS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_INITIALS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_INITIALS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_UPDATES_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_UPDATES_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_UPDATES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_UPDATES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_RAR_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_RAR_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_RAA_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_RAA_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCR_TERMINATIONS_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCR_TERMINATIONS_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_GY_CCA_TERMINATIONS_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_GY_CCA_TERMINATIONS_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_SESSION_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_SESSION_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_FLOW_START_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_FLOW_START_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_FLOW_INTERIM_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_FLOW_INTERIM_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_HSL_FLOW_STOP_RECORDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_HSL_FLOW_STOP_RECORDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_START">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_START</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_STOP">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_STOP</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_INTERIM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_INTERIM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_RADIUS_ACCOUNTING_RETRANSMISSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_RADIUS_ACCOUNTING_RETRANSMISSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_CONCURRENT_SUBSCRIBERS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_TOTAL_SUBSCRIBERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_TOTAL_SUBSCRIBERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_SUBSCRIBER_LIMIT_EXCEEDED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_SUBSCRIBER_LIMIT_EXCEEDED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NO_RADIUS_INFO_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONING_PENDING_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_NOT_PROVISIONED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_FAILED_PROVISIONING_ATTEMPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_FAILED_PROVISIONING_ATTEMPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_UNKNOWN_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_UNKNOWN_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_PROVISIONED_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_PROVISIONED_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_INACTIVE_SUBSCRIBERS_REMOVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_INACTIVE_SUBSCRIBERS_REMOVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_PEM_SUBSCRIBER_MARKED_FOR_DELETION_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_CONNECTIONS_ACCEPTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_CONNECTIONS_ACCEPTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_CONNECTIONS_CURRENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_CONNECTIONS_CURRENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_CONNECTIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_CONNECTIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SMTPS_BLOCKED_COMMANDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SMTPS_BLOCKED_COMMANDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_XFR_MESSAGES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_XFR_MESSAGES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_EXPRESS_NOTIFIES_RECEIVED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_EXPRESS_NOTIFIES_RECEIVED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_XFR_NOTIFIES_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_XFR_NOTIFIES_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_XFR_NOTIFIES_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_XFR_NOTIFIES_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_AXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_AXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_IXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_IXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_XFR_QUERIES_ACL_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_XFR_QUERIES_ACL_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_MISSING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_MISSING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_NOT_REQUIRED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_NOT_REQUIRED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_VERIFIED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_VERIFIED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_BAD_KEY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_BAD_KEY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_BAD_SIG">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_BAD_SIG</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_TSIG_BAD_TIME">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_TSIG_BAD_TIME</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_RR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_RR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_NODATA">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_NODATA</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_NXDOMAIN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_NXDOMAIN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_REFERRAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_REFERRAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3_RESALT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3_RESALT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIGNED_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIGNED_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_DNSKEY_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_DNSKEY_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_NSEC3PARAM_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_NSEC3PARAM_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_DS_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_DS_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_CRYPTO_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_CRYPTO_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_SUCCESS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_SUCCESS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_SIG_RRSET_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_SIG_RRSET_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_CONNECT_FLOW_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_CONNECT_FLOW_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_TO_WIRE_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_TO_WIRE_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_STARTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_STARTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_COMPLETED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_COMPLETED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_MSGS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_MSGS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_MASTER_MSGS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_MASTER_MSGS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_AXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_AXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_IXFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_IXFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_RESPONSE_AVERAGE_SIZE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_RESPONSE_AVERAGE_SIZE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_EXTERNAL_SERIAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_EXTERNAL_SERIAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNSSEC_ZONE_XFR_MASTER_SERIAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNSSEC_ZONE_XFR_MASTER_SERIAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_NOTIFIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_NOTIFIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_SERVER_XFR_NOTIFY_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_SERVER_XFR_NOTIFY_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_CACHE_RESOLVER_FORWARD_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_FORWARD_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_CACHE_RESOLVER_FORWARD_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_CACHE_RESOLVER_FORWARD_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_IRULES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_IRULES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_CONNECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_CONNECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_WEB_SOCKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_WEB_SOCKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_CLIENT_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_CLIENT_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_EXCESS_CLIENT_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_EXCESS_CLIENT_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_SERVER_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_OVERSIZE_SERVER_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_EXCESS_SERVER_HEADERS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_EXCESS_SERVER_HEADERS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_UNKNOWN_METHODS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_UNKNOWN_METHODS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_HTTP_PASSTHROUGH_PIPELINES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_HTTP_PASSTHROUGH_PIPELINES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_ECDH_RSA_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_ECDH_RSA_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_ECDHE_ECDSA_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_ECDHE_ECDSA_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_ECDH_ECDSA_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_ECDH_ECDSA_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_DHE_DSS_KEY_EXCHANGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_DHE_DSS_KEY_EXCHANGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_AES_GCM_BULK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_AES_GCM_BULK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_CURRENT_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_CURRENT_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_NUMBER_OF_MESSAGES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_NUMBER_OF_MESSAGES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_TOTAL_SIZE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_TOTAL_SIZE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FIX_NUMBER_OF_MESSAGES_LAST_INTERVAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FIX_NUMBER_OF_MESSAGES_LAST_INTERVAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_FWDP_DESTINATION_IP_BYPASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_FWDP_DESTINATION_IP_BYPASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_FWDP_SOURCE_IP_BYPASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_FWDP_SOURCE_IP_BYPASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_FWDP_HOSTNAME_BYPASSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_FWDP_HOSTNAME_BYPASSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_TOTAL_END_POINTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_TOTAL_END_POINTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_REQUESTS_GTM_REWRITES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_REQUESTS_GTM_REWRITES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_ACCEPTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_ACCEPTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_CURRENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_CURRENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_BLOCKED_COMMANDS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_BLOCKED_COMMANDS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_CONNECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_CONNECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_CURRENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_CURRENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_MAXIMUM">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_MAXIMUM</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_FAILED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_FAILED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_RENEGOTIATIONS_REJECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_RENEGOTIATIONS_REJECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FASTL4_LATE_BINDING_SUCCESSFUL_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FASTL4_LATE_BINDING_SUCCESSFUL_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FASTL4_LATE_BINDING_TIMED_OUT_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FASTL4_LATE_BINDING_TIMED_OUT_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_CONNECTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_CONNECTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_STATUS_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_STATUS_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_VALIDATION_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_RESPONSE_VALIDATION_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_CERTIFICATE_STATUS_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_CERTIFICATE_STATUS_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_HTTP_ERRORS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_HTTP_ERRORS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_TIMEOUTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_TIMEOUTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_OCSP_STAPLING_OCSP_CONNECTION_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_ACTIVE_PORT_BLOCKS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_ACTIVE_PORT_BLOCKS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_ACTIVE_CLIENTS_REACHED_LIMIT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_ACTIVE_CLIENTS_REACHED_LIMIT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_ACTIVE_ZOMBIE_PORT_BLOCKS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_ACTIVE_ZOMBIE_PORT_BLOCKS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_CLIENTS_REACHED_LIMIT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_CLIENTS_REACHED_LIMIT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATION_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_ALLOCATION_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_DEALLOCATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_PORT_BLOCK_DEALLOCATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_CREATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_CREATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_DELETED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCKS_DELETED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCK_CONNECTIONS_KILLED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_LSN_POOL_PBA_TOTAL_ZOMBIE_PORT_BLOCK_CONNECTIONS_KILLED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_QUERIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_QUERIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_ALLOWED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_ALLOWED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_DROPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_DROPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_TRUNCATED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_TRUNCATED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_NXDOMAIN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_NXDOMAIN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_NOERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_NOERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_RAPID_RESPONSE_REFUSED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_RAPID_RESPONSE_REFUSED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_IN_RESUBMITTED_FOR_RETRY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_IN_RESUBMITTED_FOR_RETRY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_AND_NOT_DELIVERABLE_TO_ORIGINATOR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_AND_NOT_DELIVERABLE_TO_ORIGINATOR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_ROUTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_ROUTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_UNROUTABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_UNROUTABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_DROPPED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_DROPPED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_A_FULL_QUEUE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_A_FULL_QUEUE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_DROPPED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_DROPPED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_CLOSED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_CONNECTION_CLOSED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_AN_INTERNAL_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_AN_INTERNAL_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_FAILED_DUE_TO_PERSIST_KEY_IN_USE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_FAILED_DUE_TO_PERSIST_KEY_IN_USE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BADMSGS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BADMSGS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_DROPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_DROPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_INVITE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_INVITE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_ACK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_ACK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_OPTIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_OPTIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BYE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BYE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CANCEL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CANCEL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REGISTER_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REGISTER_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_PUBLISH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_PUBLISH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOTIFY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOTIFY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SUBSCRIBE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SUBSCRIBE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MESSAGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MESSAGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_PRACK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_PRACK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_OTHER">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_OTHER</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_PROVISIONAL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_PROVISIONAL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SUCCESSFUL">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SUCCESSFUL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REDIRECTION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REDIRECTION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CLIENT_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CLIENT_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVER_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVER_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_GLOBAL_FAILURES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_GLOBAL_FAILURES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MESSAGE_LIMIT_EXCEEDED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MESSAGE_LIMIT_EXCEEDED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_LOOP_DETECTION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_LOOP_DETECTION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MAX_FORWARDS_CHECK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MAX_FORWARDS_CHECK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BAD_REQUEST">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BAD_REQUEST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_FOUND">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_FOUND</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUEST_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUEST_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TRANSACTION_DOES_NOT_EXIST">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TRANSACTION_DOES_NOT_EXIST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_LOOP_DETECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_LOOP_DETECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TOO_MANY_HOPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TOO_MANY_HOPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_ACCEPTABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_ACCEPTABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNKNOWN_PARSE_ERROR">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNKNOWN_PARSE_ERROR</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CONTENT_LENGTH_MISMATCH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CONTENT_LENGTH_MISMATCH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_EXTRANEOUS_HEADER_FIELD">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_EXTRANEOUS_HEADER_FIELD</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_INVALID_CONTENT_LENGTH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_INVALID_CONTENT_LENGTH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQ_FIELD_OVERLARGE_VALUES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQ_FIELD_OVERLARGE_VALUES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_RESP_FIELD_OVERLARGE_VALUES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_RESP_FIELD_OVERLARGE_VALUES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNTERMINATED_QUOTED_STRING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNTERMINATED_QUOTED_STRING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_MALFORMED_REQUEST_URI">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_MALFORMED_REQUEST_URI</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNKNOWN_PROTOCOL_VERSION">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNKNOWN_PROTOCOL_VERSION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_CSEQ_METHOD_MISMATCH">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_CSEQ_METHOD_MISMATCH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_BYTES_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_BYTES_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_BYTES_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_BYTES_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_PACKETS_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_PACKETS_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_CLIENT_PACKETS_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_CLIENT_PACKETS_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_BYTES_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_BYTES_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_BYTES_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_BYTES_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_PACKETS_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_PACKETS_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CRYPTO_SERVER_PACKETS_OUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CRYPTO_SERVER_PACKETS_OUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_EVICTION_POLICY_EVICTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_EVICTION_POLICY_EVICTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CONNECTION_FLOW_MISS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CONNECTION_FLOW_MISS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_SYNCOOKIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_SYNCOOKIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_ACCEPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_ACCEPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_REJECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_REJECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_HW_SYNCOOKIES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_HW_SYNCOOKIES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_HW_ACCEPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_HW_ACCEPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_WL_HITS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_WL_HITS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_WL_ACCEPTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_WL_ACCEPTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SYNCOOKIE_STATS_WL_REJECTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SYNCOOKIE_STATS_WL_REJECTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FW_RULE_LAST_HIT_TIME">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FW_RULE_LAST_HIT_TIME</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_ASSOCIATIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_ASSOCIATIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_CLOSING">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_CLOSING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_CONFIRMED_ADDRESSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_CONFIRMED_ADDRESSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_UNCONFIRMED_ADDRESSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_UNCONFIRMED_ADDRESSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_ACTIVE_PATHS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_ACTIVE_PATHS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SCTP_INACTIVE_PATHS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SCTP_INACTIVE_PATHS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_CLIENTLDAP_CONNECTIONS_TLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_CLIENTLDAP_CONNECTIONS_TLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SERVERLDAP_CONNECTIONS_TLS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SERVERLDAP_CONNECTIONS_TLS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_AGGREGATE_RENEGOTIATIONS_REJECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_AGGREGATE_RENEGOTIATIONS_REJECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_FTPS_SESSIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_FTPS_SESSIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_TFTP_READ_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_TFTP_READ_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_TFTP_WRITE_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_TFTP_WRITE_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_FTP_PASSTHRU_TRANSITIONS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_FTP_PASSTHRU_TRANSITIONS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_TFTP_DISCARDED_REQUESTS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_TFTP_DISCARDED_REQUESTS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_INSPECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_INSPECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_MALFORMED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_MALFORMED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_CACHE_LOOKUPS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_CACHE_LOOKUPS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_HW_CACHE_RESPONSES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_HW_CACHE_RESPONSES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_VCMP_RED_PACKETS_IN">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_VCMP_RED_PACKETS_IN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_SESSION_MIRRORING_SUCCESS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_SESSION_MIRRORING_SUCCESS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_SESSION_MIRRORING_FAILURE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_SESSION_MIRRORING_FAILURE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_PEER_READY">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_PEER_READY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_RECV">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_CTX_RECV</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_HS_SUCCESS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_HS_SUCCESS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_FAILURE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_FAILURE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CONNECTION_MIRRORING_HA_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_DTLS_TX_PUSHBACKS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_DTLS_TX_PUSHBACKS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_CIPHER_CAMELLIA_BULK">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_CIPHER_CAMELLIA_BULK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_DNS_NAPTR_REQS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_DNS_NAPTR_REQS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_TRANSMITTED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_TRANSMITTED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_RECEIVED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_RECEIVED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_RPF">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_RPF</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_WRONG_INTERFACE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_WRONG_INTERFACE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_NO_ROUTE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_NO_ROUTE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_ROUTES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IP_MULTICAST_DROPPED_MAX_PENDING_ROUTES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_TRANSMITTED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_TRANSMITTED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_RECEIVED_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_RECEIVED_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_RPF">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_RPF</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_WRONG_INTERFACE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_WRONG_INTERFACE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_NO_ROUTE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_NO_ROUTE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_ROUTE_LOOKUP_TIMEOUT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_PACKETS">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_PACKETS</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_ROUTES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_IPV6_MULTICAST_DROPPED_MAX_PENDING_ROUTES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_ACTIVE_HANDSHAKES_REJECTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_ACTIVE_HANDSHAKES_REJECTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_COMMON_CURRENT_ACTIVE_HANDSHAKES">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_COMMON_CURRENT_ACTIVE_HANDSHAKES</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_1K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_1K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_2K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_2K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_3K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_3K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_4K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_4K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_5K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_5K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_6K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_6K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_7K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_7K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_8K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_8K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_9K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_9K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_10K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_10K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_11K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_11K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_12K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_12K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_13K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_13K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_14K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_14K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_15K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_15K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SSL_DYNAMIC_RECORD_16K">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SSL_DYNAMIC_RECORD_16K</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPROUTER_STANDBY_DROPPED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPROUTER_STANDBY_DROPPED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE_413_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REQUEST_ENTITY_TOO_LARGE_413_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME_416_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UNSUPPORTED_URI_SCHEME_416_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE_480_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TEMPORARILY_UNAVAILABLE_480_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_LOOP_DETECTED_482_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_LOOP_DETECTED_482_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_TOO_MANY_HOPS_483_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_TOO_MANY_HOPS_483_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE_484_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_ADDRESS_INCOMPLETE_484_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE_488_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_ACCEPTABLE_HERE_488_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR_500_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVER_INTERNAL_ERROR_500_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_IMPLEMENTED">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_IMPLEMENTED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_IMPLEMENTED_501_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_IMPLEMENTED_501_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE_503_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_SERVICE_UNAVAILABLE_503_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED_505_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_VERSION_NOT_SUPPORTED_505_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BADMSGS_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BADMSGS_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_DROPS_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_DROPS_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_INFO">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_INFO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_REFER">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_REFER</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_UPDATE_REQ">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_UPDATE_REQ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_BAD_REQUEST_400_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_BAD_REQUEST_400_SENT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="STATISTIC_SIPSESSION_NOT_FOUND_404_SENT">
+					<xsd:annotation>
+						<xsd:documentation>STATISTIC_SIPSESSION_NOT_FOUND_404_SENT</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 			</xsd:restriction>

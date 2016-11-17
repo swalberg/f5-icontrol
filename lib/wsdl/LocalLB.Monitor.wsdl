@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -37,6 +37,13 @@ All other trademarks mentioned in this document are the property of their respec
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:LocalLB.MonitorIPPort[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="LocalLB.Monitor.AdaptiveTypeSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:LocalLB.Monitor.AdaptiveType[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -119,6 +126,13 @@ All other trademarks mentioned in this document are the property of their respec
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='xsd:boolean[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Common.ULongSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='xsd:long[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -700,6 +714,11 @@ All other trademarks mentioned in this document are the property of their respec
 						<xsd:documentation>STYPE_GW_MONITOR_SECONDARY_ADDRESS</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
+				<xsd:enumeration value="STYPE_DSCP">
+					<xsd:annotation>
+						<xsd:documentation>STYPE_DSCP</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:complexType name="LocalLB.MonitorIPPort">
@@ -1032,6 +1051,25 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:element name="value" type="xsd:string"/>
 			</xsd:sequence>
 		</xsd:complexType>
+		<xsd:simpleType name="LocalLB.Monitor.AdaptiveType">
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="ATYPE_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>ATYPE_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="ATYPE_RELATIVE">
+					<xsd:annotation>
+						<xsd:documentation>ATYPE_RELATIVE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="ATYPE_ABSOLUTE">
+					<xsd:annotation>
+						<xsd:documentation>ATYPE_ABSOLUTE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+			</xsd:restriction>
+		</xsd:simpleType>
 		<xsd:complexType name="Common.EnabledStateSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -1164,6 +1202,76 @@ All other trademarks mentioned in this document are the property of their respec
 </message>
 <message name="LocalLB.Monitor.get_manual_resume_stateResponse">
 	<part name="return" type="tns:Common.EnabledStateSequence"/>
+</message>
+
+<message name="LocalLB.Monitor.set_adaptive_stateRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+	<part name="states" type="tns:Common.EnabledStateSequence"/>
+</message>
+<message name="LocalLB.Monitor.set_adaptive_stateResponse">
+</message>
+
+<message name="LocalLB.Monitor.get_adaptive_stateRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="LocalLB.Monitor.get_adaptive_stateResponse">
+	<part name="return" type="tns:Common.EnabledStateSequence"/>
+</message>
+
+<message name="LocalLB.Monitor.set_adaptive_divergence_typeRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+	<part name="types" type="tns:LocalLB.Monitor.AdaptiveTypeSequence"/>
+</message>
+<message name="LocalLB.Monitor.set_adaptive_divergence_typeResponse">
+</message>
+
+<message name="LocalLB.Monitor.get_adaptive_divergence_typeRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="LocalLB.Monitor.get_adaptive_divergence_typeResponse">
+	<part name="return" type="tns:LocalLB.Monitor.AdaptiveTypeSequence"/>
+</message>
+
+<message name="LocalLB.Monitor.set_adaptive_divergence_valueRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+	<part name="values" type="tns:Common.ULongSequence"/>
+</message>
+<message name="LocalLB.Monitor.set_adaptive_divergence_valueResponse">
+</message>
+
+<message name="LocalLB.Monitor.get_adaptive_divergence_valueRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="LocalLB.Monitor.get_adaptive_divergence_valueResponse">
+	<part name="return" type="tns:Common.ULongSequence"/>
+</message>
+
+<message name="LocalLB.Monitor.set_adaptive_limitRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+	<part name="limits" type="tns:Common.ULongSequence"/>
+</message>
+<message name="LocalLB.Monitor.set_adaptive_limitResponse">
+</message>
+
+<message name="LocalLB.Monitor.get_adaptive_limitRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="LocalLB.Monitor.get_adaptive_limitResponse">
+	<part name="return" type="tns:Common.ULongSequence"/>
+</message>
+
+<message name="LocalLB.Monitor.set_adaptive_sampling_timespanRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+	<part name="timespans" type="tns:Common.ULongSequence"/>
+</message>
+<message name="LocalLB.Monitor.set_adaptive_sampling_timespanResponse">
+</message>
+
+<message name="LocalLB.Monitor.get_adaptive_sampling_timespanRequest">
+	<part name="template_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="LocalLB.Monitor.get_adaptive_sampling_timespanResponse">
+	<part name="return" type="tns:Common.ULongSequence"/>
 </message>
 
 <message name="LocalLB.Monitor.set_template_destinationRequest">
@@ -1425,6 +1533,106 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:LocalLB.Monitor.get_manual_resume_stateRequest"/>
 		<output message="tns:LocalLB.Monitor.get_manual_resume_stateResponse"/>
+	</operation>
+	<operation name="set_adaptive_state">
+	<documentation>
+ Sets the monitor templates' adaptive state. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespace
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.set_adaptive_stateRequest"/>
+		<output message="tns:LocalLB.Monitor.set_adaptive_stateResponse"/>
+	</operation>
+	<operation name="get_adaptive_state">
+	<documentation>
+ Gets the monitor templates' adaptive state.
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.get_adaptive_stateRequest"/>
+		<output message="tns:LocalLB.Monitor.get_adaptive_stateResponse"/>
+	</operation>
+	<operation name="set_adaptive_divergence_type">
+	<documentation>
+ Sets the monitor templates' adaptive type. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespan.
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.set_adaptive_divergence_typeRequest"/>
+		<output message="tns:LocalLB.Monitor.set_adaptive_divergence_typeResponse"/>
+	</operation>
+	<operation name="get_adaptive_divergence_type">
+	<documentation>
+ Gets the monitor templates' adaptive divergence type.
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.get_adaptive_divergence_typeRequest"/>
+		<output message="tns:LocalLB.Monitor.get_adaptive_divergence_typeResponse"/>
+	</operation>
+	<operation name="set_adaptive_divergence_value">
+	<documentation>
+ Sets the monitor templates' adaptive divergence value. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespace
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.set_adaptive_divergence_valueRequest"/>
+		<output message="tns:LocalLB.Monitor.set_adaptive_divergence_valueResponse"/>
+	</operation>
+	<operation name="get_adaptive_divergence_value">
+	<documentation>
+ Gets the monitor templates' adaptive divergence value.
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.get_adaptive_divergence_valueRequest"/>
+		<output message="tns:LocalLB.Monitor.get_adaptive_divergence_valueResponse"/>
+	</operation>
+	<operation name="set_adaptive_limit">
+	<documentation>
+ Sets the monitor templates' adaptive limit. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespan
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.set_adaptive_limitRequest"/>
+		<output message="tns:LocalLB.Monitor.set_adaptive_limitResponse"/>
+	</operation>
+	<operation name="get_adaptive_limit">
+	<documentation>
+ Gets the monitor templates' adaptive limit.
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.get_adaptive_limitRequest"/>
+		<output message="tns:LocalLB.Monitor.get_adaptive_limitResponse"/>
+	</operation>
+	<operation name="set_adaptive_sampling_timespan">
+	<documentation>
+ Sets the monitor templates' adaptive sampling timespan. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespace
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.set_adaptive_sampling_timespanRequest"/>
+		<output message="tns:LocalLB.Monitor.set_adaptive_sampling_timespanResponse"/>
+	</operation>
+	<operation name="get_adaptive_sampling_timespan">
+	<documentation>
+ Gets the monitor templates' adaptive sampling timespan.
+
+        	</documentation>
+		<input message="tns:LocalLB.Monitor.get_adaptive_sampling_timespanRequest"/>
+		<output message="tns:LocalLB.Monitor.get_adaptive_sampling_timespanResponse"/>
 	</operation>
 	<operation name="set_template_destination">
 	<documentation>
@@ -1911,6 +2119,226 @@ All other trademarks mentioned in this document are the property of their respec
  marked an object down, that object will not be marked up by the monitor, i.e. the
  object will be manually marked up.
  
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_adaptive_state">
+	<documentation>
+ Sets the monitor templates' adaptive state. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespace
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_adaptive_state">
+	<documentation>
+ Gets the monitor templates' adaptive state.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_adaptive_divergence_type">
+	<documentation>
+ Sets the monitor templates' adaptive type. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespan.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_adaptive_divergence_type">
+	<documentation>
+ Gets the monitor templates' adaptive divergence type.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_adaptive_divergence_value">
+	<documentation>
+ Sets the monitor templates' adaptive divergence value. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespace
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_adaptive_divergence_value">
+	<documentation>
+ Gets the monitor templates' adaptive divergence value.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_adaptive_limit">
+	<documentation>
+ Sets the monitor templates' adaptive limit. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespan
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_adaptive_limit">
+	<documentation>
+ Gets the monitor templates' adaptive limit.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_adaptive_sampling_timespan">
+	<documentation>
+ Sets the monitor templates' adaptive sampling timespan. When enabled,
+ the monitor will calculate the health based on response time. The
+ behavior of the monitoring and health calculation can be further
+ configured via set_adaptive_divergence_type, set_adaptive_allowed_divergence,
+ set_adaptive_limit, and set_adaptive_sampling_timespace
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:LocalLB/Monitor"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_adaptive_sampling_timespan">
+	<documentation>
+ Gets the monitor templates' adaptive sampling timespan.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:LocalLB/Monitor"/>
 		<input>

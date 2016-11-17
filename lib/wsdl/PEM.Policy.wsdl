@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -25,6 +25,13 @@ All other trademarks mentioned in this document are the property of their respec
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.ReportGranularityType[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="PEM.Policy.ModifyHTTPHeaderOperationTypeSequenceSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.ModifyHTTPHeaderOperationTypeSequence[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -102,6 +109,25 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:simpleType name="PEM.Policy.ModifyHTTPHeaderValueType">
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="MODIFY_HTTP_HEADER_VALUE_TYPE_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>MODIFY_HTTP_HEADER_VALUE_TYPE_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MODIFY_HTTP_HEADER_VALUE_TYPE_STRING">
+					<xsd:annotation>
+						<xsd:documentation>MODIFY_HTTP_HEADER_VALUE_TYPE_STRING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MODIFY_HTTP_HEADER_VALUE_TYPE_TCL_SNIPPET">
+					<xsd:annotation>
+						<xsd:documentation>MODIFY_HTTP_HEADER_VALUE_TYPE_TCL_SNIPPET</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+			</xsd:restriction>
+		</xsd:simpleType>
 		<xsd:simpleType name="PEM.Policy.FilterOperationType">
 			<xsd:restriction base="xsd:string">
 				<xsd:enumeration value="FILTER_OPERATION_TYPE_UNKNOWN">
@@ -128,6 +154,13 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:complexType name="PEM.Policy.ForwardingActionTypeSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.ForwardingActionType[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
 		<xsd:complexType name="PEM.Policy.L2EndpointTypeSequenceSequenceSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -149,10 +182,24 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:complexType name="PEM.Policy.ModifyHTTPHeaderValueTypeSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.ModifyHTTPHeaderValueType[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
 		<xsd:complexType name="PEM.Policy.FilterOperationTypeSequenceSequenceSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.FilterOperationTypeSequenceSequence[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="PEM.Policy.ModifyHTTPHeaderOperationTypeSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.ModifyHTTPHeaderOperationType[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -210,6 +257,13 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:enumeration>
 			</xsd:restriction>
 		</xsd:simpleType>
+		<xsd:complexType name="PEM.Policy.ModifyHTTPHeaderValueTypeSequenceSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.ModifyHTTPHeaderValueTypeSequence[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
 		<xsd:complexType name="PEM.Policy.FilterOperationTypeSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -262,6 +316,13 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:enumeration>
 			</xsd:restriction>
 		</xsd:simpleType>
+		<xsd:complexType name="PEM.Policy.ForwardingActionTypeSequenceSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:PEM.Policy.ForwardingActionTypeSequence[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
 		<xsd:complexType name="PEM.Policy.ProtocolTypeSequenceSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -276,6 +337,30 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:simpleType name="PEM.Policy.ModifyHTTPHeaderOperationType">
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="MODIFY_HTTP_HEADER_OPERATION_TYPE_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>MODIFY_HTTP_HEADER_OPERATION_TYPE_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MODIFY_HTTP_HEADER_OPERATION_TYPE_NONE">
+					<xsd:annotation>
+						<xsd:documentation>MODIFY_HTTP_HEADER_OPERATION_TYPE_NONE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MODIFY_HTTP_HEADER_OPERATION_TYPE_INSERT">
+					<xsd:annotation>
+						<xsd:documentation>MODIFY_HTTP_HEADER_OPERATION_TYPE_INSERT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="MODIFY_HTTP_HEADER_OPERATION_TYPE_REMOVE">
+					<xsd:annotation>
+						<xsd:documentation>MODIFY_HTTP_HEADER_OPERATION_TYPE_REMOVE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+			</xsd:restriction>
+		</xsd:simpleType>
 		<xsd:complexType name="Common.IPNetmaskSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -283,6 +368,35 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
+		<xsd:simpleType name="PEM.Policy.ForwardingActionType">
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="FORWARDING_ACTION_TYPE_UNKNOWN">
+					<xsd:annotation>
+						<xsd:documentation>FORWARDING_ACTION_TYPE_UNKNOWN</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="FORWARDING_ACTION_TYPE_NONE">
+					<xsd:annotation>
+						<xsd:documentation>FORWARDING_ACTION_TYPE_NONE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="FORWARDING_ACTION_TYPE_ROUTE_TO_NETWORK">
+					<xsd:annotation>
+						<xsd:documentation>FORWARDING_ACTION_TYPE_ROUTE_TO_NETWORK</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="FORWARDING_ACTION_TYPE_POOL">
+					<xsd:annotation>
+						<xsd:documentation>FORWARDING_ACTION_TYPE_POOL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="FORWARDING_ACTION_TYPE_ICAP">
+					<xsd:annotation>
+						<xsd:documentation>FORWARDING_ACTION_TYPE_ICAP</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+			</xsd:restriction>
+		</xsd:simpleType>
 		<xsd:simpleType name="PEM.Policy.L2EndpointType">
 			<xsd:restriction base="xsd:string">
 				<xsd:enumeration value="L2_ENDPOINT_TYPE_UNKNOWN">
@@ -1051,6 +1165,102 @@ All other trademarks mentioned in this document are the property of their respec
 </message>
 <message name="PEM.Policy.get_flow_info_filter_protocol_typeResponse">
 	<part name="return" type="tns:PEM.Policy.ProtocolTypeSequenceSequenceSequence"/>
+</message>
+
+<message name="PEM.Policy.set_rule_forwarding_action_typeRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:PEM.Policy.ForwardingActionTypeSequenceSequence"/>
+</message>
+<message name="PEM.Policy.set_rule_forwarding_action_typeResponse">
+</message>
+
+<message name="PEM.Policy.get_rule_forwarding_action_typeRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.get_rule_forwarding_action_typeResponse">
+	<part name="return" type="tns:PEM.Policy.ForwardingActionTypeSequenceSequence"/>
+</message>
+
+<message name="PEM.Policy.set_rule_internal_virtual_serverRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+	<part name="virtual_servers" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.set_rule_internal_virtual_serverResponse">
+</message>
+
+<message name="PEM.Policy.get_rule_internal_virtual_serverRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.get_rule_internal_virtual_serverResponse">
+	<part name="return" type="tns:Common.StringSequenceSequence"/>
+</message>
+
+<message name="PEM.Policy.set_rule_modify_http_header_nameRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.set_rule_modify_http_header_nameResponse">
+</message>
+
+<message name="PEM.Policy.get_rule_modify_http_header_nameRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.get_rule_modify_http_header_nameResponse">
+	<part name="return" type="tns:Common.StringSequenceSequence"/>
+</message>
+
+<message name="PEM.Policy.set_rule_modify_http_header_operationRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:PEM.Policy.ModifyHTTPHeaderOperationTypeSequenceSequence"/>
+</message>
+<message name="PEM.Policy.set_rule_modify_http_header_operationResponse">
+</message>
+
+<message name="PEM.Policy.get_rule_modify_http_header_operationRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.get_rule_modify_http_header_operationResponse">
+	<part name="return" type="tns:PEM.Policy.ModifyHTTPHeaderOperationTypeSequenceSequence"/>
+</message>
+
+<message name="PEM.Policy.set_rule_modify_http_header_value_contentRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.set_rule_modify_http_header_value_contentResponse">
+</message>
+
+<message name="PEM.Policy.get_rule_modify_http_header_value_contentRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.get_rule_modify_http_header_value_contentResponse">
+	<part name="return" type="tns:Common.StringSequenceSequence"/>
+</message>
+
+<message name="PEM.Policy.set_rule_modify_http_header_value_typeRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:PEM.Policy.ModifyHTTPHeaderValueTypeSequenceSequence"/>
+</message>
+<message name="PEM.Policy.set_rule_modify_http_header_value_typeResponse">
+</message>
+
+<message name="PEM.Policy.get_rule_modify_http_header_value_typeRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rules" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.Policy.get_rule_modify_http_header_value_typeResponse">
+	<part name="return" type="tns:PEM.Policy.ModifyHTTPHeaderValueTypeSequenceSequence"/>
 </message>
 
 <message name="PEM.Policy.get_versionRequest">
@@ -2005,6 +2215,124 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:PEM.Policy.get_flow_info_filter_protocol_typeRequest"/>
 		<output message="tns:PEM.Policy.get_flow_info_filter_protocol_typeResponse"/>
+	</operation>
+	<operation name="set_rule_forwarding_action_type">
+	<documentation>
+ Sets the forwarding action types for the specified rules.
+ Specifies the forwarding action type. Depending on the type flow 
+ is steered to icap server, forwarding endpoint or to the network.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.set_rule_forwarding_action_typeRequest"/>
+		<output message="tns:PEM.Policy.set_rule_forwarding_action_typeResponse"/>
+	</operation>
+	<operation name="get_rule_forwarding_action_type">
+	<documentation>
+ Gets the forwarding action types for the specified rules.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.get_rule_forwarding_action_typeRequest"/>
+		<output message="tns:PEM.Policy.get_rule_forwarding_action_typeResponse"/>
+	</operation>
+	<operation name="set_rule_internal_virtual_server">
+	<documentation>
+ Sets the internal virtual servers for the specified rules.
+ Specifies the internal virtual server name if the type selected 
+ is icap.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.set_rule_internal_virtual_serverRequest"/>
+		<output message="tns:PEM.Policy.set_rule_internal_virtual_serverResponse"/>
+	</operation>
+	<operation name="get_rule_internal_virtual_server">
+	<documentation>
+ Gets the internal virtual servers for the specified rules.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.get_rule_internal_virtual_serverRequest"/>
+		<output message="tns:PEM.Policy.get_rule_internal_virtual_serverResponse"/>
+	</operation>
+	<operation name="set_rule_modify_http_header_name">
+	<documentation>
+ Sets the modify HTTP header names for the specified rules.
+ Specifies the HTTP header name to insert or remove in an HTTP 
+ request that matches the policy rule.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.set_rule_modify_http_header_nameRequest"/>
+		<output message="tns:PEM.Policy.set_rule_modify_http_header_nameResponse"/>
+	</operation>
+	<operation name="get_rule_modify_http_header_name">
+	<documentation>
+ Gets the modify HTTP header names for the specified rules.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.get_rule_modify_http_header_nameRequest"/>
+		<output message="tns:PEM.Policy.get_rule_modify_http_header_nameResponse"/>
+	</operation>
+	<operation name="set_rule_modify_http_header_operation">
+	<documentation>
+ Sets the modify HTTP header operations for the specified rules.
+ Specifies the type of operation used to modify an HTTP request 
+ header when the action is applied to traffic that matches the 
+ policy rule. The default value is none.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.set_rule_modify_http_header_operationRequest"/>
+		<output message="tns:PEM.Policy.set_rule_modify_http_header_operationResponse"/>
+	</operation>
+	<operation name="get_rule_modify_http_header_operation">
+	<documentation>
+ Gets the modify HTTP header operations for the specified rules.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.get_rule_modify_http_header_operationRequest"/>
+		<output message="tns:PEM.Policy.get_rule_modify_http_header_operationResponse"/>
+	</operation>
+	<operation name="set_rule_modify_http_header_value_content">
+	<documentation>
+ Sets the modify HTTP header value contents for the specified 
+ rules.
+ Specifies the HTTP header value content used to modify the HTTP 
+ header.  Based on the selected "Value Type" option, the "Value 
+ Content" format will be interpreted either as a string or a TCL 
+ snippet.  Note:  This field is applicable only when the 
+ "Operation" option is set to insert.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.set_rule_modify_http_header_value_contentRequest"/>
+		<output message="tns:PEM.Policy.set_rule_modify_http_header_value_contentResponse"/>
+	</operation>
+	<operation name="get_rule_modify_http_header_value_content">
+	<documentation>
+ Gets the modify HTTP header value contents for the specified 
+ rules.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.get_rule_modify_http_header_value_contentRequest"/>
+		<output message="tns:PEM.Policy.get_rule_modify_http_header_value_contentResponse"/>
+	</operation>
+	<operation name="set_rule_modify_http_header_value_type">
+	<documentation>
+ Sets the modify HTTP header value types for the specified rules.
+ Specifies the data type used in the "Value Content" field.  The 
+ options are string and tcl-snippet. If the string option is 
+ selected, the data entered in the "Value Content" field is 
+ interpreted as a literal string. If the tcl-snippet option is 
+ selected, the data entered in the "Value Content" field is 
+ interpreted as a TCL snippet. The default value is string.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.set_rule_modify_http_header_value_typeRequest"/>
+		<output message="tns:PEM.Policy.set_rule_modify_http_header_value_typeResponse"/>
+	</operation>
+	<operation name="get_rule_modify_http_header_value_type">
+	<documentation>
+ Gets the modify HTTP header value types for the specified rules.
+
+        	</documentation>
+		<input message="tns:PEM.Policy.get_rule_modify_http_header_value_typeRequest"/>
+		<output message="tns:PEM.Policy.get_rule_modify_http_header_value_typeResponse"/>
 	</operation>
 	<operation name="get_version">
 	<documentation>
@@ -4039,6 +4367,268 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_flow_info_filter_protocol_type">
 	<documentation>
  Gets the protocol types for the specified flow info filters.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_rule_forwarding_action_type">
+	<documentation>
+ Sets the forwarding action types for the specified rules.
+ Specifies the forwarding action type. Depending on the type flow 
+ is steered to icap server, forwarding endpoint or to the network.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_rule_forwarding_action_type">
+	<documentation>
+ Gets the forwarding action types for the specified rules.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_rule_internal_virtual_server">
+	<documentation>
+ Sets the internal virtual servers for the specified rules.
+ Specifies the internal virtual server name if the type selected 
+ is icap.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_rule_internal_virtual_server">
+	<documentation>
+ Gets the internal virtual servers for the specified rules.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_rule_modify_http_header_name">
+	<documentation>
+ Sets the modify HTTP header names for the specified rules.
+ Specifies the HTTP header name to insert or remove in an HTTP 
+ request that matches the policy rule.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_rule_modify_http_header_name">
+	<documentation>
+ Gets the modify HTTP header names for the specified rules.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_rule_modify_http_header_operation">
+	<documentation>
+ Sets the modify HTTP header operations for the specified rules.
+ Specifies the type of operation used to modify an HTTP request 
+ header when the action is applied to traffic that matches the 
+ policy rule. The default value is none.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_rule_modify_http_header_operation">
+	<documentation>
+ Gets the modify HTTP header operations for the specified rules.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_rule_modify_http_header_value_content">
+	<documentation>
+ Sets the modify HTTP header value contents for the specified 
+ rules.
+ Specifies the HTTP header value content used to modify the HTTP 
+ header.  Based on the selected "Value Type" option, the "Value 
+ Content" format will be interpreted either as a string or a TCL 
+ snippet.  Note:  This field is applicable only when the 
+ "Operation" option is set to insert.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_rule_modify_http_header_value_content">
+	<documentation>
+ Gets the modify HTTP header value contents for the specified 
+ rules.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_rule_modify_http_header_value_type">
+	<documentation>
+ Sets the modify HTTP header value types for the specified rules.
+ Specifies the data type used in the "Value Content" field.  The 
+ options are string and tcl-snippet. If the string option is 
+ selected, the data entered in the "Value Content" field is 
+ interpreted as a literal string. If the tcl-snippet option is 
+ selected, the data entered in the "Value Content" field is 
+ interpreted as a TCL snippet. The default value is string.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_rule_modify_http_header_value_type">
+	<documentation>
+ Gets the modify HTTP header value types for the specified rules.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:PEM/Policy"/>

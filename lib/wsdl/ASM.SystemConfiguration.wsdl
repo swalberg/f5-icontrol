@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -352,6 +352,71 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="VIOLATION_BASE64_PARAM_VALUE">
 					<xsd:annotation>
 						<xsd:documentation>VIOLATION_BASE64_PARAM_VALUE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_REDIRECT">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_REDIRECT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_BAD_REQUEST">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_BAD_REQUEST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAMING_PROTOCOL">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAMING_PROTOCOL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAME_MASKING">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAME_MASKING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAME_LENGTH">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAME_LENGTH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_TEXT_NULL_VALUE">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_TEXT_NULL_VALUE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_CROSS_ORIGIN_REQUEST">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_CROSS_ORIGIN_REQUEST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_TEXT_MESSAGE_NOT_ALLOWED">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_TEXT_MESSAGE_NOT_ALLOWED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_BINARY_MESSAGE_NOT_ALLOWED">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_BINARY_MESSAGE_NOT_ALLOWED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_EXTENSION">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_EXTENSION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAMES_PER_MESSAGE_COUNT">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAMES_PER_MESSAGE_COUNT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_BINARY_MESSAGE_LENGTH">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_BINARY_MESSAGE_LENGTH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_PLAINTEXT_FORMAT_SETTING">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_PLAINTEXT_FORMAT_SETTING</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 			</xsd:restriction>

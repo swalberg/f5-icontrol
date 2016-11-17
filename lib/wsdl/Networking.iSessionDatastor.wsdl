@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -159,8 +159,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_pruning_high_water_mark">
 	<documentation>
  Sets the percentage of full cache above which pruning starts for
- the datastor. Valid values range from 60% to 100%.
-
+ the datastor. Valid values range from 60
         	</documentation>
 		<input message="tns:Networking.iSessionDatastor.set_pruning_high_water_markRequest"/>
 		<output message="tns:Networking.iSessionDatastor.set_pruning_high_water_markResponse"/>
@@ -177,8 +176,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_pruning_low_water_mark">
 	<documentation>
  Sets the percentage of full cache below which pruning stops for the
- datastor.  Valid values range from 10% to 90%.
-
+ datastor.  Valid values range from 10
         	</documentation>
 		<input message="tns:Networking.iSessionDatastor.set_pruning_low_water_markRequest"/>
 		<output message="tns:Networking.iSessionDatastor.set_pruning_low_water_markResponse"/>
@@ -186,8 +184,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_pruning_low_water_mark">
 	<documentation>
  Gets the percentage of full cache below which pruning stops for the
- datastor.  Valid values range from 10% to 90%.
-
+ datastor.  Valid values range from 10
         	</documentation>
 		<input message="tns:Networking.iSessionDatastor.get_pruning_low_water_markRequest"/>
 		<output message="tns:Networking.iSessionDatastor.get_pruning_low_water_markResponse"/>
@@ -321,8 +318,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_pruning_high_water_mark">
 	<documentation>
  Sets the percentage of full cache above which pruning starts for
- the datastor. Valid values range from 60% to 100%.
-
+ the datastor. Valid values range from 60
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/iSessionDatastor"/>
 		<input>
@@ -363,8 +359,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_pruning_low_water_mark">
 	<documentation>
  Sets the percentage of full cache below which pruning stops for the
- datastor.  Valid values range from 10% to 90%.
-
+ datastor.  Valid values range from 10
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/iSessionDatastor"/>
 		<input>
@@ -384,8 +379,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_pruning_low_water_mark">
 	<documentation>
  Gets the percentage of full cache below which pruning stops for the
- datastor.  Valid values range from 10% to 90%.
-
+ datastor.  Valid values range from 10
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/iSessionDatastor"/>
 		<input>

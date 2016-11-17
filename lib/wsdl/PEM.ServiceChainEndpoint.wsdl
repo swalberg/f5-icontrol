@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -204,6 +204,38 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.ULongSequenceSequence"/>
 </message>
 
+<message name="PEM.ServiceChainEndpoint.set_service_endpoint_steering_policyRequest">
+	<part name="chains" type="tns:Common.StringSequence"/>
+	<part name="endpoints" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.ServiceChainEndpoint.set_service_endpoint_steering_policyResponse">
+</message>
+
+<message name="PEM.ServiceChainEndpoint.get_service_endpoint_steering_policyRequest">
+	<part name="chains" type="tns:Common.StringSequence"/>
+	<part name="endpoints" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.ServiceChainEndpoint.get_service_endpoint_steering_policyResponse">
+	<part name="return" type="tns:Common.StringSequenceSequence"/>
+</message>
+
+<message name="PEM.ServiceChainEndpoint.set_service_endpoint_internal_virtual_serverRequest">
+	<part name="chains" type="tns:Common.StringSequence"/>
+	<part name="endpoints" type="tns:Common.StringSequenceSequence"/>
+	<part name="virtual_servers" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.ServiceChainEndpoint.set_service_endpoint_internal_virtual_serverResponse">
+</message>
+
+<message name="PEM.ServiceChainEndpoint.get_service_endpoint_internal_virtual_serverRequest">
+	<part name="chains" type="tns:Common.StringSequence"/>
+	<part name="endpoints" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="PEM.ServiceChainEndpoint.get_service_endpoint_internal_virtual_serverResponse">
+	<part name="return" type="tns:Common.StringSequenceSequence"/>
+</message>
+
 <message name="PEM.ServiceChainEndpoint.get_versionRequest">
 </message>
 <message name="PEM.ServiceChainEndpoint.get_versionResponse">
@@ -360,6 +392,50 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:PEM.ServiceChainEndpoint.get_service_endpoint_orderRequest"/>
 		<output message="tns:PEM.ServiceChainEndpoint.get_service_endpoint_orderResponse"/>
+	</operation>
+	<operation name="set_service_endpoint_steering_policy">
+	<documentation>
+ Sets the steering policies for the specified service endpoints.
+ Specifies the steering policy for the service endpoint. This 
+ refers to the existing object pem policy. If the policy rule 
+ matches, the actions are applied on the intermediate flows in 
+ the service chain. The forwarding action in the steering policy 
+ can overwrite any default forwarding action configured in the 
+ service endpoint. The service chain action in a steering policy 
+ is not allowed.
+
+        	</documentation>
+		<input message="tns:PEM.ServiceChainEndpoint.set_service_endpoint_steering_policyRequest"/>
+		<output message="tns:PEM.ServiceChainEndpoint.set_service_endpoint_steering_policyResponse"/>
+	</operation>
+	<operation name="get_service_endpoint_steering_policy">
+	<documentation>
+ Gets the steering policies for the specified service endpoints.
+
+        	</documentation>
+		<input message="tns:PEM.ServiceChainEndpoint.get_service_endpoint_steering_policyRequest"/>
+		<output message="tns:PEM.ServiceChainEndpoint.get_service_endpoint_steering_policyResponse"/>
+	</operation>
+	<operation name="set_service_endpoint_internal_virtual_server">
+	<documentation>
+ Sets the internal virtual servers for the specified service 
+ endpoints.
+ Specifies the internal virtual server attribute on which icap 
+ profile is enabled. If the action is to forward to icap then the 
+ flow is forwarded to the pool members in the virtual server.
+
+        	</documentation>
+		<input message="tns:PEM.ServiceChainEndpoint.set_service_endpoint_internal_virtual_serverRequest"/>
+		<output message="tns:PEM.ServiceChainEndpoint.set_service_endpoint_internal_virtual_serverResponse"/>
+	</operation>
+	<operation name="get_service_endpoint_internal_virtual_server">
+	<documentation>
+ Gets the internal virtual servers for the specified service 
+ endpoints.
+
+        	</documentation>
+		<input message="tns:PEM.ServiceChainEndpoint.get_service_endpoint_internal_virtual_serverRequest"/>
+		<output message="tns:PEM.ServiceChainEndpoint.get_service_endpoint_internal_virtual_serverResponse"/>
 	</operation>
 	<operation name="get_version">
 	<documentation>
@@ -698,6 +774,98 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_service_endpoint_order">
 	<documentation>
  Gets the orders for the specified service endpoints.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/ServiceChainEndpoint"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_service_endpoint_steering_policy">
+	<documentation>
+ Sets the steering policies for the specified service endpoints.
+ Specifies the steering policy for the service endpoint. This 
+ refers to the existing object pem policy. If the policy rule 
+ matches, the actions are applied on the intermediate flows in 
+ the service chain. The forwarding action in the steering policy 
+ can overwrite any default forwarding action configured in the 
+ service endpoint. The service chain action in a steering policy 
+ is not allowed.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/ServiceChainEndpoint"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_service_endpoint_steering_policy">
+	<documentation>
+ Gets the steering policies for the specified service endpoints.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/ServiceChainEndpoint"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_service_endpoint_internal_virtual_server">
+	<documentation>
+ Sets the internal virtual servers for the specified service 
+ endpoints.
+ Specifies the internal virtual server attribute on which icap 
+ profile is enabled. If the action is to forward to icap then the 
+ flow is forwarded to the pool members in the virtual server.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:PEM/ServiceChainEndpoint"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:PEM/ServiceChainEndpoint"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_service_endpoint_internal_virtual_server">
+	<documentation>
+ Gets the internal virtual servers for the specified service 
+ endpoints.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:PEM/ServiceChainEndpoint"/>

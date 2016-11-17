@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -713,6 +713,20 @@ All other trademarks mentioned in this document are the property of their respec
 </message>
 <message name="Security.LogProfile.get_ip_intelligence_log_translation_fields_filter_stateResponse">
 	<part name="return" type="tns:Common.EnabledStateSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_dos_network_publisherRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="publishers" type="tns:Common.StringSequence"/>
+</message>
+<message name="Security.LogProfile.set_dos_network_publisherResponse">
+</message>
+
+<message name="Security.LogProfile.get_dos_network_publisherRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="Security.LogProfile.get_dos_network_publisherResponse">
+	<part name="return" type="tns:Common.StringSequence"/>
 </message>
 
 <message name="Security.LogProfile.get_applicationRequest">
@@ -1623,6 +1637,132 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.StringSequenceSequence"/>
 </message>
 
+<message name="Security.LogProfile.set_ip_intelligence_log_aggregate_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="values" type="tns:Common.ULongSequence"/>
+</message>
+<message name="Security.LogProfile.set_ip_intelligence_log_aggregate_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_ip_intelligence_log_aggregate_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="Security.LogProfile.get_ip_intelligence_log_aggregate_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_network_log_aggregate_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.set_network_log_aggregate_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_network_log_aggregate_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.get_network_log_aggregate_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_network_log_acl_match_accept_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.set_network_log_acl_match_accept_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_network_log_acl_match_accept_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.get_network_log_acl_match_accept_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_network_log_acl_match_drop_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.set_network_log_acl_match_drop_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_network_log_acl_match_drop_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.get_network_log_acl_match_drop_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_network_log_acl_match_reject_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.set_network_log_acl_match_reject_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_network_log_acl_match_reject_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.get_network_log_acl_match_reject_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_network_log_ip_errors_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.set_network_log_ip_errors_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_network_log_ip_errors_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.get_network_log_ip_errors_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_network_log_tcp_errors_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.set_network_log_tcp_errors_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_network_log_tcp_errors_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.get_network_log_tcp_errors_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Security.LogProfile.set_network_log_tcp_events_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.set_network_log_tcp_events_rate_limitResponse">
+</message>
+
+<message name="Security.LogProfile.get_network_log_tcp_events_rate_limitRequest">
+	<part name="profile_names" type="tns:Common.StringSequence"/>
+	<part name="networks" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Security.LogProfile.get_network_log_tcp_events_rate_limitResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
 <message name="Security.LogProfile.get_protocol_dnsRequest">
 	<part name="profile_names" type="tns:Common.StringSequence"/>
 </message>
@@ -2011,10 +2151,27 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_ip_intelligence_log_translation_fields_filter_state">
 	<documentation>
  Gets the IP Intelligence log translation fields filter state in Logging profile.
- 
+
         	</documentation>
 		<input message="tns:Security.LogProfile.get_ip_intelligence_log_translation_fields_filter_stateRequest"/>
 		<output message="tns:Security.LogProfile.get_ip_intelligence_log_translation_fields_filter_stateResponse"/>
+	</operation>
+	<operation name="set_dos_network_publisher">
+	<documentation>
+ Sets the DoS Network log publisher in a Logging profile. This determines
+ where the DoS Network log information is sent.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_dos_network_publisherRequest"/>
+		<output message="tns:Security.LogProfile.set_dos_network_publisherResponse"/>
+	</operation>
+	<operation name="get_dos_network_publisher">
+	<documentation>
+ Gets the DoS Network log publisher in Logging profile.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_dos_network_publisherRequest"/>
+		<output message="tns:Security.LogProfile.get_dos_network_publisherResponse"/>
 	</operation>
 	<operation name="get_application">
 	<documentation>
@@ -2241,7 +2398,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the &amp;#37; character. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_application_field_delimiterRequest"/>
@@ -2261,8 +2418,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
  
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_application_field_formatRequest"/>
 		<output message="tns:Security.LogProfile.set_application_field_formatResponse"/>
@@ -2301,7 +2457,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
  
  User string specifies the format in which the server logs traffic items.
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_application_user_stringRequest"/>
@@ -2715,7 +2871,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the field-list delimiter of the field-list storage format in Protocol (SIP) Security.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the haracter. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_protocol_sip_field_list_delimiterRequest"/>
@@ -2735,8 +2891,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
 
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_protocol_sip_field_formatRequest"/>
 		<output message="tns:Security.LogProfile.set_protocol_sip_field_formatResponse"/>
@@ -2773,7 +2928,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the user defined string of the user-defined storage format in Protocol (SIP) Security.
  
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_protocol_sip_user_defined_stringRequest"/>
@@ -3003,7 +3158,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the field-list delimiter of the field-list storage format in Network Firewall.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the haracter. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_network_field_list_delimiterRequest"/>
@@ -3023,8 +3178,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
 
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_network_field_formatRequest"/>
 		<output message="tns:Security.LogProfile.set_network_field_formatResponse"/>
@@ -3061,7 +3215,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the user defined string of the user-defined storage format in Network Firewall.
  
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_network_user_defined_stringRequest"/>
@@ -3093,6 +3247,166 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:Security.LogProfile.get_network_log_publisherRequest"/>
 		<output message="tns:Security.LogProfile.get_network_log_publisherResponse"/>
+	</operation>
+	<operation name="set_ip_intelligence_log_aggregate_rate_limit">
+	<documentation>
+ Sets the aggregate log throttle rate limit for IP Intelligence log
+ messages in logging profile.
+ When set, the system allows logging of IP Intelligence log
+ messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_ip_intelligence_log_aggregate_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_ip_intelligence_log_aggregate_rate_limitResponse"/>
+	</operation>
+	<operation name="get_ip_intelligence_log_aggregate_rate_limit">
+	<documentation>
+ Gets the aggregate log throttle rate limit for IP Intelligence log messages in logging profile.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_ip_intelligence_log_aggregate_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_ip_intelligence_log_aggregate_rate_limitResponse"/>
+	</operation>
+	<operation name="set_network_log_aggregate_rate_limit">
+	<documentation>
+ Sets the aggregate log throttle rate limit for all log messages in network firewall.
+ When set, the system allows logging up to the configured number of log
+ messages per second, beyond which network log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_network_log_aggregate_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_network_log_aggregate_rate_limitResponse"/>
+	</operation>
+	<operation name="get_network_log_aggregate_rate_limit">
+	<documentation>
+ Gets the aggregate log throttle rate limit in Network Firewall.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_network_log_aggregate_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_network_log_aggregate_rate_limitResponse"/>
+	</operation>
+	<operation name="set_network_log_acl_match_accept_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for ACL match accept log messages
+ in Network Firewall. When set, the system allows logging of ACL
+ match log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_network_log_acl_match_accept_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_network_log_acl_match_accept_rate_limitResponse"/>
+	</operation>
+	<operation name="get_network_log_acl_match_accept_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for ACL match accept log messages in Network Firewall.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_network_log_acl_match_accept_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_network_log_acl_match_accept_rate_limitResponse"/>
+	</operation>
+	<operation name="set_network_log_acl_match_drop_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for ACL match drop log messages
+ in Network Firewall. When set, the system allows logging of ACL
+ match drop log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_network_log_acl_match_drop_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_network_log_acl_match_drop_rate_limitResponse"/>
+	</operation>
+	<operation name="get_network_log_acl_match_drop_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for ACL match drop log messages in Network Firewall.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_network_log_acl_match_drop_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_network_log_acl_match_drop_rate_limitResponse"/>
+	</operation>
+	<operation name="set_network_log_acl_match_reject_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for ACL match reject log messages
+ in Network Firewall. When set, the system allows logging of ACL
+ match reject log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_network_log_acl_match_reject_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_network_log_acl_match_reject_rate_limitResponse"/>
+	</operation>
+	<operation name="get_network_log_acl_match_reject_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for ACL match reject log messages in Network Firewall.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_network_log_acl_match_reject_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_network_log_acl_match_reject_rate_limitResponse"/>
+	</operation>
+	<operation name="set_network_log_ip_errors_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for IP error log messages
+ in Network Firewall. When set, the system allows logging of IP
+ error log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_network_log_ip_errors_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_network_log_ip_errors_rate_limitResponse"/>
+	</operation>
+	<operation name="get_network_log_ip_errors_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for IP error log messages in Network Firewall.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_network_log_ip_errors_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_network_log_ip_errors_rate_limitResponse"/>
+	</operation>
+	<operation name="set_network_log_tcp_errors_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for TCP error log messages
+ in Network Firewall. When set, the system allows logging of TCP
+ error log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_network_log_tcp_errors_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_network_log_tcp_errors_rate_limitResponse"/>
+	</operation>
+	<operation name="get_network_log_tcp_errors_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for TCP error log messages in Network Firewall.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_network_log_tcp_errors_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_network_log_tcp_errors_rate_limitResponse"/>
+	</operation>
+	<operation name="set_network_log_tcp_events_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for TCP Event log messages
+ in Network Firewall. When set, the system allows logging of TCP
+ Event log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.set_network_log_tcp_events_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.set_network_log_tcp_events_rate_limitResponse"/>
+	</operation>
+	<operation name="get_network_log_tcp_events_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for TCP Event log messages in Network Firewall.
+
+        	</documentation>
+		<input message="tns:Security.LogProfile.get_network_log_tcp_events_rate_limitRequest"/>
+		<output message="tns:Security.LogProfile.get_network_log_tcp_events_rate_limitResponse"/>
 	</operation>
 	<operation name="get_protocol_dns">
 	<documentation>
@@ -3253,7 +3567,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the field-list delimiter of the field-list storage format in Protocol (DNS) Security.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the haracter. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_protocol_dns_field_list_delimiterRequest"/>
@@ -3273,8 +3587,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
 
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_protocol_dns_field_formatRequest"/>
 		<output message="tns:Security.LogProfile.set_protocol_dns_field_formatResponse"/>
@@ -3311,7 +3624,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the user defined string of the user-defined storage format in Protocol (DNS) Security.
  
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<input message="tns:Security.LogProfile.set_protocol_dns_user_defined_stringRequest"/>
@@ -3703,7 +4016,48 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_ip_intelligence_log_translation_fields_filter_state">
 	<documentation>
  Gets the IP Intelligence log translation fields filter state in Logging profile.
- 
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_dos_network_publisher">
+	<documentation>
+ Sets the DoS Network log publisher in a Logging profile. This determines
+ where the DoS Network log information is sent.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_dos_network_publisher">
+	<documentation>
+ Gets the DoS Network log publisher in Logging profile.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
 		<input>
@@ -4221,7 +4575,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the &amp;#37; character. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -4265,8 +4619,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
  
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
 		<input>
@@ -4353,7 +4706,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
  
  User string specifies the format in which the server logs traffic items.
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -5307,7 +5660,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the field-list delimiter of the field-list storage format in Protocol (SIP) Security.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the haracter. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -5351,8 +5704,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
 
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
 		<input>
@@ -5437,7 +5789,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the user defined string of the user-defined storage format in Protocol (SIP) Security.
  
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -5967,7 +6319,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the field-list delimiter of the field-list storage format in Network Firewall.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the haracter. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -6011,8 +6363,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
 
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
 		<input>
@@ -6097,7 +6448,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the user defined string of the user-defined storage format in Network Firewall.
  
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -6162,6 +6513,358 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets the log publisher in Network Firewall.
  
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_ip_intelligence_log_aggregate_rate_limit">
+	<documentation>
+ Sets the aggregate log throttle rate limit for IP Intelligence log
+ messages in logging profile.
+ When set, the system allows logging of IP Intelligence log
+ messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_ip_intelligence_log_aggregate_rate_limit">
+	<documentation>
+ Gets the aggregate log throttle rate limit for IP Intelligence log messages in logging profile.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_network_log_aggregate_rate_limit">
+	<documentation>
+ Sets the aggregate log throttle rate limit for all log messages in network firewall.
+ When set, the system allows logging up to the configured number of log
+ messages per second, beyond which network log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_network_log_aggregate_rate_limit">
+	<documentation>
+ Gets the aggregate log throttle rate limit in Network Firewall.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_network_log_acl_match_accept_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for ACL match accept log messages
+ in Network Firewall. When set, the system allows logging of ACL
+ match log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_network_log_acl_match_accept_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for ACL match accept log messages in Network Firewall.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_network_log_acl_match_drop_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for ACL match drop log messages
+ in Network Firewall. When set, the system allows logging of ACL
+ match drop log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_network_log_acl_match_drop_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for ACL match drop log messages in Network Firewall.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_network_log_acl_match_reject_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for ACL match reject log messages
+ in Network Firewall. When set, the system allows logging of ACL
+ match reject log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_network_log_acl_match_reject_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for ACL match reject log messages in Network Firewall.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_network_log_ip_errors_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for IP error log messages
+ in Network Firewall. When set, the system allows logging of IP
+ error log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_network_log_ip_errors_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for IP error log messages in Network Firewall.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_network_log_tcp_errors_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for TCP error log messages
+ in Network Firewall. When set, the system allows logging of TCP
+ error log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_network_log_tcp_errors_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for TCP error log messages in Network Firewall.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_network_log_tcp_events_rate_limit">
+	<documentation>
+ Sets the log throttle rate limit for TCP Event log messages
+ in Network Firewall. When set, the system allows logging of TCP
+ Event log messages up to the configured number of log messages per second,
+ beyond which log messages are dropped.
+ The default rate limit is unlimited.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Security/LogProfile"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_network_log_tcp_events_rate_limit">
+	<documentation>
+ Gets the log throttle rate limit for TCP Event log messages in Network Firewall.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
 		<input>
@@ -6541,7 +7244,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the field-list delimiter of the field-list storage format in Protocol (DNS) Security.
  
  Field delimiter specifies which delimiter the remote machine uses to separate the fields in the logging file.
- You may not use the % character. The default delimiter is the comma character, for Comma Separated Value (CSV).
+ You may not use the haracter. The default delimiter is the comma character, for Comma Separated Value (CSV).
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -6585,8 +7288,7 @@ All other trademarks mentioned in this document are the property of their respec
  This is relevant only for the remote storage of type remote, since Splunk and ArcSight have their fixed format.
 
  Field format specifies which format the remote machine uses for each key/value pair in the logging file.
- Use %k for key and %v for value. The default format is empty that is interpreted as "%v", for CSV.
-
+ Use 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
 		<input>
@@ -6671,7 +7373,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the user defined string of the user-defined storage format in Protocol (DNS) Security.
  
- You can use free text between the traffic items enclosed in % on both sides.
+ You can use free text between the traffic items enclosed in 0n both sides.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Security/LogProfile"/>
@@ -6918,6 +7620,22 @@ All other trademarks mentioned in this document are the property of their respec
  The settings you configure in this sub-profile apply only to security profiles (HTTP, FTP and SMTP) associated with the same
  virtual server as the logging profile containing it.
  Note that Application and Protocol (Transfer) Security are mutually exclusive parts per logging profile and virtual server.
+
+ A Network Firewall sub-profile allows you to configure where to log requests to the virtual server to which the log profile is attached.
+ The system groups the requests into several categories (e.g., ACL matches, TCP errors etc). In addition, you can configure whether
+ the requests need to be locally stored on the system or sent to an external server (e.g., syslog, ArcSight, Splunk servers).
+
+ A Protocol DNS Security sub-profile allows you to configure where to log DNS requests to the virtual server to which the log profile is
+ attached.  The system groups the requests into several categories (e.g., malicious, malformed, dropped, rejected etc). In addition, you can
+ configure whether the requests need to be locally stored on the system or sent to an external server (e.g., syslog, ArcSight, Splunk servers).
+
+ A Protocol SIP Security sub-profile allows you to configure where to log SIP requests to the virtual server to which the log profile is
+ attached. The system groups the requests into several categories (e.g., malformed, dropped etc). In addition, you can configure whether the
+ requests need to be locally stored on the system or sent to an external server (e.g., syslog, ArcSight, Splunk servers).
+
+ A DoS Network Security log publisher allows you to configure where to log DoS Network information for the virtual server that the log profile is
+ attached to. DoS Network is similar to DoS Device, as it offers DoS attack protection at the virtual server level. The information can be
+ locally stored on the system or sent to an external server (e.g., syslog, ArcSight, Splunk servers). See Log::Publisher for more information.
 
         	</documentation>
 	<port name="Security.LogProfilePort" binding="tns:Security.LogProfileBinding">
