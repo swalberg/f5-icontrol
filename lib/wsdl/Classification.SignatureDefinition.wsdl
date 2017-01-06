@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -21,13 +21,6 @@ All other trademarks mentioned in this document are the property of their respec
 		xmlns='http://www.w3.org/2001/XMLSchema'
 		xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
 		xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>
-		<xsd:complexType name="Classification.SignatureDefinition.SignatureUpdateProgressStatusTypeSequence">
-			<xsd:complexContent>
-				<xsd:restriction base='SOAP-ENC:Array'>
-					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Classification.SignatureDefinition.SignatureUpdateProgressStatusType[]'/>
-				</xsd:restriction>
-			</xsd:complexContent>
-		</xsd:complexType>
 		<xsd:complexType name="Common.TimeStampSequence">
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
@@ -66,31 +59,38 @@ All other trademarks mentioned in this document are the property of their respec
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
-		<xsd:simpleType name="Classification.SignatureDefinition.SignatureUpdateProgressStatusType">
+		<xsd:complexType name="Classification.SignatureUpdateProgressStatusSequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Classification.SignatureUpdateProgressStatus[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:simpleType name="Classification.SignatureUpdateProgressStatus">
 			<xsd:restriction base="xsd:string">
-				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_TYPE_UNKNOWN">
+				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_UNKNOWN">
 					<xsd:annotation>
-						<xsd:documentation>SIGNATURE_UPDATE_STATUS_TYPE_UNKNOWN</xsd:documentation>
+						<xsd:documentation>SIGNATURE_UPDATE_STATUS_UNKNOWN</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
-				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_TYPE_NONE">
+				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_NONE">
 					<xsd:annotation>
-						<xsd:documentation>SIGNATURE_UPDATE_STATUS_TYPE_NONE</xsd:documentation>
+						<xsd:documentation>SIGNATURE_UPDATE_STATUS_NONE</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
-				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_TYPE_SUCCESS">
+				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_SUCCESS">
 					<xsd:annotation>
-						<xsd:documentation>SIGNATURE_UPDATE_STATUS_TYPE_SUCCESS</xsd:documentation>
+						<xsd:documentation>SIGNATURE_UPDATE_STATUS_SUCCESS</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
-				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_TYPE_FAILURE">
+				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_FAILURE">
 					<xsd:annotation>
-						<xsd:documentation>SIGNATURE_UPDATE_STATUS_TYPE_FAILURE</xsd:documentation>
+						<xsd:documentation>SIGNATURE_UPDATE_STATUS_FAILURE</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
-				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_TYPE_IN_PROGRESS">
+				<xsd:enumeration value="SIGNATURE_UPDATE_STATUS_IN_PROGRESS">
 					<xsd:annotation>
-						<xsd:documentation>SIGNATURE_UPDATE_STATUS_TYPE_IN_PROGRESS</xsd:documentation>
+						<xsd:documentation>SIGNATURE_UPDATE_STATUS_IN_PROGRESS</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 			</xsd:restriction>
@@ -162,11 +162,11 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.StringSequence"/>
 </message>
 
-<message name="Classification.SignatureDefinition.get_progress_status_typeRequest">
+<message name="Classification.SignatureDefinition.get_progress_statusRequest">
 	<part name="definitions" type="tns:Common.StringSequence"/>
 </message>
-<message name="Classification.SignatureDefinition.get_progress_status_typeResponse">
-	<part name="return" type="tns:Classification.SignatureDefinition.SignatureUpdateProgressStatusTypeSequence"/>
+<message name="Classification.SignatureDefinition.get_progress_statusResponse">
+	<part name="return" type="tns:Classification.SignatureUpdateProgressStatusSequence"/>
 </message>
 
 <message name="Classification.SignatureDefinition.get_versionRequest">
@@ -266,7 +266,7 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:Classification.SignatureDefinition.get_messageRequest"/>
 		<output message="tns:Classification.SignatureDefinition.get_messageResponse"/>
 	</operation>
-	<operation name="get_progress_status_type">
+	<operation name="get_progress_status">
 	<documentation>
  Gets the signature definition types for the specified  
  signature update definitions. This indicates the progress definition 
@@ -274,8 +274,8 @@ All other trademarks mentioned in this document are the property of their respec
  none, success, failure, and in-progress.
 
         	</documentation>
-		<input message="tns:Classification.SignatureDefinition.get_progress_status_typeRequest"/>
-		<output message="tns:Classification.SignatureDefinition.get_progress_status_typeResponse"/>
+		<input message="tns:Classification.SignatureDefinition.get_progress_statusRequest"/>
+		<output message="tns:Classification.SignatureDefinition.get_progress_statusResponse"/>
 	</operation>
 	<operation name="get_version">
 	<documentation>
@@ -475,7 +475,7 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
-	<operation name="get_progress_status_type">
+	<operation name="get_progress_status">
 	<documentation>
  Gets the signature definition types for the specified  
  signature update definitions. This indicates the progress definition 
@@ -525,10 +525,10 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  The classification methods have some signatures, and these signatures 
  change with time. For example, the signatures to identify the Skype 
- traffic working now may not work later. Thus the classification  
- signatures need to be updated. This signature definition  
- interface enables you to configure the different attributes that show 
- the definition for classification signature updates.
+ traffic working now may not work later. Thus the classification   
+ signatures need to be updated. This signature definition 
+ interface enables you to check the status of the classification 
+ signature updates.
 
  Please specify the following key in all methods in the interface: 
  '/Common/signature-definition'.

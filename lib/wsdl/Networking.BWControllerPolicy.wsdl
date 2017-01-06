@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -52,6 +52,13 @@ All other trademarks mentioned in this document are the property of their respec
 			<xsd:complexContent>
 				<xsd:restriction base='SOAP-ENC:Array'>
 					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='xsd:string[]'/>
+				</xsd:restriction>
+			</xsd:complexContent>
+		</xsd:complexType>
+		<xsd:complexType name="Common.ULong64Sequence">
+			<xsd:complexContent>
+				<xsd:restriction base='SOAP-ENC:Array'>
+					<xsd:attribute ref='SOAP-ENC:arrayType' wsdl:arrayType='tns:Common.ULong64[]'/>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -221,6 +228,20 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.RateUnitSequence"/>
 </message>
 
+<message name="Networking.BWControllerPolicy.set_maximum_user_rate_ppsRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="rates" type="tns:Common.ULong64Sequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.set_maximum_user_rate_ppsResponse">
+</message>
+
+<message name="Networking.BWControllerPolicy.get_maximum_user_rate_ppsRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.get_maximum_user_rate_ppsResponse">
+	<part name="return" type="tns:Common.ULong64Sequence"/>
+</message>
+
 <message name="Networking.BWControllerPolicy.set_maximum_user_rateRequest">
 	<part name="policies" type="tns:Common.StringSequence"/>
 	<part name="rates" type="tns:Common.RateUnitSequence"/>
@@ -303,6 +324,80 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="tns:Common.ULongSequenceSequence"/>
 </message>
 
+<message name="Networking.BWControllerPolicy.set_category_ip_tosRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="categories" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.set_category_ip_tosResponse">
+</message>
+
+<message name="Networking.BWControllerPolicy.get_category_ip_tosRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="categories" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.get_category_ip_tosResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Networking.BWControllerPolicy.set_category_link_qosRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="categories" type="tns:Common.StringSequenceSequence"/>
+	<part name="values" type="tns:Common.ULongSequenceSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.set_category_link_qosResponse">
+</message>
+
+<message name="Networking.BWControllerPolicy.get_category_link_qosRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="categories" type="tns:Common.StringSequenceSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.get_category_link_qosResponse">
+	<part name="return" type="tns:Common.ULongSequenceSequence"/>
+</message>
+
+<message name="Networking.BWControllerPolicy.set_measurement_stateRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="states" type="tns:Common.EnabledStateSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.set_measurement_stateResponse">
+</message>
+
+<message name="Networking.BWControllerPolicy.get_measurement_stateRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.get_measurement_stateResponse">
+	<part name="return" type="tns:Common.EnabledStateSequence"/>
+</message>
+
+<message name="Networking.BWControllerPolicy.set_log_publisherRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="publishers" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.set_log_publisherResponse">
+</message>
+
+<message name="Networking.BWControllerPolicy.get_log_publisherRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.get_log_publisherResponse">
+	<part name="return" type="tns:Common.StringSequence"/>
+</message>
+
+<message name="Networking.BWControllerPolicy.set_log_periodRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+	<part name="periods" type="tns:Common.ULongSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.set_log_periodResponse">
+</message>
+
+<message name="Networking.BWControllerPolicy.get_log_periodRequest">
+	<part name="policies" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.BWControllerPolicy.get_log_periodResponse">
+	<part name="return" type="tns:Common.ULongSequence"/>
+</message>
+
 <message name="Networking.BWControllerPolicy.get_versionRequest">
 </message>
 <message name="Networking.BWControllerPolicy.get_versionResponse">
@@ -374,8 +469,8 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the IP-TOS value for the specified Bandwidth Controller policies.
  If set then all non-conforming Layer 3 packets are set with this value.
  A non-conforming packet is one which exceeds the rate limit of
- the configured Bandwidth policy. A value of 65535 means it's a pass 
- through and all the Layer 3 packets are passed as seen by the Bandwidth 
+ the configured Bandwidth policy. A value of 255 means it's a pass
+ through and all the Layer 3 packets are passed as seen by the Bandwidth
  Controller.
 
         	</documentation>
@@ -395,7 +490,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the Link-QOS for the specified Bandwidth Controller policies.
  All non-conforming Layer 2 packets are set with this value.
  A non-conforming packet is one which exceeds the rate limit of
- the configured Bandwidth policy. A value of 65535 means it's a 
+ the configured Bandwidth policy. A value of 255 means it's a
  pass through and all the Layer 2 packets are passed as seen by
  the Bandwidth Controller.
 
@@ -414,9 +509,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_maximum_rate">
 	<documentation>
  Sets the maximum rate for the specified Bandwidth Controller policies.
- Maximum rates is maximum bandwidth allowed for all the flows going 
+ Maximum rates is maximum bandwidth allowed for all the flows going
  going through this policy. Maximum rates value should be between
- 1000000bps and 320000000000 bps. 
+ 1000000bps and 320000000000 bps.
 
         	</documentation>
 		<input message="tns:Networking.BWControllerPolicy.set_maximum_rateRequest"/>
@@ -430,14 +525,36 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:Networking.BWControllerPolicy.get_maximum_rateRequest"/>
 		<output message="tns:Networking.BWControllerPolicy.get_maximum_rateResponse"/>
 	</operation>
+	<operation name="set_maximum_user_rate_pps">
+	<documentation>
+ Sets the maximum user rate in packets per second (PPS) for the
+ specified Bandwidth Controller policies.
+ The maximum user rate is the maximum bandwidth allowed for all the flows
+ going through this dynamically created instance of the Bandwidth Controller policy.
+ The maximum user rate cannot be higher than the maximum rate specified
+ for that Bandwidth Controller policy.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.set_maximum_user_rate_ppsRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.set_maximum_user_rate_ppsResponse"/>
+	</operation>
+	<operation name="get_maximum_user_rate_pps">
+	<documentation>
+ Gets the maximum user rate in packets per second (PPS) for the
+ specified Bandwidth Controller policies.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.get_maximum_user_rate_ppsRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.get_maximum_user_rate_ppsResponse"/>
+	</operation>
 	<operation name="set_maximum_user_rate">
 	<documentation>
  Sets the maximum user rate for the specified Bandwidth Controller policies.
  Maximum user rates is maximum bandwidth allowed for all the flows
- going through this dynamically created instance of the Bandwidth Controller 
+ going through this dynamically created instance of the Bandwidth Controller
  policy. Maximum user rate value should be between 5000 bps and 2000000000 bps.
- Maximum user rate cannot be higher than maximum rate specified for that 
- Bandwidth Controller policy.  
+ Maximum user rate cannot be higher than maximum rate specified for that
+ Bandwidth Controller policy.
 
         	</documentation>
 		<input message="tns:Networking.BWControllerPolicy.set_maximum_user_rateRequest"/>
@@ -464,9 +581,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_category_maximum_rate">
 	<documentation>
  Creates a set of Bandwidth Controller policy categories with the
- specified maximum rates. Categories is a sub-policy of dynamically 
- created instances from a dynamic enabled policies. Maximum rates 
- cannot exceed the maximum user rate of the parent Bandwidth 
+ specified maximum rates. Categories is a sub-policy of dynamically
+ created instances from a dynamic enabled policies. Maximum rates
+ cannot exceed the maximum user rate of the parent Bandwidth
  Controller policy.
 
         	</documentation>
@@ -476,7 +593,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_category_maximum_percentage">
 	<documentation>
  Creates a set of Bandwidth Controller policy categories with the specified
- maximum rate percentages. Categories is a sub-policy of dynamically 
+ maximum rate percentages. Categories is a sub-policy of dynamically
  created instances from a dynamic enabled policies. Maximum rate percentage
  is the maximum percentage of maximum user rate of dynamically enabled
  policy.
@@ -505,8 +622,8 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the Bandwidth Controller policy categories with the specified
  specified maximum rates. Maximum rate is the maximum bandwidth allowed for
- all the flows going through this policy category. Maximum rates 
- cannot exceed the maximum user rate of the parent Bandwidth 
+ all the flows going through this policy category. Maximum rates
+ cannot exceed the maximum user rate of the parent Bandwidth
  Controller policy.
 
         	</documentation>
@@ -515,7 +632,7 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="get_category_maximum_rate">
 	<documentation>
- Gets the maximum rates of the Bandwidth Controller policy categories. 
+ Gets the maximum rates of the Bandwidth Controller policy categories.
 
         	</documentation>
 		<input message="tns:Networking.BWControllerPolicy.get_category_maximum_rateRequest"/>
@@ -523,9 +640,9 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="set_category_maximum_percentage">
 	<documentation>
- Sets a set of Bandwidth Controller policy categories with specified rate 
+ Sets a set of Bandwidth Controller policy categories with specified rate
  percentages. Rate percentages is maximum percentage of the maximum
- user rate allowed for all the flows going through this Bandwidth Controller 
+ user rate allowed for all the flows going through this Bandwidth Controller
  policy category.
 
         	</documentation>
@@ -539,6 +656,104 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:Networking.BWControllerPolicy.get_category_maximum_percentageRequest"/>
 		<output message="tns:Networking.BWControllerPolicy.get_category_maximum_percentageResponse"/>
+	</operation>
+	<operation name="set_category_ip_tos">
+	<documentation>
+ Sets the IP-TOS value for the specified Bandwidth Controller Category.
+ If set then all non-conforming Layer 3 packets are set with this value.
+ A non-conforming packet is one which exceeds the rate limit of
+ the configured Bandwidth category. A value of 255 means it's a pass
+ through and all the Layer 3 packets are passed as seen by the Bandwidth
+ Controller.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.set_category_ip_tosRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.set_category_ip_tosResponse"/>
+	</operation>
+	<operation name="get_category_ip_tos">
+	<documentation>
+ Gets the IP-TOS value for specified Bandwidth Controller category.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.get_category_ip_tosRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.get_category_ip_tosResponse"/>
+	</operation>
+	<operation name="set_category_link_qos">
+	<documentation>
+ Sets the Link-QOS for the specified Bandwidth Controller categories.
+ All non-conforming Layer 2 packets are set with this value.
+ A non-conforming packet is one which exceeds the rate limit of
+ the configured Bandwidth category. A value of 255 means it's a
+ pass through and all the Layer 2 packets are passed as seen by
+ the Bandwidth Controller.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.set_category_link_qosRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.set_category_link_qosResponse"/>
+	</operation>
+	<operation name="get_category_link_qos">
+	<documentation>
+ Gets the Link-QOS for the specified Bandwidth Controller categories.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.get_category_link_qosRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.get_category_link_qosResponse"/>
+	</operation>
+	<operation name="set_measurement_state">
+	<documentation>
+ Enables/disables the measurement of bandwidth for Bandwidth
+ Controller policies.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.set_measurement_stateRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.set_measurement_stateResponse"/>
+	</operation>
+	<operation name="get_measurement_state">
+	<documentation>
+ Gets the currently configured enabled/disabled setting for the
+ bandwidth measurement feature for the specified Bandwidth Controller
+ policies. For more information about log publishers see
+ Log::Publisher.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.get_measurement_stateRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.get_measurement_stateResponse"/>
+	</operation>
+	<operation name="set_log_publisher">
+	<documentation>
+ Specify a destination log publisher for the bandwidth measurement
+ logs to be sent.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.set_log_publisherRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.set_log_publisherResponse"/>
+	</operation>
+	<operation name="get_log_publisher">
+	<documentation>
+ Returns previously configured log publisher setting for the
+ measurement feature.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.get_log_publisherRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.get_log_publisherResponse"/>
+	</operation>
+	<operation name="set_log_period">
+	<documentation>
+ Specify the time interval with which bandwidth measurement log
+ messages are sent to log server. Specified in milliseconds.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.set_log_periodRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.set_log_periodResponse"/>
+	</operation>
+	<operation name="get_log_period">
+	<documentation>
+ Gets the previously configured log period setting of the
+ Bandwidth Controller policies.
+
+        	</documentation>
+		<input message="tns:Networking.BWControllerPolicy.get_log_periodRequest"/>
+		<output message="tns:Networking.BWControllerPolicy.get_log_periodResponse"/>
 	</operation>
 	<operation name="get_version">
 	<documentation>
@@ -700,8 +915,8 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the IP-TOS value for the specified Bandwidth Controller policies.
  If set then all non-conforming Layer 3 packets are set with this value.
  A non-conforming packet is one which exceeds the rate limit of
- the configured Bandwidth policy. A value of 65535 means it's a pass 
- through and all the Layer 3 packets are passed as seen by the Bandwidth 
+ the configured Bandwidth policy. A value of 255 means it's a pass
+ through and all the Layer 3 packets are passed as seen by the Bandwidth
  Controller.
 
         	</documentation>
@@ -745,7 +960,7 @@ All other trademarks mentioned in this document are the property of their respec
  Sets the Link-QOS for the specified Bandwidth Controller policies.
  All non-conforming Layer 2 packets are set with this value.
  A non-conforming packet is one which exceeds the rate limit of
- the configured Bandwidth policy. A value of 65535 means it's a 
+ the configured Bandwidth policy. A value of 255 means it's a
  pass through and all the Layer 2 packets are passed as seen by
  the Bandwidth Controller.
 
@@ -788,9 +1003,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_maximum_rate">
 	<documentation>
  Sets the maximum rate for the specified Bandwidth Controller policies.
- Maximum rates is maximum bandwidth allowed for all the flows going 
+ Maximum rates is maximum bandwidth allowed for all the flows going
  going through this policy. Maximum rates value should be between
- 1000000bps and 320000000000 bps. 
+ 1000000bps and 320000000000 bps.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
@@ -828,14 +1043,60 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
+	<operation name="set_maximum_user_rate_pps">
+	<documentation>
+ Sets the maximum user rate in packets per second (PPS) for the
+ specified Bandwidth Controller policies.
+ The maximum user rate is the maximum bandwidth allowed for all the flows
+ going through this dynamically created instance of the Bandwidth Controller policy.
+ The maximum user rate cannot be higher than the maximum rate specified
+ for that Bandwidth Controller policy.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_maximum_user_rate_pps">
+	<documentation>
+ Gets the maximum user rate in packets per second (PPS) for the
+ specified Bandwidth Controller policies.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
 	<operation name="set_maximum_user_rate">
 	<documentation>
  Sets the maximum user rate for the specified Bandwidth Controller policies.
  Maximum user rates is maximum bandwidth allowed for all the flows
- going through this dynamically created instance of the Bandwidth Controller 
+ going through this dynamically created instance of the Bandwidth Controller
  policy. Maximum user rate value should be between 5000 bps and 2000000000 bps.
- Maximum user rate cannot be higher than maximum rate specified for that 
- Bandwidth Controller policy.  
+ Maximum user rate cannot be higher than maximum rate specified for that
+ Bandwidth Controller policy.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
@@ -898,9 +1159,9 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_category_maximum_rate">
 	<documentation>
  Creates a set of Bandwidth Controller policy categories with the
- specified maximum rates. Categories is a sub-policy of dynamically 
- created instances from a dynamic enabled policies. Maximum rates 
- cannot exceed the maximum user rate of the parent Bandwidth 
+ specified maximum rates. Categories is a sub-policy of dynamically
+ created instances from a dynamic enabled policies. Maximum rates
+ cannot exceed the maximum user rate of the parent Bandwidth
  Controller policy.
 
         	</documentation>
@@ -922,7 +1183,7 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="add_category_maximum_percentage">
 	<documentation>
  Creates a set of Bandwidth Controller policy categories with the specified
- maximum rate percentages. Categories is a sub-policy of dynamically 
+ maximum rate percentages. Categories is a sub-policy of dynamically
  created instances from a dynamic enabled policies. Maximum rate percentage
  is the maximum percentage of maximum user rate of dynamically enabled
  policy.
@@ -987,8 +1248,8 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Sets the Bandwidth Controller policy categories with the specified
  specified maximum rates. Maximum rate is the maximum bandwidth allowed for
- all the flows going through this policy category. Maximum rates 
- cannot exceed the maximum user rate of the parent Bandwidth 
+ all the flows going through this policy category. Maximum rates
+ cannot exceed the maximum user rate of the parent Bandwidth
  Controller policy.
 
         	</documentation>
@@ -1009,7 +1270,7 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="get_category_maximum_rate">
 	<documentation>
- Gets the maximum rates of the Bandwidth Controller policy categories. 
+ Gets the maximum rates of the Bandwidth Controller policy categories.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
@@ -1029,9 +1290,9 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="set_category_maximum_percentage">
 	<documentation>
- Sets a set of Bandwidth Controller policy categories with specified rate 
+ Sets a set of Bandwidth Controller policy categories with specified rate
  percentages. Rate percentages is maximum percentage of the maximum
- user rate allowed for all the flows going through this Bandwidth Controller 
+ user rate allowed for all the flows going through this Bandwidth Controller
  policy category.
 
         	</documentation>
@@ -1053,6 +1314,224 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="get_category_maximum_percentage">
 	<documentation>
  Gets the maximum percentages of Bandwidth Controller policy categories.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_category_ip_tos">
+	<documentation>
+ Sets the IP-TOS value for the specified Bandwidth Controller Category.
+ If set then all non-conforming Layer 3 packets are set with this value.
+ A non-conforming packet is one which exceeds the rate limit of
+ the configured Bandwidth category. A value of 255 means it's a pass
+ through and all the Layer 3 packets are passed as seen by the Bandwidth
+ Controller.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_category_ip_tos">
+	<documentation>
+ Gets the IP-TOS value for specified Bandwidth Controller category.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_category_link_qos">
+	<documentation>
+ Sets the Link-QOS for the specified Bandwidth Controller categories.
+ All non-conforming Layer 2 packets are set with this value.
+ A non-conforming packet is one which exceeds the rate limit of
+ the configured Bandwidth category. A value of 255 means it's a
+ pass through and all the Layer 2 packets are passed as seen by
+ the Bandwidth Controller.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_category_link_qos">
+	<documentation>
+ Gets the Link-QOS for the specified Bandwidth Controller categories.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_measurement_state">
+	<documentation>
+ Enables/disables the measurement of bandwidth for Bandwidth
+ Controller policies.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_measurement_state">
+	<documentation>
+ Gets the currently configured enabled/disabled setting for the
+ bandwidth measurement feature for the specified Bandwidth Controller
+ policies. For more information about log publishers see
+ Log::Publisher.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_log_publisher">
+	<documentation>
+ Specify a destination log publisher for the bandwidth measurement
+ logs to be sent.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_log_publisher">
+	<documentation>
+ Returns previously configured log publisher setting for the
+ measurement feature.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_log_period">
+	<documentation>
+ Specify the time interval with which bandwidth measurement log
+ messages are sent to log server. Specified in milliseconds.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/BWControllerPolicy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_log_period">
+	<documentation>
+ Gets the previously configured log period setting of the
+ Bandwidth Controller policies.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/BWControllerPolicy"/>
@@ -1095,7 +1574,7 @@ All other trademarks mentioned in this document are the property of their respec
 
 <service name="Networking.BWControllerPolicy">
 	<documentation>
- This interface configures the Bandwidth Controller policy components 
+ This interface configures the Bandwidth Controller policy components
  to manage the egress bandwidth per policy, per session or subscriber,
  per application and various combinations of these.
 

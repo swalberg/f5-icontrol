@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -231,6 +231,20 @@ All other trademarks mentioned in this document are the property of their respec
 <message name="Management.TrafficGroup.remove_all_ha_ordersResponse">
 </message>
 
+<message name="Management.TrafficGroup.set_ha_groupRequest">
+	<part name="traffic_groups" type="tns:Common.StringSequence"/>
+	<part name="ha_groups" type="tns:Common.StringSequence"/>
+</message>
+<message name="Management.TrafficGroup.set_ha_groupResponse">
+</message>
+
+<message name="Management.TrafficGroup.get_ha_groupRequest">
+	<part name="traffic_groups" type="tns:Common.StringSequence"/>
+</message>
+<message name="Management.TrafficGroup.get_ha_groupResponse">
+	<part name="return" type="tns:Common.StringSequence"/>
+</message>
+
 <message name="Management.TrafficGroup.get_versionRequest">
 </message>
 <message name="Management.TrafficGroup.get_versionResponse">
@@ -444,6 +458,25 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:Management.TrafficGroup.remove_all_ha_ordersRequest"/>
 		<output message="tns:Management.TrafficGroup.remove_all_ha_ordersResponse"/>
+	</operation>
+	<operation name="set_ha_group">
+	<documentation>
+ Sets and hence associates the HA groups with the specified traffic groups.
+ If there is no such assocation, set the HA group name to "".
+
+ HA group must exist before this association.
+
+        	</documentation>
+		<input message="tns:Management.TrafficGroup.set_ha_groupRequest"/>
+		<output message="tns:Management.TrafficGroup.set_ha_groupResponse"/>
+	</operation>
+	<operation name="get_ha_group">
+	<documentation>
+ Gets the HA group for the specified traffic groups.
+
+        	</documentation>
+		<input message="tns:Management.TrafficGroup.get_ha_groupRequest"/>
+		<output message="tns:Management.TrafficGroup.get_ha_groupResponse"/>
 	</operation>
 	<operation name="get_version">
 	<documentation>
@@ -899,6 +932,49 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="remove_all_ha_orders">
 	<documentation>
  Removes all HA order entries from the specified traffic groups.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Management/TrafficGroup"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Management/TrafficGroup"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Management/TrafficGroup"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="set_ha_group">
+	<documentation>
+ Sets and hence associates the HA groups with the specified traffic groups.
+ If there is no such assocation, set the HA group name to "".
+
+ HA group must exist before this association.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Management/TrafficGroup"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Management/TrafficGroup"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Management/TrafficGroup"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_ha_group">
+	<documentation>
+ Gets the HA group for the specified traffic groups.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Management/TrafficGroup"/>

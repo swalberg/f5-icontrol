@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -180,6 +180,11 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="USER_ROLE_FIREWALL_MANAGER">
 					<xsd:annotation>
 						<xsd:documentation>USER_ROLE_FIREWALL_MANAGER</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="USER_ROLE_FRAUD_PROTECTION_MANAGER">
+					<xsd:annotation>
+						<xsd:documentation>USER_ROLE_FRAUD_PROTECTION_MANAGER</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 			</xsd:restriction>
@@ -485,6 +490,13 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="permissions" type="tns:Management.UserManagement.UserPermissionSequenceSequence"/>
 </message>
 <message name="Management.UserManagement.set_user_permissionResponse">
+</message>
+
+<message name="Management.UserManagement.delete_user_permissionRequest">
+	<part name="user_names" type="tns:Common.StringSequence"/>
+	<part name="permissions" type="tns:Management.UserManagement.UserPermissionSequenceSequence"/>
+</message>
+<message name="Management.UserManagement.delete_user_permissionResponse">
 </message>
 
 <message name="Management.UserManagement.get_my_permissionRequest">
@@ -819,6 +831,17 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:Management.UserManagement.set_user_permissionRequest"/>
 		<output message="tns:Management.UserManagement.set_user_permissionResponse"/>
+	</operation>
+	<operation name="delete_user_permission">
+	<documentation>
+ Delete the permissions of the specified users. The permission basically
+ indicates what role a user has on a given partition. A user could have
+ one role on a partition, and a different role on another partition, hence
+ the permission list is a sequence of sequence.
+
+        	</documentation>
+		<input message="tns:Management.UserManagement.delete_user_permissionRequest"/>
+		<output message="tns:Management.UserManagement.delete_user_permissionResponse"/>
 	</operation>
 	<operation name="get_my_permission">
 	<documentation> 
@@ -1549,6 +1572,29 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="set_user_permission">
 	<documentation>
  Sets the permissions of the specified users. The permission basically
+ indicates what role a user has on a given partition. A user could have
+ one role on a partition, and a different role on another partition, hence
+ the permission list is a sequence of sequence.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Management/UserManagement"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Management/UserManagement"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Management/UserManagement"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="delete_user_permission">
+	<documentation>
+ Delete the permissions of the specified users. The permission basically
  indicates what role a user has on a given partition. A user could have
  one role on a partition, and a different role on another partition, hence
  the permission list is a sequence of sequence.

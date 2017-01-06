@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -243,9 +243,7 @@ All other trademarks mentioned in this document are the property of their respec
  = If set, packets cannot cross route domain boundaries, i.e., they
    are strictly isolated to the current route domain.
  = For example, if not set, you can add a route to the routing table
-   where the destination is 10.0.0.0%20 (route domain 20) and the
-   gateway is 172.27.84.29%32 (route domain 32).
- = If set, the system may find invalid iRules that passed
+   where the destination is 10.0.0.0   gateway is 172.27.84.29 = If set, the system may find invalid iRules that passed
    validation.
 
         	</documentation>
@@ -476,9 +474,7 @@ All other trademarks mentioned in this document are the property of their respec
  = If set, packets cannot cross route domain boundaries, i.e., they
    are strictly isolated to the current route domain.
  = For example, if not set, you can add a route to the routing table
-   where the destination is 10.0.0.0%20 (route domain 20) and the
-   gateway is 172.27.84.29%32 (route domain 32).
- = If set, the system may find invalid iRules that passed
+   where the destination is 10.0.0.0   gateway is 172.27.84.29 = If set, the system may find invalid iRules that passed
    validation.
 
         	</documentation>
@@ -635,8 +631,7 @@ All other trademarks mentioned in this document are the property of their respec
  service provider, for example, to have two different pool
  members at 10.10.10.1 that represent completely different real
  servers.  The addresses for the two pool members might be
- 10.10.10.1%1 and 10.10.10.1%2 where the numbers after the
- percent signs are numeric ids of route domains.
+ 10.10.10.1 percent signs are numeric ids of route domains.
 
         	</documentation>
 	<port name="Networking.RouteDomainPort" binding="tns:Networking.RouteDomainBinding">

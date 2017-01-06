@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -50,6 +50,11 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="SAVE_GTM_CONFIG_ONLY">
 					<xsd:annotation>
 						<xsd:documentation>SAVE_GTM_CONFIG_ONLY</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="SAVE_EXCLUDE_GTM_CONFIG">
+					<xsd:annotation>
+						<xsd:documentation>SAVE_EXCLUDE_GTM_CONFIG</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 			</xsd:restriction>
@@ -141,6 +146,11 @@ All other trademarks mentioned in this document are the property of their respec
 						<xsd:documentation>LOAD_GTM_CONFIG_ONLY</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
+				<xsd:enumeration value="LOAD_EXCLUDE_GTM_CONFIG">
+					<xsd:annotation>
+						<xsd:documentation>LOAD_EXCLUDE_GTM_CONFIG</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:simpleType name="Common.ULong">
@@ -184,6 +194,12 @@ All other trademarks mentioned in this document are the property of their respec
 <message name="System.ConfigSync.get_configuration_listRequest">
 </message>
 <message name="System.ConfigSync.get_configuration_listResponse">
+	<part name="return" type="tns:System.ConfigSync.ConfigFileSequence"/>
+</message>
+
+<message name="System.ConfigSync.get_single_configuration_file_listRequest">
+</message>
+<message name="System.ConfigSync.get_single_configuration_file_listResponse">
 	<part name="return" type="tns:System.ConfigSync.ConfigFileSequence"/>
 </message>
 
@@ -233,6 +249,15 @@ All other trademarks mentioned in this document are the property of their respec
 <message name="System.ConfigSync.save_partial_encrypted_configurationResponse">
 </message>
 
+<message name="System.ConfigSync.save_single_configuration_fileRequest">
+	<part name="filename" type="xsd:string"/>
+	<part name="save_flag" type="tns:System.ConfigSync.SaveMode"/>
+	<part name="passphrase" type="xsd:string"/>
+	<part name="tarfile" type="xsd:string"/>
+</message>
+<message name="System.ConfigSync.save_single_configuration_fileResponse">
+</message>
+
 <message name="System.ConfigSync.install_configurationRequest">
 	<part name="filename" type="xsd:string"/>
 </message>
@@ -272,6 +297,16 @@ All other trademarks mentioned in this document are the property of their respec
 <message name="System.ConfigSync.install_all_encrypted_configurationResponse">
 </message>
 
+<message name="System.ConfigSync.install_single_configuration_fileRequest">
+	<part name="filename" type="xsd:string"/>
+	<part name="load_flag" type="tns:System.ConfigSync.LoadMode"/>
+	<part name="passphrase" type="xsd:string"/>
+	<part name="tarfile" type="xsd:string"/>
+	<part name="merge" type="xsd:boolean"/>
+</message>
+<message name="System.ConfigSync.install_single_configuration_fileResponse">
+</message>
+
 <message name="System.ConfigSync.synchronize_configurationRequest">
 	<part name="sync_flag" type="tns:System.ConfigSync.SyncMode"/>
 </message>
@@ -307,6 +342,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="filename" type="xsd:string"/>
 </message>
 <message name="System.ConfigSync.delete_configurationResponse">
+</message>
+
+<message name="System.ConfigSync.delete_single_configuration_fileRequest">
+	<part name="filename" type="xsd:string"/>
+</message>
+<message name="System.ConfigSync.delete_single_configuration_fileResponse">
 </message>
 
 <message name="System.ConfigSync.upload_configurationRequest">
@@ -372,6 +413,17 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:System.ConfigSync.get_configuration_listRequest"/>
 		<output message="tns:System.ConfigSync.get_configuration_listResponse"/>
+	</operation>
+	<operation name="get_single_configuration_file_list">
+	<documentation>
+ Gets a list of all available single configuration files (SCF) on the system.
+ Note that because you have the ability to specify an SCF file without a .scf
+ extension, this will return all files in the /var/local/scf directory, except
+ for files with an explicit ".tar" extension.
+
+        	</documentation>
+		<input message="tns:System.ConfigSync.get_single_configuration_file_listRequest"/>
+		<output message="tns:System.ConfigSync.get_single_configuration_file_listResponse"/>
 	</operation>
 	<operation name="load_configuration">
 	<documentation>
@@ -447,6 +499,22 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:System.ConfigSync.save_partial_encrypted_configurationRequest"/>
 		<output message="tns:System.ConfigSync.save_partial_encrypted_configurationResponse"/>
 	</operation>
+	<operation name="save_single_configuration_file">
+	<documentation>
+ Saves the current configurations to the specified single configuration file (SCF). An
+ SCF file is a flat file that holds an entire config, as opposed to an archive. The file
+ can be encrypted by specifying a passphrase. Files in the system filestore in the
+ /config/filestore directory will not be saved into the SCF file. For the files in
+ filestore that are being referenced by the SCF configuration file, they will be
+ automatically saved into a separate TAR file when a copy of the SCF file is saved. This
+ TAR file can be specified. If the "save_flag" is SAVE_BASE_LEVEL_CONFIG, tarfile cannot
+ be specified. If it is SAVE_EXCLUDE_GTM_CONFIG, neither passphrase nor tarfile can be
+ specified. SAVE_HIGH_LEVEL_CONFIG is not supported for this feature.
+
+        	</documentation>
+		<input message="tns:System.ConfigSync.save_single_configuration_fileRequest"/>
+		<output message="tns:System.ConfigSync.save_single_configuration_fileResponse"/>
+	</operation>
 	<operation name="install_configuration">
 	<documentation>
  Installs the configurations contained in the specified archive to 
@@ -509,6 +577,15 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:System.ConfigSync.install_all_encrypted_configurationRequest"/>
 		<output message="tns:System.ConfigSync.install_all_encrypted_configurationResponse"/>
 	</operation>
+	<operation name="install_single_configuration_file">
+	<documentation>
+ Installs the configurations contained in the specified single configuration file (SCF) to 
+ the local device.
+
+        	</documentation>
+		<input message="tns:System.ConfigSync.install_single_configuration_fileRequest"/>
+		<output message="tns:System.ConfigSync.install_single_configuration_fileResponse"/>
+	</operation>
 	<operation name="synchronize_configuration">
 	<documentation>
  Note: This method has been deprecated, because syncing has
@@ -556,6 +633,9 @@ All other trademarks mentioned in this document are the property of their respec
  the device group that have configuration older than the specified
  device.
 
+ It is required to have force true in order to synchronize a
+ device other than the local device to the group.
+
         	</documentation>
 		<input message="tns:System.ConfigSync.synchronize_to_group_v2Request"/>
 		<output message="tns:System.ConfigSync.synchronize_to_group_v2Response"/>
@@ -597,6 +677,23 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:System.ConfigSync.delete_configurationRequest"/>
 		<output message="tns:System.ConfigSync.delete_configurationResponse"/>
 	</operation>
+	<operation name="delete_single_configuration_file">
+	<documentation>
+ Deletes the specified configuration from the SCF directory.
+ If the specified file doesn't exist, an exception will be raised.
+ The specified configuration should not contain any path information
+ since it is restricted to be in the SCF directory. If there is a
+ default TAR file archive in the same directory of the form
+ [filepath].tar, it will be deleted as well. If a non-default TAR filename
+ was specified when the SCF file was created, it can be deleted separately
+ with this same method.
+ NOTE: File names containing the following characters will be 
+ considered invalid: ` ~ / \ : ; * ? " &lt; &gt; | &amp;
+
+        	</documentation>
+		<input message="tns:System.ConfigSync.delete_single_configuration_fileRequest"/>
+		<output message="tns:System.ConfigSync.delete_single_configuration_fileResponse"/>
+	</operation>
 	<operation name="upload_configuration">
 	<documentation>
  Uploads the configurations to the device.
@@ -627,7 +724,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="upload_file">
 	<documentation>
  A generic file upload mechanism to transfer a file to the device.
- 
+
+ Depending on your system settings (including settings like appliance
+ mode, FIPS, and Common Criteria), the set of files that can be
+ operated on may be restricted. If any of these restrictions occur,
+ an OperationFailed error will be generated.
+
         	</documentation>
 		<input message="tns:System.ConfigSync.upload_fileRequest"/>
 		<output message="tns:System.ConfigSync.upload_fileResponse"/>
@@ -635,7 +737,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="download_file">
 	<documentation>
  A generic file download mechanism to download a file from the device.
- 
+
+ Depending on your system settings (including settings like appliance
+ mode, FIPS, and Common Criteria), the set of files that can be
+ operated on may be restricted. If any of these restrictions occur,
+ an OperationFailed error will be generated.
+
         	</documentation>
 		<input message="tns:System.ConfigSync.download_fileRequest"/>
 		<output message="tns:System.ConfigSync.download_fileResponse"/>
@@ -668,6 +775,29 @@ All other trademarks mentioned in this document are the property of their respec
 	<documentation>
  Gets a list of all available configuration archives on the system.
  
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="get_single_configuration_file_list">
+	<documentation>
+ Gets a list of all available single configuration files (SCF) on the system.
+ Note that because you have the ability to specify an SCF file without a .scf
+ extension, this will return all files in the /var/local/scf directory, except
+ for files with an explicit ".tar" extension.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
 		<input>
@@ -830,6 +960,34 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
+	<operation name="save_single_configuration_file">
+	<documentation>
+ Saves the current configurations to the specified single configuration file (SCF). An
+ SCF file is a flat file that holds an entire config, as opposed to an archive. The file
+ can be encrypted by specifying a passphrase. Files in the system filestore in the
+ /config/filestore directory will not be saved into the SCF file. For the files in
+ filestore that are being referenced by the SCF configuration file, they will be
+ automatically saved into a separate TAR file when a copy of the SCF file is saved. This
+ TAR file can be specified. If the "save_flag" is SAVE_BASE_LEVEL_CONFIG, tarfile cannot
+ be specified. If it is SAVE_EXCLUDE_GTM_CONFIG, neither passphrase nor tarfile can be
+ specified. SAVE_HIGH_LEVEL_CONFIG is not supported for this feature.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
 	<operation name="install_configuration">
 	<documentation>
  Installs the configurations contained in the specified archive to 
@@ -964,6 +1122,27 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
+	<operation name="install_single_configuration_file">
+	<documentation>
+ Installs the configurations contained in the specified single configuration file (SCF) to 
+ the local device.
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
 	<operation name="synchronize_configuration">
 	<documentation>
  Note: This method has been deprecated, because syncing has
@@ -1034,6 +1213,9 @@ All other trademarks mentioned in this document are the property of their respec
  unconditionally. If force is false, then update all devices in
  the device group that have configuration older than the specified
  device.
+
+ It is required to have force true in order to synchronize a
+ device other than the local device to the group.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
@@ -1124,6 +1306,35 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
+	<operation name="delete_single_configuration_file">
+	<documentation>
+ Deletes the specified configuration from the SCF directory.
+ If the specified file doesn't exist, an exception will be raised.
+ The specified configuration should not contain any path information
+ since it is restricted to be in the SCF directory. If there is a
+ default TAR file archive in the same directory of the form
+ [filepath].tar, it will be deleted as well. If a non-default TAR filename
+ was specified when the SCF file was created, it can be deleted separately
+ with this same method.
+ NOTE: File names containing the following characters will be 
+ considered invalid: ` ~ / \ : ; * ? " &lt; &gt; | &amp;
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:System/ConfigSync"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
 	<operation name="upload_configuration">
 	<documentation>
  Uploads the configurations to the device.
@@ -1190,7 +1401,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="upload_file">
 	<documentation>
  A generic file upload mechanism to transfer a file to the device.
- 
+
+ Depending on your system settings (including settings like appliance
+ mode, FIPS, and Common Criteria), the set of files that can be
+ operated on may be restricted. If any of these restrictions occur,
+ an OperationFailed error will be generated.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
 		<input>
@@ -1210,7 +1426,12 @@ All other trademarks mentioned in this document are the property of their respec
 	<operation name="download_file">
 	<documentation>
  A generic file download mechanism to download a file from the device.
- 
+
+ Depending on your system settings (including settings like appliance
+ mode, FIPS, and Common Criteria), the set of files that can be
+ operated on may be restricted. If any of these restrictions occur,
+ an OperationFailed error will be generated.
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:System/ConfigSync"/>
 		<input>

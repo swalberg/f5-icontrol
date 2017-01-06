@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -435,6 +435,71 @@ All other trademarks mentioned in this document are the property of their respec
 						<xsd:documentation>VIOLATION_BASE64_PARAM_VALUE</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_REDIRECT">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_REDIRECT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_BAD_REQUEST">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_BAD_REQUEST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAMING_PROTOCOL">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAMING_PROTOCOL</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAME_MASKING">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAME_MASKING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAME_LENGTH">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAME_LENGTH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_TEXT_NULL_VALUE">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_TEXT_NULL_VALUE</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_CROSS_ORIGIN_REQUEST">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_CROSS_ORIGIN_REQUEST</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_TEXT_MESSAGE_NOT_ALLOWED">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_TEXT_MESSAGE_NOT_ALLOWED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_BINARY_MESSAGE_NOT_ALLOWED">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_BINARY_MESSAGE_NOT_ALLOWED</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_EXTENSION">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_EXTENSION</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_FRAMES_PER_MESSAGE_COUNT">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_FRAMES_PER_MESSAGE_COUNT</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_WEBSOCKET_BINARY_MESSAGE_LENGTH">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_WEBSOCKET_BINARY_MESSAGE_LENGTH</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="VIOLATION_PLAINTEXT_FORMAT_SETTING">
+					<xsd:annotation>
+						<xsd:documentation>VIOLATION_PLAINTEXT_FORMAT_SETTING</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:complexType name="Common.BooleanSequence">
@@ -754,6 +819,11 @@ All other trademarks mentioned in this document are the property of their respec
 				<xsd:enumeration value="TURKISH_ISO_8859_9">
 					<xsd:annotation>
 						<xsd:documentation>TURKISH_ISO_8859_9</xsd:documentation>
+					</xsd:annotation>
+				</xsd:enumeration>
+				<xsd:enumeration value="ARABIC_WINDOWS_1256">
+					<xsd:annotation>
+						<xsd:documentation>ARABIC_WINDOWS_1256</xsd:documentation>
 					</xsd:annotation>
 				</xsd:enumeration>
 			</xsd:restriction>
@@ -1414,6 +1484,13 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="return" type="xsd:boolean"/>
 </message>
 
+<message name="ASM.Policy.is_complex_assocRequest">
+	<part name="policy_names" type="tns:Common.StringSequence"/>
+</message>
+<message name="ASM.Policy.is_complex_assocResponse">
+	<part name="return" type="tns:Common.BooleanSequence"/>
+</message>
+
 <!-- portType -->
 
 <portType name="ASM.PolicyPortType">
@@ -2052,6 +2129,14 @@ All other trademarks mentioned in this document are the property of their respec
         	</documentation>
 		<input message="tns:ASM.Policy.set_http_response_splittingRequest"/>
 		<output message="tns:ASM.Policy.set_http_response_splittingResponse"/>
+	</operation>
+	<operation name="is_complex_assoc">
+	<documentation>
+ Determines whether the specified policies have a complex association type.
+
+        	</documentation>
+		<input message="tns:ASM.Policy.is_complex_assocRequest"/>
+		<output message="tns:ASM.Policy.is_complex_assocResponse"/>
 	</operation>
 </portType>
 
@@ -3470,6 +3555,26 @@ All other trademarks mentioned in this document are the property of their respec
  This method is deprecated, please use WhiteHat Sentinel Vulnerabilities page in ASM GUI to configure response splitting.
  
  Set HTTP response splitting
+
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:ASM/Policy"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:ASM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:ASM/Policy"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
+	<operation name="is_complex_assoc">
+	<documentation>
+ Determines whether the specified policies have a complex association type.
 
         	</documentation>
 		<soap:operation soapAction="urn:iControl:ASM/Policy"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -194,6 +194,13 @@ All other trademarks mentioned in this document are the property of their respec
 <message name="Networking.IPsecManualSecurityAssociation.set_auth_keyResponse">
 </message>
 
+<message name="Networking.IPsecManualSecurityAssociation.get_auth_keyRequest">
+	<part name="associations" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.IPsecManualSecurityAssociation.get_auth_keyResponse">
+	<part name="return" type="tns:Common.StringSequence"/>
+</message>
+
 <message name="Networking.IPsecManualSecurityAssociation.set_auth_key_encryptedRequest">
 	<part name="associations" type="tns:Common.StringSequence"/>
 	<part name="keys" type="tns:Common.StringSequence"/>
@@ -241,6 +248,13 @@ All other trademarks mentioned in this document are the property of their respec
 	<part name="keys" type="tns:Common.StringSequence"/>
 </message>
 <message name="Networking.IPsecManualSecurityAssociation.set_encrypt_keyResponse">
+</message>
+
+<message name="Networking.IPsecManualSecurityAssociation.get_encrypt_keyRequest">
+	<part name="associations" type="tns:Common.StringSequence"/>
+</message>
+<message name="Networking.IPsecManualSecurityAssociation.get_encrypt_keyResponse">
+	<part name="return" type="tns:Common.StringSequence"/>
 </message>
 
 <message name="Networking.IPsecManualSecurityAssociation.set_encrypt_key_encryptedRequest">
@@ -397,8 +411,21 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:Networking.IPsecManualSecurityAssociation.set_auth_keyRequest"/>
 		<output message="tns:Networking.IPsecManualSecurityAssociation.set_auth_keyResponse"/>
 	</operation>
+	<operation name="get_auth_key">
+	<documentation>
+ Gets the IPsec authentication keys for each specified 
+ IPsec manual security association.
+ 
+        	</documentation>
+		<input message="tns:Networking.IPsecManualSecurityAssociation.get_auth_keyRequest"/>
+		<output message="tns:Networking.IPsecManualSecurityAssociation.get_auth_keyResponse"/>
+	</operation>
 	<operation name="set_auth_key_encrypted">
 	<documentation>
+ This method is deprecated. The system automatically encrypts the
+ auth key using the master key, and no longer requires a
+ pre-encrypted value. Please use set_auth_key instead.
+
  Sets the IPsec authentication key (encrypted) for each specified
  IPsec manual security association.
  Requires an already encrypted key.
@@ -409,6 +436,8 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="get_auth_key_encrypted">
 	<documentation>
+ This method is deprecated. Please use get_auth_key instead.
+
  Gets the IPsec authentication keys (encrypted) for each specified 
  IPsec manual security association.
  
@@ -458,9 +487,24 @@ All other trademarks mentioned in this document are the property of their respec
 		<input message="tns:Networking.IPsecManualSecurityAssociation.set_encrypt_keyRequest"/>
 		<output message="tns:Networking.IPsecManualSecurityAssociation.set_encrypt_keyResponse"/>
 	</operation>
+	<operation name="get_encrypt_key">
+	<documentation>
+ Gets the IPsec encryption keys for each specified IPsec
+ manual security association.
+ 
+        	</documentation>
+		<input message="tns:Networking.IPsecManualSecurityAssociation.get_encrypt_keyRequest"/>
+		<output message="tns:Networking.IPsecManualSecurityAssociation.get_encrypt_keyResponse"/>
+	</operation>
 	<operation name="set_encrypt_key_encrypted">
 	<documentation>
- Sets the IPsec encryption key (encrypted) for each specified IPsec manual
+ This method is deprecated. The system automatically encrypts the
+ manual security association using the master key, and no longer
+ requires a
+ pre-encrypted value. Please use set_encrypt_key instead.
+
+ Sets the IPsec encryption key (encrypted) for each specified IPsec
+ manual
  security association.
  Requires an already encrypted key.
 
@@ -470,9 +514,11 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="get_encrypt_key_encrypted">
 	<documentation>
+ This method is deprecated. Please use get_encrypt_key instead.
+
  Gets the IPsec encryption keys (encrypted) for each specified IPsec
  manual security association.
- 
+
         	</documentation>
 		<input message="tns:Networking.IPsecManualSecurityAssociation.get_encrypt_key_encryptedRequest"/>
 		<output message="tns:Networking.IPsecManualSecurityAssociation.get_encrypt_key_encryptedResponse"/>
@@ -748,8 +794,33 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
+	<operation name="get_auth_key">
+	<documentation>
+ Gets the IPsec authentication keys for each specified 
+ IPsec manual security association.
+ 
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/IPsecManualSecurityAssociation"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/IPsecManualSecurityAssociation"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/IPsecManualSecurityAssociation"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
 	<operation name="set_auth_key_encrypted">
 	<documentation>
+ This method is deprecated. The system automatically encrypts the
+ auth key using the master key, and no longer requires a
+ pre-encrypted value. Please use set_auth_key instead.
+
  Sets the IPsec authentication key (encrypted) for each specified
  IPsec manual security association.
  Requires an already encrypted key.
@@ -772,6 +843,8 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="get_auth_key_encrypted">
 	<documentation>
+ This method is deprecated. Please use get_auth_key instead.
+
  Gets the IPsec authentication keys (encrypted) for each specified 
  IPsec manual security association.
  
@@ -893,9 +966,36 @@ All other trademarks mentioned in this document are the property of their respec
 		</output>
 	</operation>
 
+	<operation name="get_encrypt_key">
+	<documentation>
+ Gets the IPsec encryption keys for each specified IPsec
+ manual security association.
+ 
+        	</documentation>
+		<soap:operation soapAction="urn:iControl:Networking/IPsecManualSecurityAssociation"/>
+		<input>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/IPsecManualSecurityAssociation"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body
+				use="encoded"
+				namespace="urn:iControl:Networking/IPsecManualSecurityAssociation"
+				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
+
 	<operation name="set_encrypt_key_encrypted">
 	<documentation>
- Sets the IPsec encryption key (encrypted) for each specified IPsec manual
+ This method is deprecated. The system automatically encrypts the
+ manual security association using the master key, and no longer
+ requires a
+ pre-encrypted value. Please use set_encrypt_key instead.
+
+ Sets the IPsec encryption key (encrypted) for each specified IPsec
+ manual
  security association.
  Requires an already encrypted key.
 
@@ -917,9 +1017,11 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="get_encrypt_key_encrypted">
 	<documentation>
+ This method is deprecated. Please use get_encrypt_key instead.
+
  Gets the IPsec encryption keys (encrypted) for each specified IPsec
  manual security association.
- 
+
         	</documentation>
 		<soap:operation soapAction="urn:iControl:Networking/IPsecManualSecurityAssociation"/>
 		<input>

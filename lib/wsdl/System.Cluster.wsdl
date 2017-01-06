@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright (c) 1996-2013, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
+Copyright (c) 1996-2016, F5 Networks, Inc., Seattle, Washington. All rights reserved.  
 
 F5, F5 Networks, the F5 logo, BIG-IP, 3-DNS, iControl, GLOBAL-SITE, SEE-IT, EDGE-FX, FireGuard, Internet Control Architecture, IP Application Switch, iRules, PACKET VELOCITY, SYN Check, CONTROL YOUR WORLD, OneConnect, ZoneRunner, uRoam, FirePass, and TrafficShield are registered trademarks or trademarks of F5 Networks, Inc., in the U.S. and certain other countries. 
 
@@ -389,6 +389,10 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="get_cluster_enabled_state">
 	<documentation>
+ This method has been deprecated immediately; it represents a
+ design idea that was never realized. This method now returns
+ STATE_ENABLED for all requested chassis.
+
  Gets the cluster enabled states.
 
         	</documentation>
@@ -397,6 +401,10 @@ All other trademarks mentioned in this document are the property of their respec
 	</operation>
 	<operation name="set_cluster_enabled_state">
 	<documentation>
+ This method has been deprecated immediately; it represents a
+ design idea that was never realized. It now does nothing; all
+ clusters are always enabled.
+
  Sets the cluster enabled states.
 
         	</documentation>
@@ -623,6 +631,10 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="get_cluster_enabled_state">
 	<documentation>
+ This method has been deprecated immediately; it represents a
+ design idea that was never realized. This method now returns
+ STATE_ENABLED for all requested chassis.
+
  Gets the cluster enabled states.
 
         	</documentation>
@@ -643,6 +655,10 @@ All other trademarks mentioned in this document are the property of their respec
 
 	<operation name="set_cluster_enabled_state">
 	<documentation>
+ This method has been deprecated immediately; it represents a
+ design idea that was never realized. It now does nothing; all
+ clusters are always enabled.
+
  Sets the cluster enabled states.
 
         	</documentation>
