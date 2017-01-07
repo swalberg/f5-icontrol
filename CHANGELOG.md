@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.0
+Updating to latest WSDL, thanks fspijkerman
+
 ## 0.1.2
 ### CLI
 * Add a --force option to disable a pool member
