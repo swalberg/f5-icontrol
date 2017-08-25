@@ -1,4 +1,6 @@
 # Changelog
+## 0.2.1
+davidalpert - Add some enumerations to localLB
 
 ## 0.2.0
 Updating to latest WSDL, thanks fspijkerman
