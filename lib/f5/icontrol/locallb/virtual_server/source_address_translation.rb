@@ -4,7 +4,7 @@ module F5
       module VirtualServer
         # https://devcentral.f5.com/wiki/iControl.LocalLB__VirtualServer__SourceAddressTranslationType.ashx
         # A list of source address translation types.
-        module
+        module SourceAddressTranslationType
           # Translation type unknown (or unsupported by iControl).
           SRC_TRANS_UNKNOWN = 0 
 
