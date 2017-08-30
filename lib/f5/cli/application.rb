@@ -331,15 +331,6 @@ module F5
 
       end
 
-      desc "getratio POOL", "Gets the dynamic ratio of the given pool"
-      def getratio(pool)
-        response = client.LocalLB.Pool.get_member_ratio(
-          pool_names: { item: [ pool ] },
-          members: { item: [ pool_members(pool) ] }
-        )
-
-      end
-
       private
 
       def address_port_list_from_pool(pool, members)
