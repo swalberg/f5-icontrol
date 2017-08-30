@@ -319,8 +319,8 @@ module F5
         end
       end
 
-      desc "setratio --ratio RATIO POOL MEMBERS", "Sets the dynamic ratio of the given members to RATIO"
-      method_option :ratio, type: :numeric, desc: "The node's new dynamic ratio", required: true
+      desc "setratio POOL MEMBERS", "Sets the ratio of the given members to RATIO"
+      method_option :ratio, type: :numeric, desc: "The node's new ratio", required: true
       def setratio(pool, *members)
         set = address_port_list_from_pool(pool, members)
         response = client.LocalLB.Pool.set_member_ratio(
