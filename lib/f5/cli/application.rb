@@ -298,7 +298,7 @@ module F5
       end
 
       desc "disable POOL MEMBERS", "Disables the given members"
-      method_option :force, default: false, desc: "Forces the node offline (only active connections allowed)"
+      method_option :force, default: false, type: :boolean, desc: "Forces the node offline (only active connections allowed)"
       def disable(pool, *members)
         set = pool_members(pool).select do |m|
           members.include? m[:address]
