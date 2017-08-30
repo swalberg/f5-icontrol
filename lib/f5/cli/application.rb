@@ -210,8 +210,8 @@ module F5
         response = client.Networking.VLAN.create_v2(
           vlans: { item: [ name ] },
           vlan_ids: { item: [ vid ] },
-          members: {  item: [ item: memberdata ] },
-          failsafe_states: {  item: [ 'STATE_DISABLED' ] },
+          members: { item: [ item: memberdata ] },
+          failsafe_states: { item: [ 'STATE_DISABLED' ] },
           timeouts: { item: [ 100 ] } #???
         )
         puts response
@@ -286,19 +286,19 @@ module F5
         response = client.LocalLB.Pool.set_member_session_enabled_state(
           pool_names: { item: [ pool ] },
           members: { item: [ set ] },
-          session_states: {  item: [ set.map { "STATE_ENABLED" } ] }
+          session_states: { item: [ set.map { "STATE_ENABLED" } ] }
         )
 
         response = client.LocalLB.Pool.set_member_monitor_state(
           pool_names: { item: [ pool ] },
           members: { item: [ set ] },
-          monitor_states: {  item: [ set.map { "STATE_ENABLED" } ] }
+          monitor_states: { item: [ set.map { "STATE_ENABLED" } ] }
         )
 
       end
 
       desc "disable POOL MEMBERS", "Disables the given members"
-      method_option :force, default: false, desc: "Forces the node offline (only active connections allowed)"
+      method_option :force, default: false, type: :boolean, desc: "Forces the node offline (only active connections allowed)"
       def disable(pool, *members)
         set = pool_members(pool).select do |m|
           members.include? m[:address]
@@ -307,19 +307,38 @@ module F5
         response = client.LocalLB.Pool.set_member_session_enabled_state(
           pool_names: { item: [ pool ] },
           members: { item: [ set ] },
-          session_states: {  item: [ set.map { "STATE_DISABLED" } ] }
+          session_states: { item: [ set.map { "STATE_DISABLED" } ] }
         )
 
         if options[:force]
           response = client.LocalLB.Pool.set_member_monitor_state(
             pool_names: { item: [ pool ] },
             members: { item: [ set ] },
-            monitor_states: {  item: [ set.map { "STATE_DISABLED" } ] }
+            monitor_states: { item: [ set.map { "STATE_DISABLED" } ] }
           )
         end
       end
 
+      desc "setratio --ratio RATIO POOL MEMBERS", "Sets the dynamic ratio of the given members to RATIO"
+      method_option :ratio, type: :numeric, desc: "The node's new dynamic ratio", required: true
+      def setratio(pool, *members)
+        set = address_port_list_from_pool(pool, members)
+        response = client.LocalLB.Pool.set_member_ratio(
+          pool_names: { item: [ pool ] },
+          members: { item: [ set ] },
+          ratios: { item: [ set.map { options[:ratio] } ] }
+        )
+
+      end
+
       private
+
+      def address_port_list_from_pool(pool, members)
+        pool_members(pool).select do |m|
+          members.include?(m[:address]) || members.include?(m[:address].gsub(%r{^/Common/}, ''))
+        end
+      end
+
       def pool_members(pool)
         response = client.LocalLB.Pool.get_member_v2(pool_names: { item: [ pool ] } )
 
