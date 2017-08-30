@@ -8,6 +8,9 @@ module F5
         @username = params[:username]
         @password = params[:password]
         @hostname = params[:host] || params[:hostname]
+        @enable_logging = params[:enable_logging] || false
+        @log_level = params[:log_level] ? params[:log_level].to_sym : :debug
+        @pretty_print_xml = params[:pretty_print_xml] || true
         @client_cache = {}
         @api_path = api_path
       end
@@ -61,10 +64,10 @@ module F5
                        endpoint: "https://#{@hostname || F5::Icontrol.configuration.host}#{endpoint}",
                        ssl_verify_mode: :none,
                        basic_auth: [@username || F5::Icontrol.configuration.username, @password || F5::Icontrol.configuration.password],
-                       #log: true,
-                       #logger: Logger.new(STDOUT),
-                       #pretty_print_xml: true,
-                       #log_level: :debug,
+                       log: @enable_logging,
+                       logger: Logger.new(STDOUT),
+                       pretty_print_xml: @pretty_print_xml,
+                       log_level: @log_level,
                        namespace: "urn:iControl:#{api_namespace}",
                        convert_request_keys_to: :none
                       )

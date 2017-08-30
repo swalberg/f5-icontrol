@@ -61,6 +61,28 @@ response = api.LocalLB.Pool.get_list
 
 See specs subdir for more examples, especially as it pertains to passing parameters.
 
+## Logging
+
+This gem uses the [`Savon`](http://savonrb.com/) client to wrap the SOAP endpoints,
+and it is sometimes useful to be able to see the SOAP request and response XML.
+
+You can pass in a few options during configuration of the api client
+which are forwarded to the internal `Savon` client:
+
+```Ruby
+api = F5::Icontrol::API.new(
+    host: "hostname.of.bigip",
+    username: "username",
+    password: "password",
+
+    # Savon logging options
+    enable_logging: true,   # defaults to: false
+    log_level: :debug,      # defaults to: debug
+    pretty_print_xml: true, # defaults to: true
+)
+
+```
+
 ## CLI
 
 There's a command line version that's still being roughed out. You'll need a `~/.f5.yml` file containing your login information:
