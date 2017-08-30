@@ -1,4 +1,11 @@
 # Changelog
+## 0.2.4
+swalberg - support setting pool member ratios
+## 0.2.3
+Fix typo from previous release
+## 0.2.2
+davidalpert - Add some enumerations to localLB
+Ignore this release there was a typo
 ## 0.2.1
 davidalpert - Add some enumerations to localLB
 
