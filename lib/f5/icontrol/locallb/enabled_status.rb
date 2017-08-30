@@ -1,3 +1,5 @@
+require 'f5/icontrol/common/enum_item'
+
 module F5
   module Icontrol
     module LocalLB
@@ -5,23 +7,16 @@ module F5
       # A list of possible values for enabled status.
       module EnabledStatus
         # Error scenario.
-        ENABLED_STATUS_NONE = 0
+        ENABLED_STATUS_NONE = EnumItem.new('ENABLED_STATUS_NONE', '0')
 
-        #	The object is active when in Green
-        # availability status. It may or may
-        # not be active when in Blue
-        # availability status.
-        ENABLED_STATUS_ENABLED = 1
+        # The object is active when in Green availability status. It may or may not be active when in Blue availability status.
+        ENABLED_STATUS_ENABLED = EnumItem.new('ENABLED_STATUS_ENABLED', '1')
 
-        #	The object is inactive regardless
-        # of availability status.
-        ENABLED_STATUS_DISABLED	= 2
+        # The object is inactive regardless of availability status.
+        ENABLED_STATUS_DISABLED = EnumItem.new('ENABLED_STATUS_DISABLED', '2')
 
-        #	The object is inactive regardless of
-        # availability status because its parent
-        # has been disabled, but the object
-        # itself is still enabled.
-        ENABLED_STATUS_DISABLED_BY_PARENT	= 3
+        # The object is inactive regardless of availability status because its parent has been disabled, but the object itself is still enabled.
+        ENABLED_STATUS_DISABLED_BY_PARENT = EnumItem.new('ENABLED_STATUS_DISABLED_BY_PARENT', '3')
       end
     end
   end
