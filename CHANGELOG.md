@@ -1,4 +1,6 @@
 # Changelog
+## 0.2.5
+swalberg - support setting pool member connection limits
 ## 0.2.4
 swalberg - support setting pool member ratios
 ## 0.2.3

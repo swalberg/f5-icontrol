@@ -328,7 +328,17 @@ module F5
           members: { item: [ set ] },
           ratios: { item: [ set.map { options[:ratio] } ] }
         )
+      end
 
+      desc "setconnections POOL MEMBERS", "Sets the connection limit on MEMBERS to LIMIT"
+      method_option :limit, type: :numeric, desc: "The node's new connection limit", required: true
+      def setconnections(pool, *members)
+        set = address_port_list_from_pool(pool, members)
+        response = client.LocalLB.Pool.set_member_connection_limit(
+          pool_names: { item: [ pool ] },
+          members: { item: [ set ] },
+          limits: { item: [ set.map { options[:limit] } ] }
+        )
       end
 
       private
