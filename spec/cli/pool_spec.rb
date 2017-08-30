@@ -8,6 +8,56 @@ describe F5::Cli::Pool do
 
   let(:client) { double }
 
+  context "setconnections" do
+    let(:pool) { double("Pool") }
+    let(:out) { 'yup' }
+
+    before do
+      allow(pool).to receive(:get_member_v2).and_return(members)
+      allow(client).to receive_message_chain("LocalLB", "Pool") { pool }
+      subject.options = { limit: 42 }
+    end
+
+    context "one member" do
+      let(:expected) {
+        {
+          pool_names: { item: [ 'mypool' ] },
+          members: { item: [ [ { address: '/Common/node1', port: '80' } ] ] },
+          limits: {  item: [ [ 42 ] ] }
+        }
+      }
+      let(:members) {
+        {:item=>{:item=>{:address=>"/Common/node1", :port=>"80"}, :"@a:array_type"=>"iControl:Common.AddressPort[1]"}, :"@s:type"=>"A:Array", :"@a:array_type"=>"iControl:Common.AddressPort[][1]"}
+      }
+
+      it "calls the API to set the member" do
+        expect(pool).to receive(:set_member_connection_limit).with(expected).and_return(out)
+
+        subject.setconnections('mypool', 'node1')
+      end
+    end
+
+    context "two members" do
+      let(:expected) {
+        {
+          pool_names: { item: [ 'mypool' ] },
+          members: { item: [ [ { address: '/Common/node1', port: '80' }, { address: '/Common/node2', port: '80' } ] ] },
+          limits: {  item: [[ 42, 42 ]] }
+        }
+      }
+
+      let(:members) {
+        {:item=>{:item=>[{:address=>"/Common/node1", :port=>"80"}, {:address=>"/Common/node2", :port=>"80"}], :"@a:array_type"=>"iControl:Common.AddressPort[2]"}, :"@s:type"=>"A:Array", :"@a:array_type"=>"iControl:Common.AddressPort[][1]"}
+      }
+
+      it "calls the API to set the members" do
+        expect(pool).to receive(:set_member_connection_limit).with(expected).and_return(out)
+
+        subject.setconnections('mypool', 'node1', 'node2')
+      end
+    end
+  end
+
   context "setratio" do
     let(:pool) { double("Pool") }
     let(:out) { 'yup' }
