@@ -1,4 +1,5 @@
 require 'f5/icontrol'
+require 'webmock/rspec'
 require 'vcr'
 
 RSpec.configure do |c|

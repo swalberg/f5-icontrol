@@ -1,4 +1,5 @@
 require "f5/icontrol/version"
+require "f5/icontrol/rapi"
 require "f5/icontrol/api"
 require 'f5/icontrol/common/enabled_state'
 require 'f5/icontrol/common/enum_item'
@@ -9,6 +10,7 @@ require 'f5/icontrol/locallb/enabled_status'
 require 'f5/icontrol/locallb/profile_context_type'
 require 'f5/icontrol/locallb/profile_type'
 require 'f5/icontrol/locallb/server_ssl_certificate_mode'
+require 'f5/icontrol/rapi/resource'
 require "openssl"
 require "savon"
 
