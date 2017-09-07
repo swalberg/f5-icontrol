@@ -6,16 +6,47 @@ module F5
 
       private
 
+      def extract_items(response, opts = nil)
+        items = response[:item]
+
+        if items.nil?
+          return opts == :as_array ? [] : nil
+        end
+
+        if items.is_a?(Hash) && items.has_key?(:item)
+          items = items[:item]
+        end
+        if opts == :as_array && items.is_a?(Hash)
+          [ items ]
+        else
+          items
+        end
+      end
+
       def client
         return @client if @client
         config = YAML.load_file("#{ENV['HOME']}/.f5.yml")
         if config.key?('username') && options[:lb] == 'default'
           puts "Warning: credentials in .f5.yml should be put under a named load balancer."
-          creds = config
+          configure_lb_as(config)
         else
-          creds = config[options[:lb]]
+          configure_lb_as config[options[:lb]]
         end
-        F5::Icontrol::RAPI.new host: creds["host"], username: creds['username'], password: creds['password']
+        F5::Icontrol::API.new
+      end
+
+      def configure_lb_as(config)
+        F5::Icontrol.configure do |f5|
+          f5.host = config['host']
+          f5.username = config['username']
+          f5.password = config['password']
+        end
+      end
+
+      def itemize(option)
+        {
+          item: [ option ]
+        }
       end
 
     end
@@ -192,27 +223,26 @@ module F5
 
       desc "list", "Lists all the pools"
       def list
-        pools = client.mgmt.tm.ltm.pool.get_collection
+        response = client.LocalLB.Pool.get_list
 
+        pools = Array(response[:item])
         if pools.empty?
           puts "No pools found"
         else
           pools.each do |p|
-            puts p.name
+            puts p
           end
         end
       end
 
       desc "show POOL", "Shows a pool's status"
       def show(pool)
-        pool = client.mgmt.tm.ltm.pool.load(pool)
-
-        members = pool.members.load
+        members = pool_members(pool)
         if members.empty?
           puts "Pool #{pool} is empty"
         else
           members.each do |member|
-            puts "#{member.name}: #{member.address}"
+            puts "#{member[:address]}:#{member[:port]}"
           end
         end
       end
