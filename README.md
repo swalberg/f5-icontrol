@@ -31,6 +31,8 @@ Or install it yourself as:
 
 ## Usage (REST interface)
 
+*NOTE:* The REST interface is still a work in progress! The conventions may change until we release.
+
 First configure an instance of the API to point to your F5
 
 ```Ruby
