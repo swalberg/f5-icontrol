@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "savon", "~> 2.0"
   spec.add_dependency "rest-client"
   spec.add_dependency "thor"
-  spec.add_dependency "rack", "~> 1.6.4"
   spec.add_dependency "json"
 
   spec.add_development_dependency "awesome_print"
