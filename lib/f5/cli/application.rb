@@ -431,6 +431,7 @@ module F5
 
       desc "sync DEVICE_GROUP DEVICE_WITH_CHANGES_PENDING", "This will sync configs between devices in the specified device group."
       def sync(device_group, device)
+        device = "#{device.gsub(%r{^/Common/}, '')}"
         response = client.System.ConfigSync.synchronize_to_group_v2(group: device_group, device: "/Common/#{device}", force: false)
         if response.nil? || response.empty?
           puts "Sync completed."
