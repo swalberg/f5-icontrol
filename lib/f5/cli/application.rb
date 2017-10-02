@@ -407,26 +407,15 @@ module F5
         end
       end
 
-      desc "status", "Shows the configuration sync status of all device groups."
-      def status
-        response = client.Management.DeviceGroup.get_sync_status_overview()
-        puts "STATUS: #{response[:status]}";
-        puts "STATUS COLOR: #{response[:color]}";
-        puts "STATUS DESCRIPTION: #{response[:member_state]}";
-        puts "STATUS SUMMARY: #{response[:summary]}";
-        puts "STATUS DETAILS:";
-        response[:details][:item].each { |x| puts x }
-      end
-
-      desc "statusOf DEVICE_GROUP", "Shows the configuration sync status between devices in the specified device group."
-      def statusOf(device_group)
+      desc "status DEVICE_GROUP", "Shows the sync status between devices in the specified device group. (Shows status of all device groups of one is not specified.)"
+      def status(device_group=nil)
         response = client.Management.DeviceGroup.get_sync_status(device_groups: { item: [ device_group ] })
         puts "STATUS: #{response[:item][:status]}";
         puts "STATUS COLOR: #{response[:item][:color]}";
         puts "STATUS DESCRIPTION: #{response[:item][:member_state]}";
         puts "STATUS SUMMARY: #{response[:item][:summary]}";
         puts "STATUS DETAILS:"
-        puts response[:item][:details][:item];
+        response[:item][:details][:item] != nil ? (puts response[:item][:details][:item]) : (puts "No further details.")
       end
 
       desc "sync DEVICE_GROUP DEVICE_WITH_CHANGES_PENDING", "This will sync configs between devices in the specified device group."
@@ -459,14 +448,14 @@ module F5
       desc "vlan SUBCOMMAND ...ARGS", "manage vlans"
       subcommand "vlan", VLAN
 
-      desc "config SUBCOMMAND ...ARGS", "sync device    grou"
+      desc "config SUBCOMMAND ...ARGS", "view config values"
       subcommand "config", Config
 
       desc "device SUBCOMMAND ...ARGS", "manage devices"
       subcommand "device", Device
 
-      desc "deviceGroup SUBCOMMAND ...ARGS", "manage device groups"
-      subcommand "deviceGroup", DeviceGroup
+      desc "devicegroup SUBCOMMAND ...ARGS", "manage device groups"
+      subcommand "devicegroup", DeviceGroup
     end
   end
 end
