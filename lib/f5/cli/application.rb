@@ -415,7 +415,7 @@ module F5
         puts "STATUS DESCRIPTION: #{response[:item][:member_state]}";
         puts "STATUS SUMMARY: #{response[:item][:summary]}";
         puts "STATUS DETAILS:"
-        response[:item][:details][:item] != nil ? (puts response[:item][:details][:item]) : (puts "No further details.")
+        puts response[:item][:details][:item].nil? ? "No further details." : response[:item][:details][:item]
       end
 
       desc "sync DEVICE_GROUP DEVICE_WITH_CHANGES_PENDING", "This will sync configs between devices in the specified device group."
