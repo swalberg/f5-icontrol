@@ -360,6 +360,76 @@ module F5
 
     end
 
+    class Config < Subcommand
+      desc "list", "Lists the current configuration variables."
+      def list
+        response = client.Management.DBVariable.get_list
+
+        dbVariables = Array(response[:item])
+        if dbVariables.empty?
+          puts "No config variables found"
+        else
+          dbVariables.each do |p|
+            puts "#{p[:name]}: #{p[:value]}"
+          end
+        end
+      end
+    end
+
+    class Device < Subcommand
+      desc "list", "Lists the all devices regardless of device group."
+      def list
+        response = client.Management.Device.get_list
+
+        devices = Array(response[:item])
+        if devices.empty?
+          puts "No devices found"
+        else
+          devices.each do |p|
+            puts p
+          end
+        end
+      end
+    end
+
+    class DeviceGroup < Subcommand
+      desc "list", "Lists the all device groups."
+      def list
+        response = client.Management.DeviceGroup.get_list
+
+        devices = Array(response[:item])
+        if devices.empty?
+          puts "No devices found"
+        else
+          devices.each do |p|
+            puts p
+          end
+        end
+      end
+
+      desc "status DEVICE_GROUP", "Shows the sync status between devices in the specified device group. (Shows status of all device groups of one is not specified.)"
+      def status(device_group=nil)
+        response = client.Management.DeviceGroup.get_sync_status(device_groups: { item: [ device_group ] })
+        puts "STATUS: #{response[:item][:status]}";
+        puts "STATUS COLOR: #{response[:item][:color]}";
+        puts "STATUS DESCRIPTION: #{response[:item][:member_state]}";
+        puts "STATUS SUMMARY: #{response[:item][:summary]}";
+        puts "STATUS DETAILS:"
+        puts response[:item][:details][:item].nil? ? "No further details." : response[:item][:details][:item]
+      end
+
+      desc "sync DEVICE_GROUP DEVICE_WITH_CHANGES_PENDING", "This will sync configs between devices in the specified device group."
+      def sync(device_group, device)
+        device = "#{device.gsub(%r{^/Common/}, '')}"
+        response = client.System.ConfigSync.synchronize_to_group_v2(group: device_group, device: "/Common/#{device}", force: false)
+        if response.nil? || response.empty?
+          puts "Sync completed."
+        else
+          puts "Sync did not complete."
+        end
+      end
+    end
+
     class Application < Thor
       class_option :lb, default: 'default'
 
@@ -377,6 +447,15 @@ module F5
 
       desc "vlan SUBCOMMAND ...ARGS", "manage vlans"
       subcommand "vlan", VLAN
+
+      desc "config SUBCOMMAND ...ARGS", "view config values"
+      subcommand "config", Config
+
+      desc "device SUBCOMMAND ...ARGS", "manage devices"
+      subcommand "device", Device
+
+      desc "devicegroup SUBCOMMAND ...ARGS", "manage device groups"
+      subcommand "devicegroup", DeviceGroup
     end
   end
 end
