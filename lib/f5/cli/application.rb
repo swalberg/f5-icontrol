@@ -370,7 +370,7 @@ module F5
           puts "No config variables found"
         else
           dbVariables.each do |p|
-            puts p
+            puts "#{p[:name]}: #{p[:value]}"
           end
         end
       end
