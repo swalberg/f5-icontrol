@@ -433,7 +433,7 @@ module F5
     class Application < Thor
       class_option :lb, default: 'default'
 
-      class_option :config, :type => :string, :default => "#{ENV['HOME']}/.f5.yml"
+      class_option :config, :type => :string, :default => "#{ENV['HOME']}/.f5.yml", :desc => "Defines the location of the configuration file."
 
       desc "node SUBCOMMAND ...ARGS", "manage nodes"
       subcommand "node", Node
