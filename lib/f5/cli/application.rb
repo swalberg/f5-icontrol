@@ -25,7 +25,8 @@ module F5
 
       def client
         return @client if @client
-        config = YAML.load_file("#{ENV['HOME']}/.f5.yml")
+        config_dir = ENV['F5_CONFIG_DIR'] || ENV['HOME']
+        config = YAML.load_file("#{config_dir}/.f5.yml")
         if config.key?('username') && options[:lb] == 'default'
           puts "Warning: credentials in .f5.yml should be put under a named load balancer."
           configure_lb_as(config)
