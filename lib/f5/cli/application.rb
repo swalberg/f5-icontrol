@@ -25,9 +25,9 @@ module F5
 
       def client
         return @client if @client
-        config = YAML.load_file("#{ENV['HOME']}/.f5.yml")
+        config = YAML.load_file(options[:config])
         if config.key?('username') && options[:lb] == 'default'
-          puts "Warning: credentials in .f5.yml should be put under a named load balancer."
+          puts "Warning: credentials in #{options[:config]} should be put under a named load balancer."
           configure_lb_as(config)
         else
           configure_lb_as config[options[:lb]]
@@ -432,6 +432,8 @@ module F5
 
     class Application < Thor
       class_option :lb, default: 'default'
+
+      class_option :config, :type => :string, :default => "#{ENV['HOME']}/.f5.yml", :desc => "Defines the location of the configuration file."
 
       desc "node SUBCOMMAND ...ARGS", "manage nodes"
       subcommand "node", Node
