@@ -430,6 +430,23 @@ module F5
       end
     end
 
+    class VirtualServer < Subcommand
+
+      desc "list", "Lists all the virtual servers"
+      def list
+        response = client.LocalLB.VirtualServer.get_list
+
+        virtualservers = Array(response[:item])
+        if virtualservers.empty?
+          puts "No virtual servers found"
+        else
+          virtualservers.each do |p|
+            puts p
+          end
+        end
+      end
+    end
+
     class Application < Thor
       class_option :lb, default: 'default'
 
@@ -458,6 +475,9 @@ module F5
 
       desc "devicegroup SUBCOMMAND ...ARGS", "manage device groups"
       subcommand "devicegroup", DeviceGroup
+
+      desc "virtualserver SUBCOMMAND ...ARGS", "manage virtual servers"
+      subcommand "virtualserver", VirtualServer
     end
   end
 end
