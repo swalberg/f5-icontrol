@@ -445,6 +445,18 @@ module F5
           end
         end
       end
+
+      desc "status VSERVER_NAME", "Shows the status of the virtual server"
+      def status(vserver)
+        response = extract_items client.LocalLB.VirtualServer.get_object_status(virtual_servers: { item: [vserver] } )
+
+        availability = response[:item][:availability_status].split('_').last
+        enabled = response[:item][:enabled_status].split('_').last
+        status_description = response[:item][:status_description]
+
+        puts "%-40s %-20s %-20s %-20s" % ["Name", "Availability", "Enabled", "Status Description"]
+        puts "%-40s %-20s %-20s %-20s" % [vserver, availability, enabled, status_description]
+      end
     end
 
     class Application < Thor
@@ -476,8 +488,8 @@ module F5
       desc "devicegroup SUBCOMMAND ...ARGS", "manage device groups"
       subcommand "devicegroup", DeviceGroup
 
-      desc "virtualserver SUBCOMMAND ...ARGS", "manage virtual servers"
-      subcommand "virtualserver", VirtualServer
+      desc "vserver SUBCOMMAND ...ARGS", "manage virtual servers"
+      subcommand "vserver", VirtualServer
     end
   end
 end
