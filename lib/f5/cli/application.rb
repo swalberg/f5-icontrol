@@ -446,9 +446,19 @@ module F5
         end
       end
 
+      desc "show VSERVER_NAME", "Shows information about a virtual server"
+      def show(vserver)
+        destination = extract_items client.LocalLB.VirtualServer.get_destination(virtual_servers: { item: [vserver] } )
+        protocol = extract_items client.LocalLB.VirtualServer.get_protocol(virtual_servers: { item: [vserver] } )
+        default_pool = extract_items client.LocalLB.VirtualServer.get_default_pool_name(virtual_servers: { item: [vserver] } )
+
+        puts "%-25s %-20s %-20s %-20s" % ["Destination Address", "Destination Port", "Protocol", "Default Pool"]
+        puts "%-25s %-20s %-20s %-20s" % [destination[:address], destination[:port], protocol.split('_').last, default_pool]
+      end
+
       desc "status VSERVER_NAME", "Shows the status of the virtual server"
       def status(vserver)
-        response = extract_items client.LocalLB.VirtualServer.get_object_status(virtual_servers: { item: [vserver] } )
+        response = client.LocalLB.VirtualServer.get_object_status(virtual_servers: { item: [vserver] } )
 
         availability = response[:item][:availability_status].split('_').last
         enabled = response[:item][:enabled_status].split('_').last
