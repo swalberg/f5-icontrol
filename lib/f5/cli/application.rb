@@ -430,6 +430,45 @@ module F5
       end
     end
 
+    class VirtualServer < Subcommand
+
+      desc "list", "Lists all the virtual servers"
+      def list
+        response = client.LocalLB.VirtualServer.get_list
+
+        virtualservers = Array(response[:item])
+        if virtualservers.empty?
+          puts "No virtual servers found"
+        else
+          virtualservers.each do |p|
+            puts p
+          end
+        end
+      end
+
+      desc "show VSERVER_NAME", "Shows information about a virtual server"
+      def show(vserver)
+        destination = extract_items client.LocalLB.VirtualServer.get_destination(virtual_servers: { item: [vserver] } )
+        protocol = extract_items client.LocalLB.VirtualServer.get_protocol(virtual_servers: { item: [vserver] } )
+        default_pool = extract_items client.LocalLB.VirtualServer.get_default_pool_name(virtual_servers: { item: [vserver] } )
+
+        puts "%-25s %-20s %-20s %-20s" % ["Destination Address", "Destination Port", "Protocol", "Default Pool"]
+        puts "%-25s %-20s %-20s %-20s" % [destination[:address], destination[:port], protocol.split('_').last, default_pool]
+      end
+
+      desc "status VSERVER_NAME", "Shows the status of the virtual server"
+      def status(vserver)
+        response = client.LocalLB.VirtualServer.get_object_status(virtual_servers: { item: [vserver] } )
+
+        availability = response[:item][:availability_status].split('_').last
+        enabled = response[:item][:enabled_status].split('_').last
+        status_description = response[:item][:status_description]
+
+        puts "%-40s %-20s %-20s %-20s" % ["Name", "Availability", "Enabled", "Status Description"]
+        puts "%-40s %-20s %-20s %-20s" % [vserver, availability, enabled, status_description]
+      end
+    end
+
     class Application < Thor
       class_option :lb, default: 'default'
 
@@ -458,6 +497,9 @@ module F5
 
       desc "devicegroup SUBCOMMAND ...ARGS", "manage device groups"
       subcommand "devicegroup", DeviceGroup
+
+      desc "vserver SUBCOMMAND ...ARGS", "manage virtual servers"
+      subcommand "vserver", VirtualServer
     end
   end
 end
