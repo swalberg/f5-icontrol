@@ -40,6 +40,15 @@ describe F5::Icontrol::RAPI do
         expect(WebMock).to have_requested(:get, "#{baseurl}/foo-bar/")
       end
 
+      it "preserves underscores in pool names" do
+        stub_request(:get, "#{baseurl}/pool/foo_bar").
+          to_return(body: pool_collection)
+
+        subject.pool.load('foo_bar')
+
+        expect(WebMock).to have_requested(:get, "#{baseurl}/pool/foo_bar")
+      end
+
       it "understands `each` implicitly calls `get_collection`" do
         stub_request(:get, "#{baseurl}/foo/bar/").
           to_return(body: pool_collection)
