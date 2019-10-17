@@ -63,7 +63,9 @@ module F5
 
       private
       def url
-        method_chain = @method_chain.gsub /_/, '-'
+        pool_match = @method_chain.match %r{(/pool/[A-Za-z0-9\-_~]+)}
+        method_chain = @method_chain.tr '_', '-'
+        method_chain = method_chain.sub %r{/pool/[A-Za-z0-9\-_~]+}, pool_match[1] unless pool_match.nil?
         method_chain.gsub! %r{^/}, ''
         "https://#{@args[:host]}/#{method_chain}"
       end
