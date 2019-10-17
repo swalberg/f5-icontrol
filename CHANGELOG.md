@@ -1,4 +1,7 @@
 # Changelog
+
+## 0.3.5
+mattlqx - prevent underscores in pool names
 ## 0.2.5
 swalberg - support setting pool member connection limits
 ## 0.2.4
