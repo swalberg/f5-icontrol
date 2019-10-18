@@ -15,7 +15,7 @@ module F5
           potential_collection = "#{method}Reference"
           if @args.key? potential_collection
             link = @args[potential_collection]["link"]
-            link.gsub! /^http?s:\/\/localhost\//, ""
+            link.sub! %r{^https?://[A-Za-z0-9\-._]+/}, ""
             return F5::Icontrol::RAPI.new(link, @credentials)
           end
         end
