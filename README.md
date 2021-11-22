@@ -13,21 +13,27 @@ I originally set out to improve the official one:
 * Support Ruby 2.0.0 and 2.1.0
 * Make the interface to the library more Ruby-esque
 
-But given the original one was pretty bare-bones, I started over. 
+But given the original one was pretty bare-bones, I started over.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'f5-icontrol'
+```Ruby
+gem 'f5-icontrol'
+```
 
 And then execute:
 
-    $ bundle
+```shell
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install f5-icontrol
+```shell
+gem install f5-icontrol
+```
 
 ## Usage (REST interface)
 
@@ -38,26 +44,26 @@ First configure an instance of the API to point to your F5
 ```Ruby
 require 'f5/icontrol'
 
-f5 = F5::Icontrol::RAPI.new username: 'admin', password: 'admin', host: '10.1.1.1'
+f5 = F5::Icontrol::REST.new username: 'admin', password: 'admin', host: '10.1.1.1'
 ```
 
 After that, the calls should line up directly to the [API Docs](https://devcentral.f5.com/wiki/iControlREST.APIRef.ashx). For collections, use the following methods:
 
 | HTTP Verb | Method         |
-|-----------|----------------|
+| --------- | -------------- |
 | GET       | get_collection |
 
 Note that `get_collection` is optional if you call `#each` or some `Enumberable` method. So `foo.get_collection.each` can be shortened to `foo.each`.
 
 For resources
 
-| HTTP Verb | Method         |
-|-----------|----------------|
-| GET       | load           |
-| PUT       | update         |
-| DELETE    | delete         |
-| POST      | create         |
-
+| HTTP Verb | Method  |
+| --------- | ------- |
+| GET       | load    |
+| POST      | create  |
+| PATCH     | update  |
+| PUT       | replace |
+| DELETE    | delete  |
 
 For example, to get all the pools:
 
@@ -78,10 +84,45 @@ puts members.map(&:address)
 
 ```
 
-Or, let's create a pool:
+Or, let's create a pool (partition default to Common if not specified):
 
 ```Ruby
-api.mgmt.tm.ltm.pool.create(name: 'seanstestrest')
+api.mgmt.tm.ltm.pool.create(name: 'seanstestrest', partition: 'Common')
+```
+
+And now add a member to this pool with the name form `~<partition>~<pool_name>`  
+WARNING: if no partition is specified the node will be created in Common partition whatever the pool partition is  
+
+```Ruby
+api.mgmt.tm.ltm.pool.load('~Common~seanstestrest').members.create(name:'test_node:80', address:'10.10.10.10', description: 'Adding a node', partition:'Common')
+
+# or use the add method which is analias to create 
+
+api.mgmt.tm.ltm.pool.load('~Common~seanstestrest').members.add(name:'test_node:80', address:'10.10.10.10', description: 'Adding a node', partition:'Common')
+```
+
+Update a pool member require to be specific about the partition in the name of the member:
+
+```Ruby
+api.mgmt.tm.ltm.pool.load('~Common~seanstestrest').members.load('~Common~test_node:80').update(sessions:'user-enabled', state: 'user-up')
+```
+
+For non sub-collections in the Common partition, as long as its name doesn't include an underscore `_` you can chain as follow.  
+
+```Ruby
+api.mgmt.tm.ltm.pool.seanstestrest.members # This works
+api.mgmt.tm.ltm.pool.load('my_pool').members # This works
+api.mgmt.tm.ltm.pool.my_pool.members # This will fail
+```
+
+NOTE: F5 recommendation is to always include the partition in your object names.
+
+For api endpoints including a dash `-` in their name you'll have to replace the dash by an underscore.
+
+Example to call the `mgmt/tm/ltm/traffic-class` enpoint:
+
+```Ruby
+api.mgmt.tm.ltm.traffic_class.get_collection
 ```
 
 ## Usage (SOAP interface)
@@ -144,7 +185,7 @@ api = F5::Icontrol::API.new(
 
 There's a command line version that's still being roughed out. You'll need a `~/.f5.yml` file containing your login information:
 
-```
+```yaml
 default:
   host: foo.bar.com
   username: admin
@@ -156,7 +197,6 @@ lb2:
 ```
 
 Then run `f5` and it'll provide help
-
 
 ## Contributing
 
