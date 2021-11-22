@@ -155,6 +155,80 @@ describe F5::Icontrol::RAPI do
     end
   end
 
+  describe 'sending a request' do
+    
+    context 'ending with a client error' do
+      let(:req) { subject.mgmt.tm.ltm.pool.foobar.load }
+      it 'raise a BadRequest error on 400' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 400, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::BadRequest)
+        expect { req }.to raise_error(F5::Icontrol::REST::ParameterError)
+      end
+
+      it 'raise a Unauthorized error on 401' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 401, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::Unauthorized)
+        expect { req }.to raise_error(F5::Icontrol::REST::ParameterError)
+      end
+
+      it 'raise a Forbidden error on 403' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 403, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::Forbidden)
+        expect { req }.to raise_error(F5::Icontrol::REST::ParameterError)
+      end
+
+      it 'raise a NotFound error on 404' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 404, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::NotFound)
+        expect { req }.to raise_error(F5::Icontrol::REST::ParameterError)
+      end
+
+      it 'raise a Conflict error on 409' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 409, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::Conflict)
+        expect { req }.to raise_error(F5::Icontrol::REST::ParameterError)
+      end
+
+      it 'raise a Malformed error on 415' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 415, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::Malformed)
+        expect { req }.to raise_error(F5::Icontrol::REST::ParameterError)
+      end
+    end
+
+    context 'ending with a server error' do
+      let(:req) { subject.mgmt.tm.ltm.pool.foobar.load }
+      
+      it 'raise a InternalError error on 500' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 500, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::InternalError)
+        expect { req }.to raise_error(F5::Icontrol::REST::ServerError)
+      end
+
+      it 'raise a NotImplemented error on 501' do
+        stub_request(:get, "https://somehost/mgmt/tm/ltm/pool/foobar").
+        to_return(status: 501, body: "", headers: {})
+
+        expect { req }.to raise_error(F5::Icontrol::REST::NotImplemented)
+        expect { req }.to raise_error(F5::Icontrol::REST::ServerError)
+      end
+    end
+  end
+
   def pool_collection
     '{"kind":"tm:ltm:pool:poolcollectionstate","selfLink":"https://localhost/mgmt/tm/ltm/pool?ver=11.5.1","items":[{"kind":"tm:ltm:pool:poolstate","name":"reallybasic","partition":"Common","fullPath":"/Common/reallybasic","generation":845,"selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~reallybasic?ver=11.5.1","allowNat":"yes","allowSnat":"yes","ignorePersistedWeight":"disabled","ipTosToClient":"pass-through","ipTosToServer":"pass-through","linkQosToClient":"pass-through","linkQosToServer":"pass-through","loadBalancingMode":"round-robin","minActiveMembers":0,"minUpMembers":0,"minUpMembersAction":"failover","minUpMembersChecking":"disabled","queueDepthLimit":0,"queueOnConnectionLimit":"disabled","queueTimeLimit":0,"reselectTries":0,"slowRampTime":10,"membersReference":{"link":"https://localhost/mgmt/tm/ltm/pool/~Common~reallybasic/members?ver=11.5.1","isSubcollection":true}},{"kind":"tm:ltm:pool:poolstate","name":"reallybasic2","partition":"Common","fullPath":"/Common/reallybasic2","generation":819,"selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~reallybasic2?ver=11.5.1","allowNat":"yes","allowSnat":"yes","ignorePersistedWeight":"disabled","ipTosToClient":"pass-through","ipTosToServer":"pass-through","linkQosToClient":"pass-through","linkQosToServer":"pass-through","loadBalancingMode":"round-robin","minActiveMembers":0,"minUpMembers":0,"minUpMembersAction":"failover","minUpMembersChecking":"disabled","queueDepthLimit":0,"queueOnConnectionLimit":"disabled","queueTimeLimit":0,"reselectTries":0,"slowRampTime":10,"membersReference":{"link":"https://localhost/mgmt/tm/ltm/pool/~Common~reallybasic2/members?ver=11.5.1","isSubcollection":true}}]}'
   end

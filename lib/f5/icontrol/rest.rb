@@ -1,14 +1,10 @@
 require 'rest-client'
 require 'json'
+require 'f5/icontrol/rest/errors'
 
 module F5
   module Icontrol
     class REST
-      class Error < StandardError
-      end
-
-      class ParameterError < StandardError
-      end
 
       include Enumerable
 
@@ -18,20 +14,24 @@ module F5
       end
 
       def load(resource = nil)
-        tail = resource.nil? ? '' : "/#{resource}"
-        response = RestClient::Request.execute(method: :get,
-                                               url: "#{url}#{tail}",
-                                               user: @args[:username],
-                                               password: @args[:password],
-                                               verify_ssl: OpenSSL::SSL::VERIFY_NONE
-                                           )
-        object = JSON.parse response.body
+        begin
+          tail = resource.nil? ? '' : "/#{resource}"
+          response = RestClient::Request.execute(method: :get,
+                                                url: "#{url}#{tail}",
+                                                user: @args[:username],
+                                                password: @args[:password],
+                                                verify_ssl: OpenSSL::SSL::VERIFY_NONE
+                                            )
+          object = JSON.parse response.body
 
-        if object.has_key? 'items'
-          object['items'].map { |r| Resource.new r, @args }
-        else
-          Resource.new object, @args
-        end
+          if object.has_key? 'items'
+            object['items'].map { |r| Resource.new r, @args }
+          else
+            Resource.new object, @args
+          end
+        rescue RestClient::Exception => e
+          raise_error(e)
+        end 
       end
 
       def get_collection
@@ -46,8 +46,7 @@ module F5
 
           objects['items'].map { |r| Resource.new r, @args }
         rescue RestClient::Exception => e
-          raise F5::Icontrol::REST::ParameterError.new(e) if e.http_code =~ /4[\d]{2}/
-          raise F5::Icontrol::REST::Error.new(e)
+          raise_error(e)
         end
       end
 
@@ -63,8 +62,7 @@ module F5
                                                 )
           JSON.parse response.body
         rescue RestClient::Exception => e
-          raise F5::Icontrol::REST::ParameterError.new(e) if e.http_code =~ /4[\d]{2}/
-          raise F5::Icontrol::REST::Error.new(e)
+          raise_error(e)
         end
       end
 
@@ -83,8 +81,7 @@ module F5
                                                 )
           JSON.parse response.body
         rescue RestClient::Exception => e
-          raise F5::Icontrol::REST::ParameterError.new(e) if e.http_code =~ /4[\d]{2}/
-          raise F5::Icontrol::REST::Error.new(e)
+          raise_error(e)
         end
       end
 
@@ -101,8 +98,7 @@ module F5
                                                 )
           JSON.parse response.body
         rescue RestClient::Exception => e
-          raise F5::Icontrol::REST::ParameterError.new(e) if e.http_code =~ /4[\d]{2}/
-          raise F5::Icontrol::REST::Error.new(e)
+          raise_error(e)
         end
       end
 
@@ -117,8 +113,7 @@ module F5
                                                 headers: { "content-type" => "application/json" }
                                                 )
         rescue RestClient::Exception => e
-          raise F5::Icontrol::REST::ParameterError.new(e) if e.http_code =~ /4[\d]{2}/
-          raise F5::Icontrol::REST::Error.new(e)
+          raise_error(e)
         end
       end
 
