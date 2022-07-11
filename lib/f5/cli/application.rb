@@ -95,6 +95,13 @@ module F5
         )
       end
 
+      desc "delete NAME", "Deletes a particular node"
+      def delete(node)
+        client.LocalLB.NodeAddressV2.delete_node_address(
+          nodes: { item: [ node ] }
+        )
+      end
+
 
     end
 
@@ -297,6 +304,7 @@ module F5
 
       end
 
+
       desc "disable POOL MEMBERS", "Disables the given members"
       method_option :force, default: false, type: :boolean, desc: "Forces the node offline (only active connections allowed)"
       def disable(pool, *members)
@@ -317,6 +325,18 @@ module F5
             monitor_states: { item: [ set.map { "STATE_DISABLED" } ] }
           )
         end
+      end
+
+      desc "remove POOL MEMBERS", "Removes the given members"
+      def remove(pool, *members)
+        set = pool_members(pool).select do |m|
+          members.include? m[:address]
+        end
+
+        response = client.LocalLB.Pool.remove_member_v2(
+          pool_names: { item: [ pool ] },
+          members: { item: [ set ] }
+        )
       end
 
       desc "setratio POOL MEMBERS", "Sets the ratio of the given members to RATIO"
